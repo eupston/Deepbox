@@ -135,33 +135,32 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
     vector<float> audio_features;
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
-    midiMessages.clear();
     
-    float rmsLevel = buffer.getRMSLevel(0, 0, buffer.getNumSamples());
-    std::cout << "rmsLevel " << rmsLevel << std::endl;
-    
-    if(rmsLevel > 0.1){
+//    float rmsLevel = buffer.getRMSLevel(0, 0, buffer.getNumSamples());
+//    std::cout << "rmsLevel " << rmsLevel << std::endl;
+//    
+//    if(rmsLevel > 0.1){
         AudioFeatureExtractor my_audio_feature_exractor = AudioFeatureExtractor(512, 64, 1024, 44100);
-        my_audio_feature_exractor.load_audio_buffer(buffer);
-        my_audio_feature_exractor.compute_algorithms();
-        audio_features = my_audio_feature_exractor.compute_mean_features();
-        std::cout << "audio_features first: " << audio_features[0] << std::endl;
-        std::cout << "audio_features size: " << audio_features.size() << std::endl;
-        
-        int audio_feature_size = audio_features.size();
-        const fdeep::shared_float_vec audio_features_ptr(fplus::make_shared_ref<fdeep::float_vec>(audio_features));
-        fdeep::shape5 input_shape = fdeep::shape5(1, 1, 1, audio_feature_size, 1);
-        const auto result = mymodel.predict({fdeep::tensor5(input_shape, audio_features_ptr)});
-        std::vector<float> result_vec = *result.front().as_vector();
-        
-        int prediction_index = std::distance(result_vec.begin(), std::max_element(result_vec.begin(), result_vec.end()));
-        std::vector<std::string> drum_classes{"hihat","kick","snare"};
-        std::cout << drum_classes[prediction_index] << std::endl;
-        std::string drum_prediction = drum_classes[prediction_index];
-        if(drum_prediction == "hihat"){
-            hitkick = true;
-        }
-    }
+//        my_audio_feature_exractor.load_audio_buffer(buffer);
+//        my_audio_feature_exractor.compute_algorithms();
+//        audio_features = my_audio_feature_exractor.compute_mean_features();
+//        std::cout << "audio_features first: " << audio_features[0] << std::endl;
+//        std::cout << "audio_features size: " << audio_features.size() << std::endl;
+//        
+//        int audio_feature_size = audio_features.size();
+//        const fdeep::shared_float_vec audio_features_ptr(fplus::make_shared_ref<fdeep::float_vec>(audio_features));
+//        fdeep::shape5 input_shape = fdeep::shape5(1, 1, 1, audio_feature_size, 1);
+//        const auto result = mymodel.predict({fdeep::tensor5(input_shape, audio_features_ptr)});
+//        std::vector<float> result_vec = *result.front().as_vector();
+//        
+//        int prediction_index = std::distance(result_vec.begin(), std::max_element(result_vec.begin(), result_vec.end()));
+//        std::vector<std::string> drum_classes{"hihat","kick","snare"};
+//        std::cout << drum_classes[prediction_index] << std::endl;
+//        std::string drum_prediction = drum_classes[prediction_index];
+//        if(drum_prediction == "hihat"){
+//            hitkick = true;
+//        }
+//    }
     
     if(hitkick){
         triggerKickDrum(midiMessages);
@@ -169,6 +168,8 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
     }
     buffer.clear();
     drumSynth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
+    midiMessages.clear();
+
 }
 
 void DeepboxAudioProcessor::initialiseSynth()
