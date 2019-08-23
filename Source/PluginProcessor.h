@@ -12,7 +12,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "AudioFeatureExtractor.hpp"
-//#include <fdeep/fdeep.hpp>
+#include <fdeep/fdeep.hpp>
 
 //==============================================================================
 /**
@@ -69,7 +69,7 @@ private:
     MidiOutput *midiIn;
     Synthesiser drumSynth;
     StringArray mididevices;
-//    fdeep::model mymodel{fdeep::load_model("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myCPP/testfdeep/testfdeep/testfdeep/my_fdeep_model.json")};
+    fdeep::model mymodel{fdeep::load_model("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myjuce/Deepbox/Source/resources/models/my_fdeep_model.json")};
     
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DeepboxAudioProcessor)

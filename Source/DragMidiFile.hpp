@@ -16,20 +16,9 @@ class DragMidiFile  :   public Component,
 {
 public:
     
-    DragMidiFile(){}
-    void paint (Graphics& g) override
-    {
-        g.fillAll (Colours::black.withAlpha (0.5f));
-        g.setColour (Colours::white);
-        g.drawRect (getLocalBounds(), 3);
-        g.drawFittedText("Drag Midi File", getLocalBounds(), Justification::centred, 2);
-    }
-
-    void mouseDrag(const MouseEvent& e) override{
-        StringArray sArray;
-        sArray.add("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myjuce/DrumPad/Source/Resources/beatbox.mid");
-        DragAndDropContainer::performExternalDragDropOfFiles(sArray, true);
-    }
+    DragMidiFile(){};
+    void paint (Graphics& g) override;
+    void mouseDrag(const MouseEvent& e) override;
     
 private:
     
