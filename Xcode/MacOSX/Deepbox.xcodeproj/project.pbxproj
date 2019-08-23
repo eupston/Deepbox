@@ -134,6 +134,24 @@
 		DD2DAFD0230EB0A20049958C /* libvorbis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE59230D571200A6124D /* libvorbis.a */; };
 		DD2DAFD1230EB0A20049958C /* libyaml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE5E230D571200A6124D /* libyaml.a */; };
 		DD55403353A352AF9A6F24CD /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520802D022A6D4838F78FC9D /* Carbon.framework */; };
+		DDAD3EE3231096D30006611A /* beatbox.mid in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDB231096D30006611A /* beatbox.mid */; };
+		DDAD3EE4231096D30006611A /* beatbox.mid in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDB231096D30006611A /* beatbox.mid */; };
+		DDAD3EE5231096D30006611A /* beatbox.mid in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDB231096D30006611A /* beatbox.mid */; };
+		DDAD3EE6231096D30006611A /* my_fdeep_model.json in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDD231096D30006611A /* my_fdeep_model.json */; };
+		DDAD3EE7231096D30006611A /* my_fdeep_model.json in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDD231096D30006611A /* my_fdeep_model.json */; };
+		DDAD3EE8231096D30006611A /* my_fdeep_model.json in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDD231096D30006611A /* my_fdeep_model.json */; };
+		DDAD3EE9231096D30006611A /* bassdrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDF231096D30006611A /* bassdrum.wav */; };
+		DDAD3EEA231096D30006611A /* bassdrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDF231096D30006611A /* bassdrum.wav */; };
+		DDAD3EEB231096D30006611A /* bassdrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDF231096D30006611A /* bassdrum.wav */; };
+		DDAD3EEC231096D30006611A /* hihat.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE0231096D30006611A /* hihat.wav */; };
+		DDAD3EED231096D30006611A /* hihat.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE0231096D30006611A /* hihat.wav */; };
+		DDAD3EEE231096D30006611A /* hihat.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE0231096D30006611A /* hihat.wav */; };
+		DDAD3EEF231096D30006611A /* osdTestOne.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE1231096D30006611A /* osdTestOne.wav */; };
+		DDAD3EF0231096D30006611A /* osdTestOne.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE1231096D30006611A /* osdTestOne.wav */; };
+		DDAD3EF1231096D30006611A /* osdTestOne.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE1231096D30006611A /* osdTestOne.wav */; };
+		DDAD3EF2231096D30006611A /* snaredrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE2231096D30006611A /* snaredrum.wav */; };
+		DDAD3EF3231096D30006611A /* snaredrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE2231096D30006611A /* snaredrum.wav */; };
+		DDAD3EF4231096D30006611A /* snaredrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE2231096D30006611A /* snaredrum.wav */; };
 		F4614570994C09EA0432E941 /* include_juce_audio_basics.mm in Sources */ = {isa = PBXBuildFile; fileRef = 068BD07308373448CCDA2D8C /* include_juce_audio_basics.mm */; };
 /* End PBXBuildFile section */
 
@@ -352,6 +370,12 @@
 		DD2DAFA1230EAD060049958C /* libtag.1.17.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtag.1.17.0.dylib; path = ../../../../../../../../../../usr/local/lib/essentia_libs/libtag.1.17.0.dylib; sourceTree = "<group>"; };
 		DD2DAFA2230EAD060049958C /* libvorbis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbis.a; path = ../../../../../../../../../../usr/local/lib/essentia_libs/libvorbis.a; sourceTree = "<group>"; };
 		DD2DAFC2230EAF0D0049958C /* libfftw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfftw3.a; path = ../../../../../../../../../../usr/local/Cellar/fftw/3.3.8_1/lib/libfftw3.a; sourceTree = "<group>"; };
+		DDAD3EDB231096D30006611A /* beatbox.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = beatbox.mid; sourceTree = "<group>"; };
+		DDAD3EDD231096D30006611A /* my_fdeep_model.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = my_fdeep_model.json; sourceTree = "<group>"; };
+		DDAD3EDF231096D30006611A /* bassdrum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bassdrum.wav; sourceTree = "<group>"; };
+		DDAD3EE0231096D30006611A /* hihat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hihat.wav; sourceTree = "<group>"; };
+		DDAD3EE1231096D30006611A /* osdTestOne.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = osdTestOne.wav; sourceTree = "<group>"; };
+		DDAD3EE2231096D30006611A /* snaredrum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snaredrum.wav; sourceTree = "<group>"; };
 		DFD6BA0410CF2B3670530E91 /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
 		E13C231BDFBA63BDDB11AAC6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E1DE62C4EC4DCB954130AF35 /* libDeepbox.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDeepbox.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -569,6 +593,11 @@
 		DD1EFF99230D604C00A6124D /* Source */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
+=======
+				DDAD3ED9231096D30006611A /* resources */,
+				DD1EFF9E230D604C00A6124D /* essentia */,
+>>>>>>> develop
 				DD1EFF9A230D604C00A6124D /* AudioFeatureExtractor.cpp */,
 				DD1EFF9B230D604C00A6124D /* AudioFeatureExtractor.hpp */,
 				DD1EFF9C230D604C00A6124D /* DragMidiFile.cpp */,
@@ -748,6 +777,43 @@
 				DD1E000B230D604D00A6124D /* tnt_version.h */,
 			);
 			path = tnt;
+			sourceTree = "<group>";
+		};
+		DDAD3ED9231096D30006611A /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				DDAD3EDA231096D30006611A /* midi */,
+				DDAD3EDC231096D30006611A /* models */,
+				DDAD3EDE231096D30006611A /* wavs */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		DDAD3EDA231096D30006611A /* midi */ = {
+			isa = PBXGroup;
+			children = (
+				DDAD3EDB231096D30006611A /* beatbox.mid */,
+			);
+			path = midi;
+			sourceTree = "<group>";
+		};
+		DDAD3EDC231096D30006611A /* models */ = {
+			isa = PBXGroup;
+			children = (
+				DDAD3EDD231096D30006611A /* my_fdeep_model.json */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		DDAD3EDE231096D30006611A /* wavs */ = {
+			isa = PBXGroup;
+			children = (
+				DDAD3EDF231096D30006611A /* bassdrum.wav */,
+				DDAD3EE0231096D30006611A /* hihat.wav */,
+				DDAD3EE1231096D30006611A /* osdTestOne.wav */,
+				DDAD3EE2231096D30006611A /* snaredrum.wav */,
+			);
+			path = wavs;
 			sourceTree = "<group>";
 		};
 		E11463ED609512B471070475 /* JUCE Modules */ = {
@@ -1002,7 +1068,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDAD3EF1231096D30006611A /* osdTestOne.wav in Resources */,
+				DDAD3EE8231096D30006611A /* my_fdeep_model.json in Resources */,
+				DDAD3EEB231096D30006611A /* bassdrum.wav in Resources */,
+				DDAD3EE5231096D30006611A /* beatbox.mid in Resources */,
+				DDAD3EEE231096D30006611A /* hihat.wav in Resources */,
 				DD1EFE47230D554000A6124D /* RecentFilesMenuTemplate.nib in Resources */,
+				DDAD3EF4231096D30006611A /* snaredrum.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1010,7 +1082,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDAD3EF0231096D30006611A /* osdTestOne.wav in Resources */,
+				DDAD3EE7231096D30006611A /* my_fdeep_model.json in Resources */,
+				DDAD3EEA231096D30006611A /* bassdrum.wav in Resources */,
+				DDAD3EE4231096D30006611A /* beatbox.mid in Resources */,
+				DDAD3EED231096D30006611A /* hihat.wav in Resources */,
 				DD1EFE3A230D554000A6124D /* RecentFilesMenuTemplate.nib in Resources */,
+				DDAD3EF3231096D30006611A /* snaredrum.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1018,7 +1096,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDAD3EEF231096D30006611A /* osdTestOne.wav in Resources */,
+				DDAD3EE6231096D30006611A /* my_fdeep_model.json in Resources */,
+				DDAD3EE9231096D30006611A /* bassdrum.wav in Resources */,
+				DDAD3EE3231096D30006611A /* beatbox.mid in Resources */,
+				DDAD3EEC231096D30006611A /* hihat.wav in Resources */,
 				73C52EA131FAC0DCE4F94E95 /* RecentFilesMenuTemplate.nib in Resources */,
+				DDAD3EF2231096D30006611A /* snaredrum.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
