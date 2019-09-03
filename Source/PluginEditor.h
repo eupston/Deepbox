@@ -29,6 +29,8 @@ public:
 
 private:
     TextButton mykickButton{"kick"};
+    TextButton mysnareButton{"snare"};
+    TextButton myhihatButton{"hihat"};
     DragMidiFile midiDrag;
     DeepboxAudioProcessor& processor;
 

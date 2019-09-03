@@ -17,8 +17,12 @@ DeepboxAudioProcessorEditor::DeepboxAudioProcessorEditor (DeepboxAudioProcessor&
 {
     setSize (400, 300);
     addAndMakeVisible(mykickButton);
+    addAndMakeVisible(mysnareButton);
+    addAndMakeVisible(myhihatButton);
     addAndMakeVisible(midiDrag);
     mykickButton.onClick = [this] { processor.hitkick = true;};
+    mysnareButton.onClick = [this] { processor.hitsnare = true;};
+    myhihatButton.onClick = [this] { processor.hithihat = true;};
 
 }
 
@@ -39,5 +43,7 @@ void DeepboxAudioProcessorEditor::paint (Graphics& g)
 void DeepboxAudioProcessorEditor::resized()
 {
     mykickButton.setBounds(100, 176, 150, 24);
+    mysnareButton.setBounds(100, 206, 150, 24);
+    myhihatButton.setBounds(100, 236, 150, 24);
     midiDrag.setBounds(0,0,200,100);
 }

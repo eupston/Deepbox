@@ -134,6 +134,7 @@
 		DD2DAFD0230EB0A20049958C /* libvorbis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE59230D571200A6124D /* libvorbis.a */; };
 		DD2DAFD1230EB0A20049958C /* libyaml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE5E230D571200A6124D /* libyaml.a */; };
 		DD55403353A352AF9A6F24CD /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520802D022A6D4838F78FC9D /* Carbon.framework */; };
+		DD6F201F2311492E009F0197 /* libfftw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2DAFC2230EAF0D0049958C /* libfftw3.a */; };
 		DDAD3EE3231096D30006611A /* beatbox.mid in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDB231096D30006611A /* beatbox.mid */; };
 		DDAD3EE4231096D30006611A /* beatbox.mid in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDB231096D30006611A /* beatbox.mid */; };
 		DDAD3EE5231096D30006611A /* beatbox.mid in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDB231096D30006611A /* beatbox.mid */; };
@@ -152,6 +153,30 @@
 		DDAD3EF2231096D30006611A /* snaredrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE2231096D30006611A /* snaredrum.wav */; };
 		DDAD3EF3231096D30006611A /* snaredrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE2231096D30006611A /* snaredrum.wav */; };
 		DDAD3EF4231096D30006611A /* snaredrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE2231096D30006611A /* snaredrum.wav */; };
+		DDF4ABEF231E65E10070390B /* AudioFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABBA231E65E10070390B /* AudioFFT.cpp */; };
+		DDF4ABF0231E65E10070390B /* AudioFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABBA231E65E10070390B /* AudioFFT.cpp */; };
+		DDF4ABF1231E65E10070390B /* AudioFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABBA231E65E10070390B /* AudioFFT.cpp */; };
+		DDF4ABF2231E65E10070390B /* AudioFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABBA231E65E10070390B /* AudioFFT.cpp */; };
+		DDF4ABF3231E65E10070390B /* svm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABBD231E65E10070390B /* svm.cpp */; };
+		DDF4ABF4231E65E10070390B /* svm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABBD231E65E10070390B /* svm.cpp */; };
+		DDF4ABF5231E65E10070390B /* svm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABBD231E65E10070390B /* svm.cpp */; };
+		DDF4ABF6231E65E10070390B /* svm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABBD231E65E10070390B /* svm.cpp */; };
+		DDF4ABFF231E65E10070390B /* AudioFeatureExtraction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABC7231E65E10070390B /* AudioFeatureExtraction.cpp */; };
+		DDF4AC00231E65E10070390B /* AudioFeatureExtraction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABC7231E65E10070390B /* AudioFeatureExtraction.cpp */; };
+		DDF4AC01231E65E10070390B /* AudioFeatureExtraction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABC7231E65E10070390B /* AudioFeatureExtraction.cpp */; };
+		DDF4AC02231E65E10070390B /* AudioFeatureExtraction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABC7231E65E10070390B /* AudioFeatureExtraction.cpp */; };
+		DDF4AC0F231E65E10070390B /* OnsetClassification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABCF231E65E10070390B /* OnsetClassification.cpp */; };
+		DDF4AC10231E65E10070390B /* OnsetClassification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABCF231E65E10070390B /* OnsetClassification.cpp */; };
+		DDF4AC11231E65E10070390B /* OnsetClassification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABCF231E65E10070390B /* OnsetClassification.cpp */; };
+		DDF4AC12231E65E10070390B /* OnsetClassification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABCF231E65E10070390B /* OnsetClassification.cpp */; };
+		DDF4AC37231E65E10070390B /* ShortTermFourierTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABEA231E65E10070390B /* ShortTermFourierTransform.cpp */; };
+		DDF4AC38231E65E10070390B /* ShortTermFourierTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABEA231E65E10070390B /* ShortTermFourierTransform.cpp */; };
+		DDF4AC39231E65E10070390B /* ShortTermFourierTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABEA231E65E10070390B /* ShortTermFourierTransform.cpp */; };
+		DDF4AC3A231E65E10070390B /* ShortTermFourierTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABEA231E65E10070390B /* ShortTermFourierTransform.cpp */; };
+		DDF4AC3B231E65E10070390B /* SVMTrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABED231E65E10070390B /* SVMTrain.cpp */; };
+		DDF4AC3C231E65E10070390B /* SVMTrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABED231E65E10070390B /* SVMTrain.cpp */; };
+		DDF4AC3D231E65E10070390B /* SVMTrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABED231E65E10070390B /* SVMTrain.cpp */; };
+		DDF4AC3E231E65E10070390B /* SVMTrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABED231E65E10070390B /* SVMTrain.cpp */; };
 		F4614570994C09EA0432E941 /* include_juce_audio_basics.mm in Sources */ = {isa = PBXBuildFile; fileRef = 068BD07308373448CCDA2D8C /* include_juce_audio_basics.mm */; };
 /* End PBXBuildFile section */
 
@@ -376,6 +401,18 @@
 		DDAD3EE0231096D30006611A /* hihat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hihat.wav; sourceTree = "<group>"; };
 		DDAD3EE1231096D30006611A /* osdTestOne.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = osdTestOne.wav; sourceTree = "<group>"; };
 		DDAD3EE2231096D30006611A /* snaredrum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snaredrum.wav; sourceTree = "<group>"; };
+		DDF4ABBA231E65E10070390B /* AudioFFT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioFFT.cpp; sourceTree = "<group>"; };
+		DDF4ABBB231E65E10070390B /* AudioFFT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFFT.h; sourceTree = "<group>"; };
+		DDF4ABBD231E65E10070390B /* svm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svm.cpp; sourceTree = "<group>"; };
+		DDF4ABBE231E65E10070390B /* svm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = svm.h; sourceTree = "<group>"; };
+		DDF4ABC7231E65E10070390B /* AudioFeatureExtraction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioFeatureExtraction.cpp; sourceTree = "<group>"; };
+		DDF4ABC8231E65E10070390B /* AudioFeatureExtraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFeatureExtraction.h; sourceTree = "<group>"; };
+		DDF4ABCF231E65E10070390B /* OnsetClassification.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OnsetClassification.cpp; sourceTree = "<group>"; };
+		DDF4ABD0231E65E10070390B /* OnsetClassification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnsetClassification.h; sourceTree = "<group>"; };
+		DDF4ABEA231E65E10070390B /* ShortTermFourierTransform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShortTermFourierTransform.cpp; sourceTree = "<group>"; };
+		DDF4ABEB231E65E10070390B /* ShortTermFourierTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortTermFourierTransform.h; sourceTree = "<group>"; };
+		DDF4ABED231E65E10070390B /* SVMTrain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SVMTrain.cpp; sourceTree = "<group>"; };
+		DDF4ABEE231E65E10070390B /* SVMTrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVMTrain.h; sourceTree = "<group>"; };
 		DFD6BA0410CF2B3670530E91 /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
 		E13C231BDFBA63BDDB11AAC6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E1DE62C4EC4DCB954130AF35 /* libDeepbox.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDeepbox.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -393,6 +430,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD6F201F2311492E009F0197 /* libfftw3.a in Frameworks */,
 				DD1EFE63230D571200A6124D /* libessentia.a in Frameworks */,
 				DD1EFE64230D571200A6124D /* libvorbis.a in Frameworks */,
 				DD1EFE65230D571200A6124D /* libavresample.a in Frameworks */,
@@ -593,6 +631,7 @@
 		DD1EFF99230D604C00A6124D /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				DDF4ABB7231E65E10070390B /* beat_surface */,
 				DDAD3ED9231096D30006611A /* resources */,
 				DD1EFF9E230D604C00A6124D /* essentia */,
 				DD1EFF9A230D604C00A6124D /* AudioFeatureExtractor.cpp */,
@@ -810,6 +849,89 @@
 				DDAD3EE2231096D30006611A /* snaredrum.wav */,
 			);
 			path = wavs;
+			sourceTree = "<group>";
+		};
+		DDF4ABB7231E65E10070390B /* beat_surface */ = {
+			isa = PBXGroup;
+			children = (
+				DDF4ABB8231E65E10070390B /* Dependencies */,
+				DDF4ABBF231E65E10070390B /* Source */,
+			);
+			path = beat_surface;
+			sourceTree = "<group>";
+		};
+		DDF4ABB8231E65E10070390B /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				DDF4ABB9231E65E10070390B /* AudioFFT */,
+				DDF4ABBC231E65E10070390B /* libSVM */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		DDF4ABB9231E65E10070390B /* AudioFFT */ = {
+			isa = PBXGroup;
+			children = (
+				DDF4ABBA231E65E10070390B /* AudioFFT.cpp */,
+				DDF4ABBB231E65E10070390B /* AudioFFT.h */,
+			);
+			path = AudioFFT;
+			sourceTree = "<group>";
+		};
+		DDF4ABBC231E65E10070390B /* libSVM */ = {
+			isa = PBXGroup;
+			children = (
+				DDF4ABBD231E65E10070390B /* svm.cpp */,
+				DDF4ABBE231E65E10070390B /* svm.h */,
+			);
+			path = libSVM;
+			sourceTree = "<group>";
+		};
+		DDF4ABBF231E65E10070390B /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				DDF4ABC6231E65E10070390B /* Core */,
+				DDF4ABE8231E65E10070390B /* Wrappers */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		DDF4ABC6231E65E10070390B /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				DDF4ABC7231E65E10070390B /* AudioFeatureExtraction.cpp */,
+				DDF4ABC8231E65E10070390B /* AudioFeatureExtraction.h */,
+				DDF4ABCF231E65E10070390B /* OnsetClassification.cpp */,
+				DDF4ABD0231E65E10070390B /* OnsetClassification.h */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		DDF4ABE8231E65E10070390B /* Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				DDF4ABE9231E65E10070390B /* FFT */,
+				DDF4ABEC231E65E10070390B /* SVM */,
+			);
+			path = Wrappers;
+			sourceTree = "<group>";
+		};
+		DDF4ABE9231E65E10070390B /* FFT */ = {
+			isa = PBXGroup;
+			children = (
+				DDF4ABEA231E65E10070390B /* ShortTermFourierTransform.cpp */,
+				DDF4ABEB231E65E10070390B /* ShortTermFourierTransform.h */,
+			);
+			path = FFT;
+			sourceTree = "<group>";
+		};
+		DDF4ABEC231E65E10070390B /* SVM */ = {
+			isa = PBXGroup;
+			children = (
+				DDF4ABED231E65E10070390B /* SVMTrain.cpp */,
+				DDF4ABEE231E65E10070390B /* SVMTrain.h */,
+			);
+			path = SVM;
 			sourceTree = "<group>";
 		};
 		E11463ED609512B471070475 /* JUCE Modules */ = {
@@ -1125,19 +1247,25 @@
 				AED2908E638AD1C5F37C320E /* include_juce_audio_formats.mm in Sources */,
 				CC96D0C0624AAF861F610DF6 /* include_juce_audio_plugin_client_utils.cpp in Sources */,
 				CC19FF0EE3BD26C2321F94B3 /* include_juce_audio_plugin_client_VST_utils.mm in Sources */,
+				DDF4ABF2231E65E10070390B /* AudioFFT.cpp in Sources */,
 				DD1E00CD230D604D00A6124D /* DragMidiFile.cpp in Sources */,
 				97FDA2AED99E2FDAF46CA484 /* include_juce_audio_processors.mm in Sources */,
 				2A33ECDF689D61096CBB276F /* include_juce_audio_utils.mm in Sources */,
 				DD1E00D1230D604D00A6124D /* PluginEditor.cpp in Sources */,
 				DD1E00D5230D604D00A6124D /* PluginProcessor.cpp in Sources */,
+				DDF4AC3A231E65E10070390B /* ShortTermFourierTransform.cpp in Sources */,
 				0A0FC400B664BCC6E0A52843 /* include_juce_core.mm in Sources */,
 				A2449B022A6DB50B9E3912EA /* include_juce_cryptography.mm in Sources */,
+				DDF4AC3E231E65E10070390B /* SVMTrain.cpp in Sources */,
 				71ADC853A47B9BFAAB9B11CC /* include_juce_data_structures.mm in Sources */,
 				DD1E00C9230D604D00A6124D /* AudioFeatureExtractor.cpp in Sources */,
+				DDF4ABF6231E65E10070390B /* svm.cpp in Sources */,
+				DDF4AC12231E65E10070390B /* OnsetClassification.cpp in Sources */,
 				63DD3D3520BA8C07DBF440AF /* include_juce_events.mm in Sources */,
 				7A1662A2E8E6E4DED8F1470E /* include_juce_graphics.mm in Sources */,
 				D56E25F8516559F8E34364C6 /* include_juce_gui_basics.mm in Sources */,
 				6AAF6A174176F457EDD11EC3 /* include_juce_gui_extra.mm in Sources */,
+				DDF4AC02231E65E10070390B /* AudioFeatureExtraction.cpp in Sources */,
 				B41A8AE29FEDE4D9D6616C74 /* include_juce_opengl.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1146,11 +1274,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDF4ABF4231E65E10070390B /* svm.cpp in Sources */,
+				DDF4ABF0231E65E10070390B /* AudioFFT.cpp in Sources */,
 				1555830510B8223C74428649 /* include_juce_audio_plugin_client_AU_1.mm in Sources */,
 				DD1E00CB230D604D00A6124D /* DragMidiFile.cpp in Sources */,
 				DD1E00C7230D604D00A6124D /* AudioFeatureExtractor.cpp in Sources */,
+				DDF4AC38231E65E10070390B /* ShortTermFourierTransform.cpp in Sources */,
 				6DA35F07045BCBD236FB4A21 /* include_juce_audio_plugin_client_AU_2.mm in Sources */,
 				DD1E00D3230D604D00A6124D /* PluginProcessor.cpp in Sources */,
+				DDF4AC3C231E65E10070390B /* SVMTrain.cpp in Sources */,
+				DDF4AC10231E65E10070390B /* OnsetClassification.cpp in Sources */,
+				DDF4AC00231E65E10070390B /* AudioFeatureExtraction.cpp in Sources */,
 				DD1E00CF230D604D00A6124D /* PluginEditor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1159,11 +1293,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDF4ABF3231E65E10070390B /* svm.cpp in Sources */,
 				4F39012B48CF584AD069AADA /* include_juce_audio_plugin_client_VST3.cpp in Sources */,
 				DD1E00CE230D604D00A6124D /* PluginEditor.cpp in Sources */,
+				DDF4AC37231E65E10070390B /* ShortTermFourierTransform.cpp in Sources */,
 				DD1E00D2230D604D00A6124D /* PluginProcessor.cpp in Sources */,
+				DDF4ABFF231E65E10070390B /* AudioFeatureExtraction.cpp in Sources */,
 				DD1E00CA230D604D00A6124D /* DragMidiFile.cpp in Sources */,
 				DD1E00C6230D604D00A6124D /* AudioFeatureExtractor.cpp in Sources */,
+				DDF4AC0F231E65E10070390B /* OnsetClassification.cpp in Sources */,
+				DDF4AC3B231E65E10070390B /* SVMTrain.cpp in Sources */,
+				DDF4ABEF231E65E10070390B /* AudioFFT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1171,11 +1311,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDF4ABF5231E65E10070390B /* svm.cpp in Sources */,
 				7EB52B614D96E15B6795D757 /* include_juce_audio_plugin_client_Standalone.cpp in Sources */,
 				DD1E00D0230D604D00A6124D /* PluginEditor.cpp in Sources */,
+				DDF4AC39231E65E10070390B /* ShortTermFourierTransform.cpp in Sources */,
 				DD1E00D4230D604D00A6124D /* PluginProcessor.cpp in Sources */,
+				DDF4AC01231E65E10070390B /* AudioFeatureExtraction.cpp in Sources */,
 				DD1E00CC230D604D00A6124D /* DragMidiFile.cpp in Sources */,
 				DD1E00C8230D604D00A6124D /* AudioFeatureExtractor.cpp in Sources */,
+				DDF4AC11231E65E10070390B /* OnsetClassification.cpp in Sources */,
+				DDF4AC3D231E65E10070390B /* SVMTrain.cpp in Sources */,
+				DDF4ABF1231E65E10070390B /* AudioFFT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1245,6 +1391,7 @@
 					/usr/local/include,
 				);
 				INFOPLIST_FILE = "Info-Standalone_Plugin.plist";
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREPROCESS = NO;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1258,6 +1405,7 @@
 				);
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-lDeepbox";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.Deepbox;
 				PRODUCT_NAME = Deepbox;
@@ -1352,6 +1500,7 @@
 					/usr/local/include,
 				);
 				INFOPLIST_FILE = "Info-AU.plist";
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREPROCESS = NO;
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/Components/";
 				LIBRARY_SEARCH_PATHS = (
@@ -1408,6 +1557,7 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
@@ -1419,6 +1569,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/local/include;
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lessentia",
@@ -1480,6 +1631,7 @@
 					/usr/local/include,
 				);
 				INFOPLIST_FILE = "Info-VST3.plist";
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREPROCESS = NO;
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST3/";
 				LIBRARY_SEARCH_PATHS = (
@@ -1490,6 +1642,7 @@
 					/usr/local/Cellar/libyaml/0.2.2/lib,
 					"$(inherited)",
 					/usr/local/lib,
+					/usr/local/Cellar/fftw/3.3.8_1/lib,
 				);
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -1546,6 +1699,7 @@
 					/usr/local/include,
 				);
 				INFOPLIST_FILE = "Info-AU.plist";
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREPROCESS = NO;
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/Components/";
 				LIBRARY_SEARCH_PATHS = (
@@ -1621,6 +1775,8 @@
 		BF17E7D79E6C3E046BD3E713 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 			};
 			name = Release;
@@ -1653,6 +1809,7 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
@@ -1664,6 +1821,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/local/include;
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				OTHER_LDFLAGS = (
 					"-lessentia",
 					"-lfftw",
@@ -1685,6 +1843,8 @@
 		C7251ACA7D74E92A7BAAEF24 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 			};
 			name = Debug;
@@ -1732,6 +1892,7 @@
 					/usr/local/include,
 				);
 				INFOPLIST_FILE = "Info-VST3.plist";
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREPROCESS = NO;
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/VST3/";
 				LIBRARY_SEARCH_PATHS = (
@@ -1742,6 +1903,7 @@
 					/usr/local/Cellar/libyaml/0.2.2/lib,
 					"$(inherited)",
 					/usr/local/lib,
+					/usr/local/Cellar/fftw/3.3.8_1/lib,
 				);
 				LIBRARY_STYLE = Bundle;
 				LLVM_LTO = YES;
@@ -1796,6 +1958,7 @@
 					/usr/local/include,
 				);
 				INFOPLIST_FILE = "Info-Standalone_Plugin.plist";
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREPROCESS = NO;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1808,6 +1971,7 @@
 					/usr/local/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-lDeepbox";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.Deepbox;
 				PRODUCT_NAME = Deepbox;

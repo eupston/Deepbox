@@ -25,6 +25,8 @@ DeepboxAudioProcessor::DeepboxAudioProcessor()
 #endif
 {
     initialiseSynth();
+    essentia::init();
+    
 }
 
 DeepboxAudioProcessor::~DeepboxAudioProcessor()
@@ -97,6 +99,7 @@ void DeepboxAudioProcessor::changeProgramName (int index, const String& newName)
 void DeepboxAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
     drumSynth.setCurrentPlaybackSampleRate(sampleRate);
+    my_onset_detector.initialize(samplesPerBlock, sampleRate);
 }
 
 void DeepboxAudioProcessor::releaseResources()
@@ -137,36 +140,62 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
     auto totalNumOutputChannels = getTotalNumOutputChannels();
     
     float rmsLevel = buffer.getRMSLevel(0, 0, buffer.getNumSamples());
-    std::cout << "rmsLevel " << rmsLevel << std::endl;
+    float mag = buffer.getMagnitude(0, 0, buffer.getNumSamples());
+    float db = Decibels::gainToDecibels(mag);
     
-    if(rmsLevel > 0.01){
+    auto currentValuesInBuffer = buffer.getArrayOfReadPointers();
+    bool onset_detected = my_onset_detector.detectOnset(currentValuesInBuffer);
+
+    if(onset_detected){
         AudioFeatureExtractor my_audio_feature_exractor = AudioFeatureExtractor(512, 64, 1024, 44100);
         my_audio_feature_exractor.load_audio_buffer(buffer);
         my_audio_feature_exractor.compute_algorithms();
         audio_features = my_audio_feature_exractor.compute_mean_features();
-        std::cout << "audio_features first: " << audio_features[0] << std::endl;
-        std::cout << "audio_features size: " << audio_features.size() << std::endl;
-        
         int audio_feature_size = audio_features.size();
         const fdeep::shared_float_vec audio_features_ptr(fplus::make_shared_ref<fdeep::float_vec>(audio_features));
         fdeep::shape5 input_shape = fdeep::shape5(1, 1, 1, audio_feature_size, 1);
         const auto result = mymodel.predict({fdeep::tensor5(input_shape, audio_features_ptr)});
         std::vector<float> result_vec = *result.front().as_vector();
-        
+
         int prediction_index = std::distance(result_vec.begin(), std::max_element(result_vec.begin(), result_vec.end()));
         std::vector<std::string> drum_classes{"hihat","kick","snare"};
-        std::cout << drum_classes[prediction_index] << std::endl;
         std::string drum_prediction = drum_classes[prediction_index];
-        if(drum_prediction == "hihat"){
+        std::cout << drum_prediction << std::endl;
+        
+        
+        if(drum_prediction == "kick"){
             hitkick = true;
         }
+        
+        if(drum_prediction == "snare"){
+            hitsnare = true;
+        }
+        
+        if(drum_prediction == "hihat"){
+            hithihat = true;
+        }
+
     }
+    
+    
+//    bool voiceactive = mysamplevoice->isVoiceActive();
     
     if(hitkick){
         triggerKickDrum(midiMessages);
         hitkick = false;
     }
+    
+    if(hitsnare){
+        triggerSnareDrum(midiMessages);
+        hitsnare = false;
+    }
+    
+    if(hithihat){
+        triggerHihatDrum(midiMessages);
+        hithihat = false;
+    }
     buffer.clear();
+    
     drumSynth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
     midiMessages.clear();
 
@@ -189,21 +218,36 @@ void DeepboxAudioProcessor::initialiseSynth()
     AudioFormatManager formatManager;
     formatManager.registerBasicFormats();
     std::unique_ptr<AudioFormatReader> readerKickDrum(formatManager.createReaderFor(File("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myjuce/Deepbox/Source/resources/wavs/bassdrum.wav")));
+    std::unique_ptr<AudioFormatReader> readerSnareDrum(formatManager.createReaderFor(File("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myjuce/Deepbox/Source/resources/wavs/snaredrum.wav")));
+    std::unique_ptr<AudioFormatReader> readerHiHat(formatManager.createReaderFor(File("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myjuce/Deepbox/Source/resources/wavs/hihat.wav")));
+
+    
     kickNoteRange.setBit(kickNoteNumber);
-    //    snareNoteRange.setBit(snareNoteNumber);
-    //    hihatNoteRange.setBit(hihatNoteNumber);
+    snareNoteRange.setBit(snareNoteNumber);
+    hihatNoteRange.setBit(hihatNoteNumber);
     
     drumSynth.addSound(new SamplerSound("Kick Sound", *readerKickDrum, kickNoteRange, kickNoteNumber, 0.0, 0.0, 5.0));
-    //    drumSynth.addSound(new SamplerSound("Snare Sound", *readerSnareDrum, snareNoteRange, snareNoteNumber, 0.0, 0.0, 5.0));
-    //    drumSynth.addSound(new SamplerSound("HiHat Sound", *readerHiHat, hihatNoteRange, hihatNoteNumber, 0.0, 0.0, 5.0));
-    
-    drumSynth.addVoice(new SamplerVoice());
+    drumSynth.addSound(new SamplerSound("Snare Sound", *readerSnareDrum, snareNoteRange, snareNoteNumber, 0.0, 0.0, 5.0));
+    drumSynth.addSound(new SamplerSound("HiHat Sound", *readerHiHat, hihatNoteRange, hihatNoteNumber, 0.0, 0.0, 5.0));
+    drumSynth.addVoice(mysamplevoice);
     
 }
 
 void DeepboxAudioProcessor::triggerKickDrum(MidiBuffer& midiMessages) const
 {
     midiMessages.addEvent(MidiMessage::noteOn(1, kickNoteNumber, static_cast<uint8>(100)),0);
+    
+}
+
+void DeepboxAudioProcessor::triggerSnareDrum(MidiBuffer& midiMessages) const
+{
+    midiMessages.addEvent(MidiMessage::noteOn(1, snareNoteNumber, static_cast<uint8>(100)),0);
+    
+}
+
+void DeepboxAudioProcessor::triggerHihatDrum(MidiBuffer& midiMessages) const
+{
+    midiMessages.addEvent(MidiMessage::noteOn(1, hihatNoteNumber, static_cast<uint8>(100)),0);
     
 }
 

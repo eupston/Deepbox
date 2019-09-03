@@ -27,7 +27,7 @@ public:
     
     AudioFeatureExtractor(int frame_size, int hop_size, int max_sample_length, int sample_rate=44100);
     
-    void load_audio_buffer(AudioBuffer<float>& buffer);
+    vector<Real> load_audio_buffer(AudioBuffer<float>& buffer);
     
     void connect_buffer_to_algorithms();
     
