@@ -23,7 +23,15 @@ DeepboxAudioProcessorEditor::DeepboxAudioProcessorEditor (DeepboxAudioProcessor&
     mykickButton.onClick = [this] { processor.hitkick = true;};
     mysnareButton.onClick = [this] { processor.hitsnare = true;};
     myhihatButton.onClick = [this] { processor.hithihat = true;};
-
+    
+    sliderAttach = new AudioProcessorValueTreeState::SliderAttachment (processor.treeState, "ONSET_THRESHOLD_ID", onset_threshold_slider);
+    onset_threshold_slider.setSliderStyle(Slider::Slider::LinearVertical);
+    onset_threshold_slider.setTextBoxStyle(Slider::TextBoxBelow, true, 100, 25);
+    onset_threshold_slider.setRange(-48.0f, 0.0f);
+    onset_threshold_slider.setValue(-15.0f);
+    addAndMakeVisible(&onset_threshold_slider);
+    
+    
 }
 
 DeepboxAudioProcessorEditor::~DeepboxAudioProcessorEditor()
@@ -41,6 +49,8 @@ void DeepboxAudioProcessorEditor::paint (Graphics& g)
 
 void DeepboxAudioProcessorEditor::resized()
 {
+    onset_threshold_slider.setBounds(250, 120, 50, 150);
+
     mykickButton.setBounds(100, 176, 150, 24);
     mysnareButton.setBounds(100, 206, 150, 24);
     myhihatButton.setBounds(100, 236, 150, 24);

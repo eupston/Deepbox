@@ -21,11 +21,15 @@ DeepboxAudioProcessor::DeepboxAudioProcessor()
                       #endif
                        .withOutput ("Output", AudioChannelSet::stereo(), true)
                      #endif
-                       )
+                       ), treeState(*this, nullptr)
+
 #endif
 {
     initialiseSynth();
     essentia::init();
+    NormalisableRange<float> onset_threshold_range (-48.0f, 0.0f);
+    treeState.createAndAddParameter("ONSET_THRESHOLD_ID", "ONSET_THRESHOLD", "ONSET_THRESHOLD", onset_threshold_range, 0, nullptr, nullptr);
+    treeState.state = ValueTree("initialize");
     
 }
 
@@ -142,11 +146,11 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
     float rmsLevel = buffer.getRMSLevel(0, 0, buffer.getNumSamples());
     float mag = buffer.getMagnitude(0, 0, buffer.getNumSamples());
     float db = Decibels::gainToDecibels(mag);
-    
+    float current_onset_threshold = *treeState.getRawParameterValue("ONSET_THRESHOLD_ID");
     
     auto currentValuesInBuffer = buffer.getArrayOfReadPointers();
     bool onset_detected = my_onset_detector.detectOnset(currentValuesInBuffer);
-    if(onset_detected && db > -15){
+    if(onset_detected && db > current_onset_threshold){
         AudioFeatureExtractor my_audio_feature_exractor = AudioFeatureExtractor(512, 64, 1024, 44100);
         my_audio_feature_exractor.load_audio_buffer(buffer);
         my_audio_feature_exractor.compute_algorithms();
@@ -174,9 +178,6 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
         }
 
     }
-    
-    
-//    bool voiceactive = mysamplevoice->isVoiceActive();
     
     if(hitkick){
         triggerKickDrum(midiMessages);
@@ -227,7 +228,7 @@ void DeepboxAudioProcessor::initialiseSynth()
     drumSynth.addSound(new SamplerSound("Kick Sound", *readerKickDrum, kickNoteRange, kickNoteNumber, 0.0, 0.0, 5.0));
     drumSynth.addSound(new SamplerSound("Snare Sound", *readerSnareDrum, snareNoteRange, snareNoteNumber, 0.0, 0.0, 5.0));
     drumSynth.addSound(new SamplerSound("HiHat Sound", *readerHiHat, hihatNoteRange, hihatNoteNumber, 0.0, 0.0, 5.0));
-    drumSynth.addVoice(mysamplevoice);
+    drumSynth.addVoice(new SamplerVoice());
 }
 
 void DeepboxAudioProcessor::triggerKickDrum(MidiBuffer& midiMessages) const

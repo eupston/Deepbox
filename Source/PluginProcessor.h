@@ -19,7 +19,7 @@
 #include "essentia/essentiamath.h"
 #include "essentia/pool.h"
 
-#include "beat_surface/Source/Core/OnsetClassification.h"
+#include "beat_detection/Source/Core/OnsetClassification.h"
 
 using namespace essentia;
 using namespace essentia::standard;
@@ -75,6 +75,7 @@ public:
     bool hitkick = false;
     bool hitsnare = false;
     bool hithihat = false;
+    AudioProcessorValueTreeState treeState;
 
 private:
     const int kickNoteNumber = 12;
@@ -85,8 +86,9 @@ private:
     Synthesiser drumSynth;
     StringArray mididevices;
     fdeep::model mymodel{fdeep::load_model("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myjuce/Deepbox/Source/resources/models/my_fdeep_model.json")};
-    SamplerVoice *mysamplevoice = new SamplerVoice();
     OnsetClassification my_onset_detector;
+    
+    
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DeepboxAudioProcessor)
 };

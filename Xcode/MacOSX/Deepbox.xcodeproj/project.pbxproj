@@ -631,7 +631,7 @@
 		DD1EFF99230D604C00A6124D /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				DDF4ABB7231E65E10070390B /* beat_surface */,
+				DDF4ABB7231E65E10070390B /* beat_detection */,
 				DDAD3ED9231096D30006611A /* resources */,
 				DD1EFF9E230D604C00A6124D /* essentia */,
 				DD1EFF9A230D604C00A6124D /* AudioFeatureExtractor.cpp */,
@@ -851,13 +851,13 @@
 			path = wavs;
 			sourceTree = "<group>";
 		};
-		DDF4ABB7231E65E10070390B /* beat_surface */ = {
+		DDF4ABB7231E65E10070390B /* beat_detection */ = {
 			isa = PBXGroup;
 			children = (
 				DDF4ABB8231E65E10070390B /* Dependencies */,
 				DDF4ABBF231E65E10070390B /* Source */,
 			);
-			path = beat_surface;
+			path = beat_detection;
 			sourceTree = "<group>";
 		};
 		DDF4ABB8231E65E10070390B /* Dependencies */ = {
