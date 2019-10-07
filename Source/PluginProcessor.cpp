@@ -143,10 +143,10 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
     float mag = buffer.getMagnitude(0, 0, buffer.getNumSamples());
     float db = Decibels::gainToDecibels(mag);
     
+    
     auto currentValuesInBuffer = buffer.getArrayOfReadPointers();
     bool onset_detected = my_onset_detector.detectOnset(currentValuesInBuffer);
-
-    if(onset_detected){
+    if(onset_detected && db > -15){
         AudioFeatureExtractor my_audio_feature_exractor = AudioFeatureExtractor(512, 64, 1024, 44100);
         my_audio_feature_exractor.load_audio_buffer(buffer);
         my_audio_feature_exractor.compute_algorithms();
@@ -156,12 +156,10 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
         fdeep::shape5 input_shape = fdeep::shape5(1, 1, 1, audio_feature_size, 1);
         const auto result = mymodel.predict({fdeep::tensor5(input_shape, audio_features_ptr)});
         std::vector<float> result_vec = *result.front().as_vector();
-
         int prediction_index = std::distance(result_vec.begin(), std::max_element(result_vec.begin(), result_vec.end()));
         std::vector<std::string> drum_classes{"hihat","kick","snare"};
         std::string drum_prediction = drum_classes[prediction_index];
         std::cout << drum_prediction << std::endl;
-        
         
         if(drum_prediction == "kick"){
             hitkick = true;
@@ -230,7 +228,6 @@ void DeepboxAudioProcessor::initialiseSynth()
     drumSynth.addSound(new SamplerSound("Snare Sound", *readerSnareDrum, snareNoteRange, snareNoteNumber, 0.0, 0.0, 5.0));
     drumSynth.addSound(new SamplerSound("HiHat Sound", *readerHiHat, hihatNoteRange, hihatNoteNumber, 0.0, 0.0, 5.0));
     drumSynth.addVoice(mysamplevoice);
-    
 }
 
 void DeepboxAudioProcessor::triggerKickDrum(MidiBuffer& midiMessages) const
