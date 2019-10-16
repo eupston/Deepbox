@@ -20,6 +20,7 @@
 #include "essentia/pool.h"
 
 #include "beat_detection/Source/Core/OnsetClassification.h"
+#include "AudioLiveScrollingDisplay.h"
 
 using namespace essentia;
 using namespace essentia::standard;
@@ -76,6 +77,7 @@ public:
     bool hitsnare = false;
     bool hithihat = false;
     AudioProcessorValueTreeState treeState;
+    LiveScrollingAudioDisplay liveAudioScroller;
 
 private:
     const int kickNoteNumber = 12;

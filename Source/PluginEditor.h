@@ -26,11 +26,12 @@ public:
     //==============================================================================
     void paint (Graphics&) override;
     void resized() override;
+    
 
 private:
-    TextButton mykickButton{"kick"};
-    TextButton mysnareButton{"snare"};
-    TextButton myhihatButton{"hihat"};
+    ImageButton mykickButton{"kick"};
+    ImageButton mysnareButton{"snare"};
+    ImageButton myhihatButton{"hihat"};
     DragMidiFile midiDrag;
     DeepboxAudioProcessor& processor;
     Slider onset_threshold_slider;

@@ -56,6 +56,15 @@
 		CC96D0C0624AAF861F610DF6 /* include_juce_audio_plugin_client_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 790631234723CC38C51533E3 /* include_juce_audio_plugin_client_utils.cpp */; };
 		D56E25F8516559F8E34364C6 /* include_juce_gui_basics.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCE60AE7BC75C26830AF7037 /* include_juce_gui_basics.mm */; };
 		D8946DC97A4D36D8A1E0FB6B /* include_juce_audio_plugin_client_AU.r in Rez */ = {isa = PBXBuildFile; fileRef = 89A9A62EBFE081834B094A82 /* include_juce_audio_plugin_client_AU.r */; };
+		DD0C501023531EAB00D30775 /* hihat_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DD0C500D23531EAB00D30775 /* hihat_icon.png */; };
+		DD0C501123531EAB00D30775 /* hihat_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DD0C500D23531EAB00D30775 /* hihat_icon.png */; };
+		DD0C501223531EAB00D30775 /* hihat_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DD0C500D23531EAB00D30775 /* hihat_icon.png */; };
+		DD0C501323531EAB00D30775 /* kick_drum_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DD0C500E23531EAB00D30775 /* kick_drum_icon.png */; };
+		DD0C501423531EAB00D30775 /* kick_drum_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DD0C500E23531EAB00D30775 /* kick_drum_icon.png */; };
+		DD0C501523531EAB00D30775 /* kick_drum_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DD0C500E23531EAB00D30775 /* kick_drum_icon.png */; };
+		DD0C501623531EAB00D30775 /* snare_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DD0C500F23531EAB00D30775 /* snare_icon.png */; };
+		DD0C501723531EAB00D30775 /* snare_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DD0C500F23531EAB00D30775 /* snare_icon.png */; };
+		DD0C501823531EAB00D30775 /* snare_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DD0C500F23531EAB00D30775 /* snare_icon.png */; };
 		DD1E00C6230D604D00A6124D /* AudioFeatureExtractor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD1EFF9A230D604C00A6124D /* AudioFeatureExtractor.cpp */; };
 		DD1E00C7230D604D00A6124D /* AudioFeatureExtractor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD1EFF9A230D604C00A6124D /* AudioFeatureExtractor.cpp */; };
 		DD1E00C8230D604D00A6124D /* AudioFeatureExtractor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD1EFF9A230D604C00A6124D /* AudioFeatureExtractor.cpp */; };
@@ -259,6 +268,9 @@
 		DBB0298533D8F3348B0AA395 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		DC893C0C85EFFA67112F4E58 /* RecentFilesMenuTemplate.nib */ = {isa = PBXFileReference; lastKnownFileType = file.nib; path = RecentFilesMenuTemplate.nib; sourceTree = SOURCE_ROOT; };
 		DCE60AE7BC75C26830AF7037 /* include_juce_gui_basics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_gui_basics.mm; path = ../../JuceLibraryCode/include_juce_gui_basics.mm; sourceTree = SOURCE_ROOT; };
+		DD0C500D23531EAB00D30775 /* hihat_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hihat_icon.png; sourceTree = "<group>"; };
+		DD0C500E23531EAB00D30775 /* kick_drum_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kick_drum_icon.png; sourceTree = "<group>"; };
+		DD0C500F23531EAB00D30775 /* snare_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snare_icon.png; sourceTree = "<group>"; };
 		DD1E0000230D604D00A6124D /* tnt_fortran_array1d_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tnt_fortran_array1d_utils.h; sourceTree = "<group>"; };
 		DD1E0001230D604D00A6124D /* tnt_fortran_array2d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tnt_fortran_array2d.h; sourceTree = "<group>"; };
 		DD1E0002230D604D00A6124D /* tnt_fortran_array2d_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tnt_fortran_array2d_utils.h; sourceTree = "<group>"; };
@@ -395,6 +407,7 @@
 		DD2DAFA1230EAD060049958C /* libtag.1.17.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtag.1.17.0.dylib; path = ../../../../../../../../../../usr/local/lib/essentia_libs/libtag.1.17.0.dylib; sourceTree = "<group>"; };
 		DD2DAFA2230EAD060049958C /* libvorbis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbis.a; path = ../../../../../../../../../../usr/local/lib/essentia_libs/libvorbis.a; sourceTree = "<group>"; };
 		DD2DAFC2230EAF0D0049958C /* libfftw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfftw3.a; path = ../../../../../../../../../../usr/local/Cellar/fftw/3.3.8_1/lib/libfftw3.a; sourceTree = "<group>"; };
+		DD8AE9DD234F1EBF00BEA7C7 /* AudioLiveScrollingDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioLiveScrollingDisplay.h; sourceTree = "<group>"; };
 		DDAD3EDB231096D30006611A /* beatbox.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = beatbox.mid; sourceTree = "<group>"; };
 		DDAD3EDD231096D30006611A /* my_fdeep_model.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = my_fdeep_model.json; sourceTree = "<group>"; };
 		DDAD3EDF231096D30006611A /* bassdrum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bassdrum.wav; sourceTree = "<group>"; };
@@ -628,6 +641,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DD0C500C23531EAB00D30775 /* imgs */ = {
+			isa = PBXGroup;
+			children = (
+				DD0C500D23531EAB00D30775 /* hihat_icon.png */,
+				DD0C500E23531EAB00D30775 /* kick_drum_icon.png */,
+				DD0C500F23531EAB00D30775 /* snare_icon.png */,
+			);
+			path = imgs;
+			sourceTree = "<group>";
+		};
 		DD1EFF99230D604C00A6124D /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -636,6 +659,7 @@
 				DD1EFF9E230D604C00A6124D /* essentia */,
 				DD1EFF9A230D604C00A6124D /* AudioFeatureExtractor.cpp */,
 				DD1EFF9B230D604C00A6124D /* AudioFeatureExtractor.hpp */,
+				DD8AE9DD234F1EBF00BEA7C7 /* AudioLiveScrollingDisplay.h */,
 				DD1EFF9C230D604C00A6124D /* DragMidiFile.cpp */,
 				DD1EFF9D230D604C00A6124D /* DragMidiFile.hpp */,
 				DD1E000E230D604D00A6124D /* PluginEditor.cpp */,
@@ -817,6 +841,7 @@
 		DDAD3ED9231096D30006611A /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				DD0C500C23531EAB00D30775 /* imgs */,
 				DDAD3EDA231096D30006611A /* midi */,
 				DDAD3EDC231096D30006611A /* models */,
 				DDAD3EDE231096D30006611A /* wavs */,
@@ -1189,10 +1214,13 @@
 				DDAD3EF1231096D30006611A /* osdTestOne.wav in Resources */,
 				DDAD3EE8231096D30006611A /* my_fdeep_model.json in Resources */,
 				DDAD3EEB231096D30006611A /* bassdrum.wav in Resources */,
+				DD0C501523531EAB00D30775 /* kick_drum_icon.png in Resources */,
 				DDAD3EE5231096D30006611A /* beatbox.mid in Resources */,
 				DDAD3EEE231096D30006611A /* hihat.wav in Resources */,
+				DD0C501823531EAB00D30775 /* snare_icon.png in Resources */,
 				DD1EFE47230D554000A6124D /* RecentFilesMenuTemplate.nib in Resources */,
 				DDAD3EF4231096D30006611A /* snaredrum.wav in Resources */,
+				DD0C501223531EAB00D30775 /* hihat_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1203,10 +1231,13 @@
 				DDAD3EF0231096D30006611A /* osdTestOne.wav in Resources */,
 				DDAD3EE7231096D30006611A /* my_fdeep_model.json in Resources */,
 				DDAD3EEA231096D30006611A /* bassdrum.wav in Resources */,
+				DD0C501423531EAB00D30775 /* kick_drum_icon.png in Resources */,
 				DDAD3EE4231096D30006611A /* beatbox.mid in Resources */,
 				DDAD3EED231096D30006611A /* hihat.wav in Resources */,
+				DD0C501723531EAB00D30775 /* snare_icon.png in Resources */,
 				DD1EFE3A230D554000A6124D /* RecentFilesMenuTemplate.nib in Resources */,
 				DDAD3EF3231096D30006611A /* snaredrum.wav in Resources */,
+				DD0C501123531EAB00D30775 /* hihat_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1217,10 +1248,13 @@
 				DDAD3EEF231096D30006611A /* osdTestOne.wav in Resources */,
 				DDAD3EE6231096D30006611A /* my_fdeep_model.json in Resources */,
 				DDAD3EE9231096D30006611A /* bassdrum.wav in Resources */,
+				DD0C501323531EAB00D30775 /* kick_drum_icon.png in Resources */,
 				DDAD3EE3231096D30006611A /* beatbox.mid in Resources */,
 				DDAD3EEC231096D30006611A /* hihat.wav in Resources */,
+				DD0C501623531EAB00D30775 /* snare_icon.png in Resources */,
 				73C52EA131FAC0DCE4F94E95 /* RecentFilesMenuTemplate.nib in Resources */,
 				DDAD3EF2231096D30006611A /* snaredrum.wav in Resources */,
+				DD0C501023531EAB00D30775 /* hihat_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

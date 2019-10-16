@@ -193,8 +193,10 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
         triggerHihatDrum(midiMessages);
         hithihat = false;
     }
-    buffer.clear();
     
+    liveAudioScroller.pushBuffer(buffer);
+
+    buffer.clear();
     drumSynth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
     midiMessages.clear();
 

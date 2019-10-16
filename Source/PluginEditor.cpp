@@ -15,22 +15,33 @@
 DeepboxAudioProcessorEditor::DeepboxAudioProcessorEditor (DeepboxAudioProcessor& p)
     : AudioProcessorEditor (&p), processor (p)
 {
-    setSize (400, 300);
+    setSize (400, 350);
+    auto kickImg = ImageCache::getFromFile (File ("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myjuce/Deepbox/Source/resources/imgs/kick_drum_icon.png"));
+    auto snareImg = ImageCache::getFromFile (File ("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myjuce/Deepbox/Source/resources/imgs/snare_icon.png"));
+    auto hihatImg = ImageCache::getFromFile (File ("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myjuce/Deepbox/Source/resources/imgs/hihat_icon.png"));
+
+    mykickButton.setImages(false, true, true, kickImg, 1.0f, Colours::transparentBlack, kickImg, 0.5f, Colours::aquamarine, kickImg, 0.5f, Colours::blueviolet);
+    mysnareButton.setImages(false, true, true, snareImg, 1.0f, Colours::transparentBlack, snareImg, 0.5f, Colours::aquamarine, snareImg, 0.5f, Colours::blueviolet);
+    myhihatButton.setImages(false, true, true, hihatImg, 1.0f, Colours::transparentBlack, hihatImg, 0.5f, Colours::aquamarine, hihatImg, 0.5f, Colours::blueviolet);
+    
     addAndMakeVisible(mykickButton);
     addAndMakeVisible(mysnareButton);
     addAndMakeVisible(myhihatButton);
     addAndMakeVisible(midiDrag);
+    
     mykickButton.onClick = [this] { processor.hitkick = true;};
     mysnareButton.onClick = [this] { processor.hitsnare = true;};
     myhihatButton.onClick = [this] { processor.hithihat = true;};
     
     sliderAttach = new AudioProcessorValueTreeState::SliderAttachment (processor.treeState, "ONSET_THRESHOLD_ID", onset_threshold_slider);
-    onset_threshold_slider.setSliderStyle(Slider::Slider::LinearVertical);
-    onset_threshold_slider.setTextBoxStyle(Slider::TextBoxBelow, true, 100, 25);
-    onset_threshold_slider.setRange(-48.0f, 0.0f);
+    onset_threshold_slider.setSliderStyle(Slider::Slider::LinearBarVertical );
+    onset_threshold_slider.setTextBoxStyle(Slider::TextEntryBoxPosition::NoTextBox, true, 0, 0);
+    onset_threshold_slider.setColour(Slider::trackColourId, Colours::grey.withAlpha(0.15f));
+    onset_threshold_slider.setRange(-48.0f, 0.0f, 0.0f);
     onset_threshold_slider.setValue(-15.0f);
+
+    addAndMakeVisible(processor.liveAudioScroller);
     addAndMakeVisible(&onset_threshold_slider);
-    
     
 }
 
@@ -45,14 +56,24 @@ void DeepboxAudioProcessorEditor::paint (Graphics& g)
     g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
     g.setColour (Colours::white);
     g.setFont (15.0f);
+
+    
 }
 
 void DeepboxAudioProcessorEditor::resized()
 {
-    onset_threshold_slider.setBounds(250, 120, 50, 150);
+    auto area = getLocalBounds();
+    processor.liveAudioScroller.setBounds (area.removeFromBottom(60));
+    auto live_waveform_bounds = processor.liveAudioScroller.getBounds();
+    onset_threshold_slider.setBounds(live_waveform_bounds);
+    midiDrag.setBounds(area.removeFromTop(60));
 
-    mykickButton.setBounds(100, 176, 150, 24);
-    mysnareButton.setBounds(100, 206, 150, 24);
-    myhihatButton.setBounds(100, 236, 150, 24);
-    midiDrag.setBounds(0,0,200,100);
+    mykickButton.setBounds(area.getCentreX()-150,area.getCentreY()-20, 75,75);
+    mysnareButton.setBounds(area.getCentreX()-20,area.getCentreY()-15, 50,50);
+    myhihatButton.setBounds(area.getCentreX()+80,area.getCentreY()-30, 85,85);
+    //    mykickButton.setBounds(100, 150, 50, 50);
+//    mysnareButton.setBounds(200, 150, 50, 50);
+//    myhihatButton.setBounds(300, 150, 50, 50);
+
+
 }
