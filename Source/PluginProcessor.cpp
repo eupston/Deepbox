@@ -104,6 +104,13 @@ void DeepboxAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBloc
 {
     drumSynth.setCurrentPlaybackSampleRate(sampleRate);
     my_onset_detector.initialize(samplesPerBlock, sampleRate);
+    
+    int microsecondsPerQuarter = (60000.f / tempo) * 1000.f;
+    MidiMessage tempoEvent = MidiMessage::tempoMetaEvent(microsecondsPerQuarter);
+    tempoEvent.setTimeStamp( 0 );
+    mms.addEvent(tempoEvent);
+    
+    
 }
 
 void DeepboxAudioProcessor::releaseResources()
@@ -180,8 +187,11 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
     }
     
     if(hitkick){
-        triggerKickDrum(midiMessages);
+        auto midi_on_off = triggerKickDrum(midiMessages);
         hitkick = false;
+        mms.addEvent(midi_on_off[0]);
+        mms.addEvent(midi_on_off[1]);
+
     }
     
     if(hitsnare){
@@ -195,7 +205,8 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
     }
     
     liveAudioScroller.pushBuffer(buffer);
-
+    std:cout << mms.getNumEvents() << std::endl;
+    
     buffer.clear();
     drumSynth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
     midiMessages.clear();
@@ -233,22 +244,30 @@ void DeepboxAudioProcessor::initialiseSynth()
     drumSynth.addVoice(new SamplerVoice());
 }
 
-void DeepboxAudioProcessor::triggerKickDrum(MidiBuffer& midiMessages) const
+vector<MidiMessage> DeepboxAudioProcessor::triggerKickDrum(MidiBuffer& midiMessages) const
 {
-    midiMessages.addEvent(MidiMessage::noteOn(1, kickNoteNumber, static_cast<uint8>(100)),0);
+    MidiMessage midikickdrumon = MidiMessage::noteOn(1, kickNoteNumber, static_cast<uint8>(100));
+    MidiMessage midikickdrumoff = MidiMessage::noteOff(1, kickNoteNumber);
+    midiMessages.addEvent(midikickdrumon,0);
+    double timeStampInMS = Time::getMillisecondCounterHiRes() - startTime;
+    midikickdrumon.setTimeStamp(timeStampInMS / msPerTick);
+    midikickdrumoff.setTimeStamp(timeStampInMS / msPerTick + 20);
+    vector<MidiMessage> miditoadd = {midikickdrumon,midikickdrumoff};
+    return miditoadd;
     
 }
 
 void DeepboxAudioProcessor::triggerSnareDrum(MidiBuffer& midiMessages) const
 {
-    midiMessages.addEvent(MidiMessage::noteOn(1, snareNoteNumber, static_cast<uint8>(100)),0);
-    
+    MidiMessage midisnaredrum = MidiMessage::noteOn(1, snareNoteNumber, static_cast<uint8>(100));
+    midiMessages.addEvent(midisnaredrum,0);
 }
 
 void DeepboxAudioProcessor::triggerHihatDrum(MidiBuffer& midiMessages) const
 {
-    midiMessages.addEvent(MidiMessage::noteOn(1, hihatNoteNumber, static_cast<uint8>(100)),0);
-    
+    MidiMessage midihihatdrum = MidiMessage::noteOn(1, hihatNoteNumber, static_cast<uint8>(100));
+    midiMessages.addEvent(midihihatdrum,0);
+
 }
 
 
@@ -275,6 +294,20 @@ void DeepboxAudioProcessor::setStateInformation (const void* data, int sizeInByt
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
+}
+
+
+void DeepboxAudioProcessor::exportMidi(){
+    
+    MidiFile midiFile;
+    midiFile.setTicksPerQuarterNote(960);
+    midiFile.addTrack(mms);
+    
+    File outputFile = File::getSpecialLocation( File::SpecialLocationType::userDesktopDirectory).getChildFile( "midifile.mid" );
+    outputFile.deleteFile();
+    FileOutputStream outputStream(outputFile);
+    midiFile.writeTo(outputStream);
+    outputStream.flush();
 }
 
 //==============================================================================
