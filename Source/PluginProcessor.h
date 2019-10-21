@@ -68,7 +68,7 @@ public:
     //==============================================================================
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
-    void exportMidi ();
+    void recordMidi (bool isRecording);
     //Initialise the synth object
     void initialiseSynth();
     vector<MidiMessage> triggerKickDrum(MidiBuffer& midiMessages) const;
@@ -91,10 +91,13 @@ private:
     fdeep::model mymodel{fdeep::load_model("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myjuce/Deepbox/Source/resources/models/my_fdeep_model.json")};
     OnsetClassification my_onset_detector;
     MidiMessageSequence mms;
-    int tempo = 115;
-    double startTime = Time::getMillisecondCounterHiRes();
-    double msPerTick = (60000.f / tempo) / 960.f; //960 ticks per quarternote
-
+    int tempo;
+    int microsecondsPerQuarter;
+    double msPerTick;
+    double startTime;
+    AudioPlayHead* playHead;
+    AudioPlayHead::CurrentPositionInfo currentPositionInfo;
+    
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DeepboxAudioProcessor)
 };

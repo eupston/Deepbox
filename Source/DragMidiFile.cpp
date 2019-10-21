@@ -20,6 +20,8 @@ void DragMidiFile::paint (Graphics& g)
 void DragMidiFile::mouseDrag(const MouseEvent& e)
 {
     StringArray sArray;
-    sArray.add("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myjuce/Deepbox/Source/resources/midi/beatbox.mid");
+//    sArray.add("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myjuce/Deepbox/Source/resources/midi/beatbox.mid");
+    sArray.add("/Volumes/Macintosh HD/Users/macuser/Desktop/deepbox.mid");
+    
     DragAndDropContainer::performExternalDragDropOfFiles(sArray, true);
 }

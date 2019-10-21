@@ -15,8 +15,6 @@
 #include "essentia/pool.h"
 #include "../JuceLibraryCode/JuceHeader.h"
 
-//develop merge
-
 using namespace essentia;
 using namespace essentia::standard;
 using namespace std;
@@ -61,8 +59,6 @@ private:
     vector<Real> spectralContrast, spectralValley;
     vector<Real> frame, windowedFrame;
     Real energy_freq_band_low, energy_freq_band;
-        
-    
 
 };
 

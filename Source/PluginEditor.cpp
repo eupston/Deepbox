@@ -29,13 +29,13 @@ DeepboxAudioProcessorEditor::DeepboxAudioProcessorEditor (DeepboxAudioProcessor&
     addAndMakeVisible(myhihatButton);
     addAndMakeVisible(exportMidiButton);
     addAndMakeVisible(midiDrag);
-    
     mykickButton.onClick = [this] { processor.hitkick = true;};
     mysnareButton.onClick = [this] { processor.hitsnare = true;};
     myhihatButton.onClick = [this] { processor.hithihat = true;};
     
-    
-    exportMidiButton.onClick = [this] { processor.exportMidi();};
+    exportMidiButton.setClickingTogglesState(true);
+    exportMidiButton.setColour(TextButton::textColourOnId, Colours::red);
+    exportMidiButton.onClick = [this] { processor.recordMidi(exportMidiButton.getToggleState());};
     
     sliderAttach = new AudioProcessorValueTreeState::SliderAttachment (processor.treeState, "ONSET_THRESHOLD_ID", onset_threshold_slider);
     onset_threshold_slider.setSliderStyle(Slider::Slider::LinearBarVertical );
@@ -60,8 +60,6 @@ void DeepboxAudioProcessorEditor::paint (Graphics& g)
     g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
     g.setColour (Colours::white);
     g.setFont (15.0f);
-
-    
 }
 
 void DeepboxAudioProcessorEditor::resized()

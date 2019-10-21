@@ -27,10 +27,14 @@ DeepboxAudioProcessor::DeepboxAudioProcessor()
 {
     initialiseSynth();
     essentia::init();
-    NormalisableRange<float> onset_threshold_range (-48.0f, 0.0f);
+    NormalisableRange<float> onset_threshold_range(-48.0f, 0.0f);
     treeState.createAndAddParameter("ONSET_THRESHOLD_ID", "ONSET_THRESHOLD", "ONSET_THRESHOLD", onset_threshold_range, 0, nullptr, nullptr);
     treeState.state = ValueTree("initialize");
-    
+    microsecondsPerQuarter = (60000.f / tempo) * 1000.f;
+    MidiMessage tempoEvent = MidiMessage::tempoMetaEvent(microsecondsPerQuarter);
+    tempoEvent.setTimeStamp(0);
+    mms.addEvent(tempoEvent);
+
 }
 
 DeepboxAudioProcessor::~DeepboxAudioProcessor()
@@ -104,11 +108,6 @@ void DeepboxAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBloc
 {
     drumSynth.setCurrentPlaybackSampleRate(sampleRate);
     my_onset_detector.initialize(samplesPerBlock, sampleRate);
-    
-    int microsecondsPerQuarter = (60000.f / tempo) * 1000.f;
-    MidiMessage tempoEvent = MidiMessage::tempoMetaEvent(microsecondsPerQuarter);
-    tempoEvent.setTimeStamp( 0 );
-    mms.addEvent(tempoEvent);
     
     
 }
@@ -186,6 +185,12 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
 
     }
     
+    // update tempo and ms per ticks
+    playHead = this->getPlayHead();
+    playHead->getCurrentPosition(currentPositionInfo);
+    tempo = currentPositionInfo.bpm;
+    msPerTick = (60000.f / tempo) / 960.f; //960 ticks per quarternote
+
     if(hitkick){
         auto midi_on_off = triggerKickDrum(midiMessages);
         hitkick = false;
@@ -205,7 +210,6 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
     }
     
     liveAudioScroller.pushBuffer(buffer);
-    std:cout << mms.getNumEvents() << std::endl;
     
     buffer.clear();
     drumSynth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
@@ -297,17 +301,27 @@ void DeepboxAudioProcessor::setStateInformation (const void* data, int sizeInByt
 }
 
 
-void DeepboxAudioProcessor::exportMidi(){
+void DeepboxAudioProcessor::recordMidi(bool isRecording)
+{
+    std::cout << "record state " << isRecording << std::endl;
+    if (isRecording){
+        startTime = Time::getMillisecondCounterHiRes();
+
+    }
     
-    MidiFile midiFile;
-    midiFile.setTicksPerQuarterNote(960);
-    midiFile.addTrack(mms);
+    else{
+        MidiFile midiFile;
+        midiFile.setTicksPerQuarterNote(960);
+        midiFile.addTrack(mms);
+        File outputFile = File::getSpecialLocation( File::SpecialLocationType::userDesktopDirectory).getChildFile( "deepbox.mid" );
+        outputFile.deleteFile();
+        FileOutputStream outputStream(outputFile);
+        midiFile.writeTo(outputStream);
+        outputStream.flush();
+        
+    }
     
-    File outputFile = File::getSpecialLocation( File::SpecialLocationType::userDesktopDirectory).getChildFile( "midifile.mid" );
-    outputFile.deleteFile();
-    FileOutputStream outputStream(outputFile);
-    midiFile.writeTo(outputStream);
-    outputStream.flush();
+
 }
 
 //==============================================================================
