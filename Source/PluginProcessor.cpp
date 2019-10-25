@@ -30,10 +30,6 @@ DeepboxAudioProcessor::DeepboxAudioProcessor()
     NormalisableRange<float> onset_threshold_range(-48.0f, 0.0f);
     treeState.createAndAddParameter("ONSET_THRESHOLD_ID", "ONSET_THRESHOLD", "ONSET_THRESHOLD", onset_threshold_range, 0, nullptr, nullptr);
     treeState.state = ValueTree("initialize");
-    microsecondsPerQuarter = (60000.f / tempo) * 1000.f;
-    MidiMessage tempoEvent = MidiMessage::tempoMetaEvent(microsecondsPerQuarter);
-    tempoEvent.setTimeStamp(0);
-    mms.addEvent(tempoEvent);
 
 }
 
@@ -192,20 +188,23 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
     msPerTick = (60000.f / tempo) / 960.f; //960 ticks per quarternote
 
     if(hitkick){
-        auto midi_on_off = triggerKickDrum(midiMessages);
-        hitkick = false;
+        auto midi_on_off = triggerKickDrum(midiMessages, msPerTick);
         mms.addEvent(midi_on_off[0]);
         mms.addEvent(midi_on_off[1]);
-
+        hitkick = false;
     }
     
     if(hitsnare){
-        triggerSnareDrum(midiMessages);
+        auto midi_on_off = triggerSnareDrum(midiMessages, msPerTick);
+        mms.addEvent(midi_on_off[0]);
+        mms.addEvent(midi_on_off[1]);
         hitsnare = false;
     }
     
     if(hithihat){
-        triggerHihatDrum(midiMessages);
+        auto midi_on_off = triggerHihatDrum(midiMessages, msPerTick);
+        mms.addEvent(midi_on_off[0]);
+        mms.addEvent(midi_on_off[1]);
         hithihat = false;
     }
     
@@ -248,7 +247,7 @@ void DeepboxAudioProcessor::initialiseSynth()
     drumSynth.addVoice(new SamplerVoice());
 }
 
-vector<MidiMessage> DeepboxAudioProcessor::triggerKickDrum(MidiBuffer& midiMessages) const
+vector<MidiMessage> DeepboxAudioProcessor::triggerKickDrum(MidiBuffer& midiMessages, double msPerTick) const
 {
     MidiMessage midikickdrumon = MidiMessage::noteOn(1, kickNoteNumber, static_cast<uint8>(100));
     MidiMessage midikickdrumoff = MidiMessage::noteOff(1, kickNoteNumber);
@@ -261,16 +260,29 @@ vector<MidiMessage> DeepboxAudioProcessor::triggerKickDrum(MidiBuffer& midiMessa
     
 }
 
-void DeepboxAudioProcessor::triggerSnareDrum(MidiBuffer& midiMessages) const
+vector<MidiMessage> DeepboxAudioProcessor::triggerSnareDrum(MidiBuffer& midiMessages, double msPerTick) const
 {
-    MidiMessage midisnaredrum = MidiMessage::noteOn(1, snareNoteNumber, static_cast<uint8>(100));
-    midiMessages.addEvent(midisnaredrum,0);
+    MidiMessage midisnaredrumon = MidiMessage::noteOn(1, snareNoteNumber, static_cast<uint8>(100));
+    MidiMessage midisnaredrumoff = MidiMessage::noteOff(1, snareNoteNumber);
+    midiMessages.addEvent(midisnaredrumon,0);
+    double timeStampInMS = Time::getMillisecondCounterHiRes() - startTime;
+    midisnaredrumon.setTimeStamp(timeStampInMS / msPerTick);
+    midisnaredrumoff.setTimeStamp(timeStampInMS / msPerTick + 20);
+    vector<MidiMessage> miditoadd = {midisnaredrumon,midisnaredrumoff};
+    return miditoadd;
+    
 }
 
-void DeepboxAudioProcessor::triggerHihatDrum(MidiBuffer& midiMessages) const
+vector<MidiMessage> DeepboxAudioProcessor::triggerHihatDrum(MidiBuffer& midiMessages, double msPerTick) const
 {
-    MidiMessage midihihatdrum = MidiMessage::noteOn(1, hihatNoteNumber, static_cast<uint8>(100));
-    midiMessages.addEvent(midihihatdrum,0);
+    MidiMessage midihihatdrumon = MidiMessage::noteOn(1, hihatNoteNumber, static_cast<uint8>(100));
+    MidiMessage midihihatdrumoff = MidiMessage::noteOff(1, hihatNoteNumber);
+    midiMessages.addEvent(midihihatdrumon,0);
+    double timeStampInMS = Time::getMillisecondCounterHiRes() - startTime;
+    midihihatdrumon.setTimeStamp(timeStampInMS / msPerTick);
+    midihihatdrumoff.setTimeStamp(timeStampInMS / msPerTick + 20);
+    vector<MidiMessage> miditoadd = {midihihatdrumon,midihihatdrumoff};
+    return miditoadd;
 
 }
 
@@ -305,7 +317,12 @@ void DeepboxAudioProcessor::recordMidi(bool isRecording)
 {
     std::cout << "record state " << isRecording << std::endl;
     if (isRecording){
+        mms.clear();
         startTime = Time::getMillisecondCounterHiRes();
+        microsecondsPerQuarter = (60000.f / tempo) * 1000.f;
+        MidiMessage tempoEvent = MidiMessage::tempoMetaEvent(microsecondsPerQuarter);
+        tempoEvent.setTimeStamp(0);
+        mms.addEvent(tempoEvent);
 
     }
     
@@ -318,9 +335,8 @@ void DeepboxAudioProcessor::recordMidi(bool isRecording)
         FileOutputStream outputStream(outputFile);
         midiFile.writeTo(outputStream);
         outputStream.flush();
-        
+        mms.clear();
     }
-    
 
 }
 

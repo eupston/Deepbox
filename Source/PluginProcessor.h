@@ -71,9 +71,9 @@ public:
     void recordMidi (bool isRecording);
     //Initialise the synth object
     void initialiseSynth();
-    vector<MidiMessage> triggerKickDrum(MidiBuffer& midiMessages) const;
-    void triggerSnareDrum(MidiBuffer& midiMessages) const;
-    void triggerHihatDrum(MidiBuffer& midiMessages) const;
+    vector<MidiMessage> triggerKickDrum(MidiBuffer& midiMessages, double msPerTick) const;
+    vector<MidiMessage> triggerSnareDrum(MidiBuffer& midiMessages, double msPerTick) const;
+    vector<MidiMessage> triggerHihatDrum(MidiBuffer& midiMessages, double msPerTick) const;
     bool hitkick = false;
     bool hitsnare = false;
     bool hithihat = false;
@@ -81,9 +81,9 @@ public:
     LiveScrollingAudioDisplay liveAudioScroller;
 
 private:
-    const int kickNoteNumber = 12;
-    const int snareNoteNumber = 43;
-    const int hihatNoteNumber = 50;
+    const int kickNoteNumber = 36;
+    const int snareNoteNumber = 38;
+    const int hihatNoteNumber = 40;
     MidiOutput *midiOut;
     MidiOutput *midiIn;
     Synthesiser drumSynth;
