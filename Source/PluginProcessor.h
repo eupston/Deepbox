@@ -97,7 +97,8 @@ private:
     double startTime;
     AudioPlayHead* playHead;
     AudioPlayHead::CurrentPositionInfo currentPositionInfo;
-    
+    double sample_Rate;
+    int samples_Per_Block;
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DeepboxAudioProcessor)
 };

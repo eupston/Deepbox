@@ -177,32 +177,32 @@ OnsetClassification::~OnsetClassification()
 bool OnsetClassification::detectOnset(const float** audioBuffer)
 {
     m_pfDetectionAudioBlock.insert(m_pfDetectionAudioBlock.begin(), audioBuffer[0], audioBuffer[0] + m_sDeviceSettings.iBufferSize);
+//
     
-    
-    
+
     //--- Compute STFT on 1st channel ---//
     m_pcDetectionSTFT->computeFFT(m_pfDetectionAudioBlock.data(),
                                   m_pfDetectionCurrentRealFFT.data(),
                                   m_pfDetectionCurrentImgFFT.data());
-    
-    
-    
+
+
+
     //--- Compute Spectral Flux ---//
     m_sAudioFeatures.dSpectralFlux = m_pcAudioFeature->spectralFlux(m_pfDetectionPreviousRealFFT.data(),
                                                                     m_pfDetectionCurrentRealFFT.data(),
                                                                     m_sDeviceSettings.iBufferSize);
-    
-    
-    
+
+
+
     //--- Create Adaptive Threshold ---//
     m_sDetectionVariables.dAdaptiveThreshold =  m_sDetectionParameters.dDeltaThreshold
                                                 +   ((m_sAudioFeatures.dSpectralFlux + m_sDetectionVariables.dAdaptiveThreshold) / 2.0f);
-    
-    
-    
+
+
+
     //--- Store Current FFT ---//
     m_pfDetectionPreviousRealFFT = m_pfDetectionCurrentRealFFT;
-    
+
     
     
     //--- Store Current Audio Buffer ---//
@@ -224,6 +224,7 @@ bool OnsetClassification::detectOnset(const float** audioBuffer)
             m_sDetectionVariables.bDecayPeriod = true;
             m_sDetectionVariables.iDecayBlockCounter++;
             m_sTrainingParameters.iCurrentObservation++;
+            
             return true;
         }
     }
@@ -245,9 +246,10 @@ bool OnsetClassification::detectOnset(const float** audioBuffer)
         }
     }
     
-    
     return false;
 
+  
+    
 }
 
 

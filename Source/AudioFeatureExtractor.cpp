@@ -146,4 +146,6 @@ AudioFeatureExtractor::~AudioFeatureExtractor()
     delete energyband_low;
     delete energyband;
     essentia::shutdown();
+    
+
 };

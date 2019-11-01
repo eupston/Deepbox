@@ -103,7 +103,8 @@ void DeepboxAudioProcessor::changeProgramName (int index, const String& newName)
 void DeepboxAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
     drumSynth.setCurrentPlaybackSampleRate(sampleRate);
-    my_onset_detector.initialize(samplesPerBlock, sampleRate);
+    sample_Rate = sampleRate;
+    samples_Per_Block = samplesPerBlock;
     
     
 }
@@ -141,15 +142,16 @@ bool DeepboxAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) 
 void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer& midiMessages)
 {
     ScopedNoDenormals noDenormals;
+    my_onset_detector.initialize(samples_Per_Block, sample_Rate);
     vector<float> audio_features;
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
-    
+
     float rmsLevel = buffer.getRMSLevel(0, 0, buffer.getNumSamples());
     float mag = buffer.getMagnitude(0, 0, buffer.getNumSamples());
     float db = Decibels::gainToDecibels(mag);
     float current_onset_threshold = *treeState.getRawParameterValue("ONSET_THRESHOLD_ID");
-    
+
     auto currentValuesInBuffer = buffer.getArrayOfReadPointers();
     bool onset_detected = my_onset_detector.detectOnset(currentValuesInBuffer);
     if(onset_detected && db > current_onset_threshold){
@@ -166,21 +168,20 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
         std::vector<std::string> drum_classes{"hihat","kick","snare"};
         std::string drum_prediction = drum_classes[prediction_index];
         std::cout << drum_prediction << std::endl;
-        
+
         if(drum_prediction == "kick"){
             hitkick = true;
         }
-        
+
         if(drum_prediction == "snare"){
             hitsnare = true;
         }
-        
+
         if(drum_prediction == "hihat"){
             hithihat = true;
         }
 
     }
-    
     // update tempo and ms per ticks
     playHead = this->getPlayHead();
     playHead->getCurrentPosition(currentPositionInfo);
@@ -193,14 +194,14 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
         mms.addEvent(midi_on_off[1]);
         hitkick = false;
     }
-    
+
     if(hitsnare){
         auto midi_on_off = triggerSnareDrum(midiMessages, msPerTick);
         mms.addEvent(midi_on_off[0]);
         mms.addEvent(midi_on_off[1]);
         hitsnare = false;
     }
-    
+
     if(hithihat){
         auto midi_on_off = triggerHihatDrum(midiMessages, msPerTick);
         mms.addEvent(midi_on_off[0]);
