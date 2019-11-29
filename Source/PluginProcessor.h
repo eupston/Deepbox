@@ -99,6 +99,8 @@ private:
     AudioPlayHead::CurrentPositionInfo currentPositionInfo;
     double sample_Rate;
     int samples_Per_Block;
+    float floor_onset_threshold = -25;
+    bool onset_below_floor_threshold = true;
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DeepboxAudioProcessor)
 };

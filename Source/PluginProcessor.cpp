@@ -151,10 +151,14 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
     float mag = buffer.getMagnitude(0, 0, buffer.getNumSamples());
     float db = Decibels::gainToDecibels(mag);
     float current_onset_threshold = *treeState.getRawParameterValue("ONSET_THRESHOLD_ID");
-
     auto currentValuesInBuffer = buffer.getArrayOfReadPointers();
     bool onset_detected = my_onset_detector.detectOnset(currentValuesInBuffer);
-    if(onset_detected && db > current_onset_threshold){
+    if(!onset_below_floor_threshold && db < floor_onset_threshold){
+        onset_below_floor_threshold = true;
+    }
+    
+    if(onset_detected && db > current_onset_threshold && onset_below_floor_threshold){
+        onset_below_floor_threshold = false;
         AudioFeatureExtractor my_audio_feature_exractor = AudioFeatureExtractor(512, 64, 1024, 44100);
         my_audio_feature_exractor.load_audio_buffer(buffer);
         my_audio_feature_exractor.compute_algorithms();
@@ -331,7 +335,7 @@ void DeepboxAudioProcessor::recordMidi(bool isRecording)
         MidiFile midiFile;
         midiFile.setTicksPerQuarterNote(960);
         midiFile.addTrack(mms);
-        File outputFile = File::getSpecialLocation( File::SpecialLocationType::userDesktopDirectory).getChildFile( "deepbox.mid" );
+        File outputFile = File::getSpecialLocation( File::SpecialLocationType::tempDirectory).getChildFile( "deepbox.mid" );
         outputFile.deleteFile();
         FileOutputStream outputStream(outputFile);
         midiFile.writeTo(outputStream);
