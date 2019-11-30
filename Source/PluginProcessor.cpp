@@ -237,11 +237,10 @@ void DeepboxAudioProcessor::initialiseSynth()
     
     AudioFormatManager formatManager;
     formatManager.registerBasicFormats();
-    std::unique_ptr<AudioFormatReader> readerKickDrum(formatManager.createReaderFor(File("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myjuce/Deepbox/Source/resources/wavs/bassdrum.wav")));
-    std::unique_ptr<AudioFormatReader> readerSnareDrum(formatManager.createReaderFor(File("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myjuce/Deepbox/Source/resources/wavs/snaredrum.wav")));
-    std::unique_ptr<AudioFormatReader> readerHiHat(formatManager.createReaderFor(File("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myjuce/Deepbox/Source/resources/wavs/hihat.wav")));
+    std::unique_ptr<AudioFormatReader> readerKickDrum(formatManager.createReaderFor(File::getSpecialLocation( File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/bassdrum.wav")));
+    std::unique_ptr<AudioFormatReader> readerSnareDrum(formatManager.createReaderFor(File::getSpecialLocation( File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/snaredrum.wav")));
+    std::unique_ptr<AudioFormatReader> readerHiHat(formatManager.createReaderFor(File::getSpecialLocation( File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/hihat.wav")));
 
-    
     kickNoteRange.setBit(kickNoteNumber);
     snareNoteRange.setBit(snareNoteNumber);
     hihatNoteRange.setBit(hihatNoteNumber);

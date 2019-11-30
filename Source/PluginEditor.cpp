@@ -16,9 +16,10 @@ DeepboxAudioProcessorEditor::DeepboxAudioProcessorEditor (DeepboxAudioProcessor&
     : AudioProcessorEditor (&p), processor (p)
 {
     setSize (400, 350);
-    auto kickImg = ImageCache::getFromFile (File ("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myjuce/Deepbox/Source/resources/imgs/kick_drum_icon.png"));
-    auto snareImg = ImageCache::getFromFile (File ("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myjuce/Deepbox/Source/resources/imgs/snare_icon.png"));
-    auto hihatImg = ImageCache::getFromFile (File ("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myjuce/Deepbox/Source/resources/imgs/hihat_icon.png"));
+    
+    auto kickImg = ImageCache::getFromMemory(BinaryData::kick_drum_icon_png, BinaryData::kick_drum_icon_pngSize);
+    auto snareImg = ImageCache::getFromMemory(BinaryData::snare_icon_png, BinaryData::snare_icon_pngSize);
+    auto hihatImg = ImageCache::getFromMemory(BinaryData::hihat_icon_png, BinaryData::snare_icon_pngSize);
 
     mykickButton.setImages(false, true, true, kickImg, 1.0f, Colours::transparentBlack, kickImg, 0.5f, Colours::aquamarine, kickImg, 0.5f, Colours::blueviolet);
     mysnareButton.setImages(false, true, true, snareImg, 1.0f, Colours::transparentBlack, snareImg, 0.5f, Colours::aquamarine, snareImg, 0.5f, Colours::blueviolet);

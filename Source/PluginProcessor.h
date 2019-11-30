@@ -88,7 +88,7 @@ private:
     MidiOutput *midiIn;
     Synthesiser drumSynth;
     StringArray mididevices;
-    fdeep::model mymodel{fdeep::load_model("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myjuce/Deepbox/Source/resources/models/my_fdeep_model.json")};
+    fdeep::model mymodel{fdeep::load_model(File::getSpecialLocation( File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/my_fdeep_model.json").getFullPathName().toStdString())};
     OnsetClassification my_onset_detector;
     MidiMessageSequence mms;
     int tempo;

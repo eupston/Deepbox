@@ -20,8 +20,6 @@ void DragMidiFile::paint (Graphics& g)
 void DragMidiFile::mouseDrag(const MouseEvent& e)
 {
     StringArray sArray;
-//    sArray.add("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myjuce/Deepbox/Source/resources/midi/beatbox.mid");
-//        sArray.add("/Volumes/Macintosh HD/Users/macuser/Desktop/deepbox.mid");
     File temp_midi_file = File::getSpecialLocation( File::SpecialLocationType::tempDirectory).getChildFile( "deepbox.mid" );
     auto midi_path = temp_midi_file.getFullPathName();
     sArray.add(midi_path);

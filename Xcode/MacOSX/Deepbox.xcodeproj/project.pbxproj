@@ -118,6 +118,10 @@
 		DD1EFE6B230D571200A6124D /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE60230D571200A6124D /* libavfilter.a */; };
 		DD1EFE6C230D571200A6124D /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE61230D571200A6124D /* libavdevice.a */; };
 		DD1EFE6D230D571200A6124D /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE62230D571200A6124D /* libavcodec.a */; };
+		DD224FA62393172F0075B34D /* BinaryData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD224FA42393172F0075B34D /* BinaryData.cpp */; };
+		DD224FA72393172F0075B34D /* BinaryData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD224FA42393172F0075B34D /* BinaryData.cpp */; };
+		DD224FA82393172F0075B34D /* BinaryData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD224FA42393172F0075B34D /* BinaryData.cpp */; };
+		DD224FA92393172F0075B34D /* BinaryData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD224FA42393172F0075B34D /* BinaryData.cpp */; };
 		DD2DAFB9230EAF0D0049958C /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE62230D571200A6124D /* libavcodec.a */; };
 		DD2DAFBA230EAF0D0049958C /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE61230D571200A6124D /* libavdevice.a */; };
 		DD2DAFBB230EAF0D0049958C /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE60230D571200A6124D /* libavfilter.a */; };
@@ -395,6 +399,8 @@
 		DD1EFFFE230D604C00A6124D /* tnt_cmat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tnt_cmat.h; sourceTree = "<group>"; };
 		DD1EFFFF230D604C00A6124D /* tnt_fortran_array1d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tnt_fortran_array1d.h; sourceTree = "<group>"; };
 		DD21D08E8005275E73BA5F0E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		DD224FA42393172F0075B34D /* BinaryData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BinaryData.cpp; path = ../../JuceLibraryCode/BinaryData.cpp; sourceTree = "<group>"; };
+		DD224FA52393172F0075B34D /* BinaryData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BinaryData.h; path = ../../JuceLibraryCode/BinaryData.h; sourceTree = "<group>"; };
 		DD2DAF98230EAD050049958C /* libyaml.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libyaml.a; path = ../../../../../../../../../../usr/local/lib/essentia_libs/libyaml.a; sourceTree = "<group>"; };
 		DD2DAF99230EAD050049958C /* libavfilter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavfilter.a; path = ../../../../../../../../../../usr/local/lib/essentia_libs/libavfilter.a; sourceTree = "<group>"; };
 		DD2DAF9A230EAD060049958C /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavutil.a; path = ../../../../../../../../../../usr/local/lib/essentia_libs/libavutil.a; sourceTree = "<group>"; };
@@ -551,6 +557,8 @@
 			isa = PBXGroup;
 			children = (
 				81C5494504242D4D89571822 /* AppConfig.h */,
+				DD224FA42393172F0075B34D /* BinaryData.cpp */,
+				DD224FA52393172F0075B34D /* BinaryData.h */,
 				068BD07308373448CCDA2D8C /* include_juce_audio_basics.mm */,
 				ABE42404F5C41C600C8F1C70 /* include_juce_audio_devices.mm */,
 				AC9284D63F3D92971A0B6093 /* include_juce_audio_formats.mm */,
@@ -1284,6 +1292,7 @@
 				DDF4ABF2231E65E10070390B /* AudioFFT.cpp in Sources */,
 				DD1E00CD230D604D00A6124D /* DragMidiFile.cpp in Sources */,
 				97FDA2AED99E2FDAF46CA484 /* include_juce_audio_processors.mm in Sources */,
+				DD224FA92393172F0075B34D /* BinaryData.cpp in Sources */,
 				2A33ECDF689D61096CBB276F /* include_juce_audio_utils.mm in Sources */,
 				DD1E00D1230D604D00A6124D /* PluginEditor.cpp in Sources */,
 				DD1E00D5230D604D00A6124D /* PluginProcessor.cpp in Sources */,
@@ -1316,6 +1325,7 @@
 				DDF4AC38231E65E10070390B /* ShortTermFourierTransform.cpp in Sources */,
 				6DA35F07045BCBD236FB4A21 /* include_juce_audio_plugin_client_AU_2.mm in Sources */,
 				DD1E00D3230D604D00A6124D /* PluginProcessor.cpp in Sources */,
+				DD224FA72393172F0075B34D /* BinaryData.cpp in Sources */,
 				DDF4AC3C231E65E10070390B /* SVMTrain.cpp in Sources */,
 				DDF4AC10231E65E10070390B /* OnsetClassification.cpp in Sources */,
 				DDF4AC00231E65E10070390B /* AudioFeatureExtraction.cpp in Sources */,
@@ -1337,6 +1347,7 @@
 				DD1E00C6230D604D00A6124D /* AudioFeatureExtractor.cpp in Sources */,
 				DDF4AC0F231E65E10070390B /* OnsetClassification.cpp in Sources */,
 				DDF4AC3B231E65E10070390B /* SVMTrain.cpp in Sources */,
+				DD224FA62393172F0075B34D /* BinaryData.cpp in Sources */,
 				DDF4ABEF231E65E10070390B /* AudioFFT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1355,6 +1366,7 @@
 				DD1E00C8230D604D00A6124D /* AudioFeatureExtractor.cpp in Sources */,
 				DDF4AC11231E65E10070390B /* OnsetClassification.cpp in Sources */,
 				DDF4AC3D231E65E10070390B /* SVMTrain.cpp in Sources */,
+				DD224FA82393172F0075B34D /* BinaryData.cpp in Sources */,
 				DDF4ABF1231E65E10070390B /* AudioFFT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

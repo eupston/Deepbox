@@ -11,6 +11,7 @@
 */
 
 #pragma once
+#include "BinaryData.h"
 
 #include "AppConfig.h"
 
