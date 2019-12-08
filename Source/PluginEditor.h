@@ -32,7 +32,7 @@ private:
     ImageButton mykickButton{"kick"};
     ImageButton mysnareButton{"snare"};
     ImageButton myhihatButton{"hihat"};
-    TextButton exportMidiButton{"Record Midi"};
+    TextButton recordMidiButton{"Record Midi"};
     DragMidiFile midiDrag;
     DeepboxAudioProcessor& processor;
     Slider onset_threshold_slider;

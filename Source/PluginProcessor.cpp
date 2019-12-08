@@ -223,10 +223,7 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
 
 void DeepboxAudioProcessor::initialiseSynth()
 {
-    /** NOTE: - Quick and dirty sample drum synth for prototype
-     *  In future versions will ideally allow user to select sample to use and
-     *  also manage sample rate changes effect on loaded samples.
-     */
+    
     WavAudioFormat wavFormat;
     BigInteger kickNoteRange;
     BigInteger snareNoteRange;

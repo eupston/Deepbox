@@ -148,6 +148,18 @@
 		DD2DAFD1230EB0A20049958C /* libyaml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE5E230D571200A6124D /* libyaml.a */; };
 		DD55403353A352AF9A6F24CD /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520802D022A6D4838F78FC9D /* Carbon.framework */; };
 		DD6F201F2311492E009F0197 /* libfftw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2DAFC2230EAF0D0049958C /* libfftw3.a */; };
+		DD97F296239CFE440031BAA1 /* deepbox_lips.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F292239CFE430031BAA1 /* deepbox_lips.png */; };
+		DD97F297239CFE440031BAA1 /* deepbox_lips.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F292239CFE430031BAA1 /* deepbox_lips.png */; };
+		DD97F298239CFE440031BAA1 /* deepbox_lips.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F292239CFE430031BAA1 /* deepbox_lips.png */; };
+		DD97F299239CFE440031BAA1 /* hihat_vec.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F293239CFE440031BAA1 /* hihat_vec.png */; };
+		DD97F29A239CFE440031BAA1 /* hihat_vec.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F293239CFE440031BAA1 /* hihat_vec.png */; };
+		DD97F29B239CFE440031BAA1 /* hihat_vec.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F293239CFE440031BAA1 /* hihat_vec.png */; };
+		DD97F29C239CFE440031BAA1 /* kick_drum_vec.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F294239CFE440031BAA1 /* kick_drum_vec.png */; };
+		DD97F29D239CFE440031BAA1 /* kick_drum_vec.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F294239CFE440031BAA1 /* kick_drum_vec.png */; };
+		DD97F29E239CFE440031BAA1 /* kick_drum_vec.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F294239CFE440031BAA1 /* kick_drum_vec.png */; };
+		DD97F29F239CFE440031BAA1 /* snare_drum_vec.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F295239CFE440031BAA1 /* snare_drum_vec.png */; };
+		DD97F2A0239CFE440031BAA1 /* snare_drum_vec.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F295239CFE440031BAA1 /* snare_drum_vec.png */; };
+		DD97F2A1239CFE440031BAA1 /* snare_drum_vec.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F295239CFE440031BAA1 /* snare_drum_vec.png */; };
 		DDAD3EE3231096D30006611A /* beatbox.mid in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDB231096D30006611A /* beatbox.mid */; };
 		DDAD3EE4231096D30006611A /* beatbox.mid in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDB231096D30006611A /* beatbox.mid */; };
 		DDAD3EE5231096D30006611A /* beatbox.mid in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDB231096D30006611A /* beatbox.mid */; };
@@ -414,6 +426,10 @@
 		DD2DAFA2230EAD060049958C /* libvorbis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbis.a; path = ../../../../../../../../../../usr/local/lib/essentia_libs/libvorbis.a; sourceTree = "<group>"; };
 		DD2DAFC2230EAF0D0049958C /* libfftw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfftw3.a; path = ../../../../../../../../../../usr/local/Cellar/fftw/3.3.8_1/lib/libfftw3.a; sourceTree = "<group>"; };
 		DD8AE9DD234F1EBF00BEA7C7 /* AudioLiveScrollingDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioLiveScrollingDisplay.h; sourceTree = "<group>"; };
+		DD97F292239CFE430031BAA1 /* deepbox_lips.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deepbox_lips.png; sourceTree = "<group>"; };
+		DD97F293239CFE440031BAA1 /* hihat_vec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hihat_vec.png; sourceTree = "<group>"; };
+		DD97F294239CFE440031BAA1 /* kick_drum_vec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kick_drum_vec.png; sourceTree = "<group>"; };
+		DD97F295239CFE440031BAA1 /* snare_drum_vec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snare_drum_vec.png; sourceTree = "<group>"; };
 		DDAD3EDB231096D30006611A /* beatbox.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = beatbox.mid; sourceTree = "<group>"; };
 		DDAD3EDD231096D30006611A /* my_fdeep_model.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = my_fdeep_model.json; sourceTree = "<group>"; };
 		DDAD3EDF231096D30006611A /* bassdrum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bassdrum.wav; sourceTree = "<group>"; };
@@ -652,6 +668,10 @@
 		DD0C500C23531EAB00D30775 /* imgs */ = {
 			isa = PBXGroup;
 			children = (
+				DD97F292239CFE430031BAA1 /* deepbox_lips.png */,
+				DD97F293239CFE440031BAA1 /* hihat_vec.png */,
+				DD97F294239CFE440031BAA1 /* kick_drum_vec.png */,
+				DD97F295239CFE440031BAA1 /* snare_drum_vec.png */,
 				DD0C500D23531EAB00D30775 /* hihat_icon.png */,
 				DD0C500E23531EAB00D30775 /* kick_drum_icon.png */,
 				DD0C500F23531EAB00D30775 /* snare_icon.png */,
@@ -1222,13 +1242,17 @@
 				DDAD3EF1231096D30006611A /* osdTestOne.wav in Resources */,
 				DDAD3EE8231096D30006611A /* my_fdeep_model.json in Resources */,
 				DDAD3EEB231096D30006611A /* bassdrum.wav in Resources */,
+				DD97F29E239CFE440031BAA1 /* kick_drum_vec.png in Resources */,
 				DD0C501523531EAB00D30775 /* kick_drum_icon.png in Resources */,
 				DDAD3EE5231096D30006611A /* beatbox.mid in Resources */,
+				DD97F298239CFE440031BAA1 /* deepbox_lips.png in Resources */,
 				DDAD3EEE231096D30006611A /* hihat.wav in Resources */,
 				DD0C501823531EAB00D30775 /* snare_icon.png in Resources */,
 				DD1EFE47230D554000A6124D /* RecentFilesMenuTemplate.nib in Resources */,
+				DD97F2A1239CFE440031BAA1 /* snare_drum_vec.png in Resources */,
 				DDAD3EF4231096D30006611A /* snaredrum.wav in Resources */,
 				DD0C501223531EAB00D30775 /* hihat_icon.png in Resources */,
+				DD97F29B239CFE440031BAA1 /* hihat_vec.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1239,13 +1263,17 @@
 				DDAD3EF0231096D30006611A /* osdTestOne.wav in Resources */,
 				DDAD3EE7231096D30006611A /* my_fdeep_model.json in Resources */,
 				DDAD3EEA231096D30006611A /* bassdrum.wav in Resources */,
+				DD97F29D239CFE440031BAA1 /* kick_drum_vec.png in Resources */,
 				DD0C501423531EAB00D30775 /* kick_drum_icon.png in Resources */,
 				DDAD3EE4231096D30006611A /* beatbox.mid in Resources */,
+				DD97F297239CFE440031BAA1 /* deepbox_lips.png in Resources */,
 				DDAD3EED231096D30006611A /* hihat.wav in Resources */,
 				DD0C501723531EAB00D30775 /* snare_icon.png in Resources */,
 				DD1EFE3A230D554000A6124D /* RecentFilesMenuTemplate.nib in Resources */,
+				DD97F2A0239CFE440031BAA1 /* snare_drum_vec.png in Resources */,
 				DDAD3EF3231096D30006611A /* snaredrum.wav in Resources */,
 				DD0C501123531EAB00D30775 /* hihat_icon.png in Resources */,
+				DD97F29A239CFE440031BAA1 /* hihat_vec.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1256,13 +1284,17 @@
 				DDAD3EEF231096D30006611A /* osdTestOne.wav in Resources */,
 				DDAD3EE6231096D30006611A /* my_fdeep_model.json in Resources */,
 				DDAD3EE9231096D30006611A /* bassdrum.wav in Resources */,
+				DD97F29C239CFE440031BAA1 /* kick_drum_vec.png in Resources */,
 				DD0C501323531EAB00D30775 /* kick_drum_icon.png in Resources */,
 				DDAD3EE3231096D30006611A /* beatbox.mid in Resources */,
+				DD97F296239CFE440031BAA1 /* deepbox_lips.png in Resources */,
 				DDAD3EEC231096D30006611A /* hihat.wav in Resources */,
 				DD0C501623531EAB00D30775 /* snare_icon.png in Resources */,
 				73C52EA131FAC0DCE4F94E95 /* RecentFilesMenuTemplate.nib in Resources */,
+				DD97F29F239CFE440031BAA1 /* snare_drum_vec.png in Resources */,
 				DDAD3EF2231096D30006611A /* snaredrum.wav in Resources */,
 				DD0C501023531EAB00D30775 /* hihat_icon.png in Resources */,
+				DD97F299239CFE440031BAA1 /* hihat_vec.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

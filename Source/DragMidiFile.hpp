@@ -10,14 +10,16 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-class DragMidiFile  :   public Component,
+class DragMidiFile  :   public ImageButton,
                         public DragAndDropContainer
 
 {
 public:
     
-    DragMidiFile(){};
-    void paint (Graphics& g) override;
+    DragMidiFile(){
+
+    };
+//    void paint (Graphics& g) override;
     void mouseDrag(const MouseEvent& e) override;
     
 private:
