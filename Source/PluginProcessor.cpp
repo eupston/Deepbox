@@ -316,7 +316,6 @@ void DeepboxAudioProcessor::setStateInformation (const void* data, int sizeInByt
 
 void DeepboxAudioProcessor::recordMidi(bool isRecording)
 {
-    std::cout << "record state " << isRecording << std::endl;
     if (isRecording){
         mms.clear();
         startTime = Time::getMillisecondCounterHiRes();

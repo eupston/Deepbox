@@ -148,6 +148,12 @@
 		DD2DAFD1230EB0A20049958C /* libyaml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE5E230D571200A6124D /* libyaml.a */; };
 		DD55403353A352AF9A6F24CD /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520802D022A6D4838F78FC9D /* Carbon.framework */; };
 		DD6F201F2311492E009F0197 /* libfftw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2DAFC2230EAF0D0049958C /* libfftw3.a */; };
+		DD71268F239E590D0012FAF9 /* deepbox_lips_inverse.png in Resources */ = {isa = PBXBuildFile; fileRef = DD71268E239E590D0012FAF9 /* deepbox_lips_inverse.png */; };
+		DD712690239E590D0012FAF9 /* deepbox_lips_inverse.png in Resources */ = {isa = PBXBuildFile; fileRef = DD71268E239E590D0012FAF9 /* deepbox_lips_inverse.png */; };
+		DD712691239E590D0012FAF9 /* deepbox_lips_inverse.png in Resources */ = {isa = PBXBuildFile; fileRef = DD71268E239E590D0012FAF9 /* deepbox_lips_inverse.png */; };
+		DD712693239E5AF00012FAF9 /* record_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DD712692239E5AF00012FAF9 /* record_button.png */; };
+		DD712694239E5AF00012FAF9 /* record_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DD712692239E5AF00012FAF9 /* record_button.png */; };
+		DD712695239E5AF00012FAF9 /* record_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DD712692239E5AF00012FAF9 /* record_button.png */; };
 		DD97F296239CFE440031BAA1 /* deepbox_lips.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F292239CFE430031BAA1 /* deepbox_lips.png */; };
 		DD97F297239CFE440031BAA1 /* deepbox_lips.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F292239CFE430031BAA1 /* deepbox_lips.png */; };
 		DD97F298239CFE440031BAA1 /* deepbox_lips.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F292239CFE430031BAA1 /* deepbox_lips.png */; };
@@ -425,6 +431,8 @@
 		DD2DAFA1230EAD060049958C /* libtag.1.17.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtag.1.17.0.dylib; path = ../../../../../../../../../../usr/local/lib/essentia_libs/libtag.1.17.0.dylib; sourceTree = "<group>"; };
 		DD2DAFA2230EAD060049958C /* libvorbis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbis.a; path = ../../../../../../../../../../usr/local/lib/essentia_libs/libvorbis.a; sourceTree = "<group>"; };
 		DD2DAFC2230EAF0D0049958C /* libfftw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfftw3.a; path = ../../../../../../../../../../usr/local/Cellar/fftw/3.3.8_1/lib/libfftw3.a; sourceTree = "<group>"; };
+		DD71268E239E590D0012FAF9 /* deepbox_lips_inverse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deepbox_lips_inverse.png; sourceTree = "<group>"; };
+		DD712692239E5AF00012FAF9 /* record_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record_button.png; sourceTree = "<group>"; };
 		DD8AE9DD234F1EBF00BEA7C7 /* AudioLiveScrollingDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioLiveScrollingDisplay.h; sourceTree = "<group>"; };
 		DD97F292239CFE430031BAA1 /* deepbox_lips.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deepbox_lips.png; sourceTree = "<group>"; };
 		DD97F293239CFE440031BAA1 /* hihat_vec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hihat_vec.png; sourceTree = "<group>"; };
@@ -668,6 +676,8 @@
 		DD0C500C23531EAB00D30775 /* imgs */ = {
 			isa = PBXGroup;
 			children = (
+				DD712692239E5AF00012FAF9 /* record_button.png */,
+				DD71268E239E590D0012FAF9 /* deepbox_lips_inverse.png */,
 				DD97F292239CFE430031BAA1 /* deepbox_lips.png */,
 				DD97F293239CFE440031BAA1 /* hihat_vec.png */,
 				DD97F294239CFE440031BAA1 /* kick_drum_vec.png */,
@@ -1251,7 +1261,9 @@
 				DD1EFE47230D554000A6124D /* RecentFilesMenuTemplate.nib in Resources */,
 				DD97F2A1239CFE440031BAA1 /* snare_drum_vec.png in Resources */,
 				DDAD3EF4231096D30006611A /* snaredrum.wav in Resources */,
+				DD712691239E590D0012FAF9 /* deepbox_lips_inverse.png in Resources */,
 				DD0C501223531EAB00D30775 /* hihat_icon.png in Resources */,
+				DD712695239E5AF00012FAF9 /* record_button.png in Resources */,
 				DD97F29B239CFE440031BAA1 /* hihat_vec.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1272,7 +1284,9 @@
 				DD1EFE3A230D554000A6124D /* RecentFilesMenuTemplate.nib in Resources */,
 				DD97F2A0239CFE440031BAA1 /* snare_drum_vec.png in Resources */,
 				DDAD3EF3231096D30006611A /* snaredrum.wav in Resources */,
+				DD712690239E590D0012FAF9 /* deepbox_lips_inverse.png in Resources */,
 				DD0C501123531EAB00D30775 /* hihat_icon.png in Resources */,
+				DD712694239E5AF00012FAF9 /* record_button.png in Resources */,
 				DD97F29A239CFE440031BAA1 /* hihat_vec.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1293,7 +1307,9 @@
 				73C52EA131FAC0DCE4F94E95 /* RecentFilesMenuTemplate.nib in Resources */,
 				DD97F29F239CFE440031BAA1 /* snare_drum_vec.png in Resources */,
 				DDAD3EF2231096D30006611A /* snaredrum.wav in Resources */,
+				DD71268F239E590D0012FAF9 /* deepbox_lips_inverse.png in Resources */,
 				DD0C501023531EAB00D30775 /* hihat_icon.png in Resources */,
+				DD712693239E5AF00012FAF9 /* record_button.png in Resources */,
 				DD97F299239CFE440031BAA1 /* hihat_vec.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
