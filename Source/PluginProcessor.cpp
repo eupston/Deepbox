@@ -323,6 +323,7 @@ void DeepboxAudioProcessor::recordMidi(bool isRecording)
         MidiMessage tempoEvent = MidiMessage::tempoMetaEvent(microsecondsPerQuarter);
         tempoEvent.setTimeStamp(0);
         mms.addEvent(tempoEvent);
+        liveAudioScroller.setColours(Colours::black, Colours::red);
 
     }
     
@@ -336,6 +337,8 @@ void DeepboxAudioProcessor::recordMidi(bool isRecording)
         midiFile.writeTo(outputStream);
         outputStream.flush();
         mms.clear();
+        liveAudioScroller.setColours(Colours::black, Colours::white);
+
     }
 
 }

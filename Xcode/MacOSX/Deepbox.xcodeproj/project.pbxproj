@@ -184,6 +184,9 @@
 		DDAD3EF2231096D30006611A /* snaredrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE2231096D30006611A /* snaredrum.wav */; };
 		DDAD3EF3231096D30006611A /* snaredrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE2231096D30006611A /* snaredrum.wav */; };
 		DDAD3EF4231096D30006611A /* snaredrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE2231096D30006611A /* snaredrum.wav */; };
+		DDD3C27623A38ED700B1F58A /* stop_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD3C27523A38ED700B1F58A /* stop_button.png */; };
+		DDD3C27723A38ED700B1F58A /* stop_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD3C27523A38ED700B1F58A /* stop_button.png */; };
+		DDD3C27823A38ED700B1F58A /* stop_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD3C27523A38ED700B1F58A /* stop_button.png */; };
 		DDF4ABEF231E65E10070390B /* AudioFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABBA231E65E10070390B /* AudioFFT.cpp */; };
 		DDF4ABF0231E65E10070390B /* AudioFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABBA231E65E10070390B /* AudioFFT.cpp */; };
 		DDF4ABF1231E65E10070390B /* AudioFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABBA231E65E10070390B /* AudioFFT.cpp */; };
@@ -208,6 +211,9 @@
 		DDF4AC3C231E65E10070390B /* SVMTrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABED231E65E10070390B /* SVMTrain.cpp */; };
 		DDF4AC3D231E65E10070390B /* SVMTrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABED231E65E10070390B /* SVMTrain.cpp */; };
 		DDF4AC3E231E65E10070390B /* SVMTrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABED231E65E10070390B /* SVMTrain.cpp */; };
+		DDFA627323A07EA000915066 /* deepbox_text.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFA627223A07EA000915066 /* deepbox_text.png */; };
+		DDFA627423A07EA000915066 /* deepbox_text.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFA627223A07EA000915066 /* deepbox_text.png */; };
+		DDFA627523A07EA000915066 /* deepbox_text.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFA627223A07EA000915066 /* deepbox_text.png */; };
 		F4614570994C09EA0432E941 /* include_juce_audio_basics.mm in Sources */ = {isa = PBXBuildFile; fileRef = 068BD07308373448CCDA2D8C /* include_juce_audio_basics.mm */; };
 /* End PBXBuildFile section */
 
@@ -444,6 +450,7 @@
 		DDAD3EE0231096D30006611A /* hihat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hihat.wav; sourceTree = "<group>"; };
 		DDAD3EE1231096D30006611A /* osdTestOne.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = osdTestOne.wav; sourceTree = "<group>"; };
 		DDAD3EE2231096D30006611A /* snaredrum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snaredrum.wav; sourceTree = "<group>"; };
+		DDD3C27523A38ED700B1F58A /* stop_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop_button.png; sourceTree = "<group>"; };
 		DDF4ABBA231E65E10070390B /* AudioFFT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioFFT.cpp; sourceTree = "<group>"; };
 		DDF4ABBB231E65E10070390B /* AudioFFT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFFT.h; sourceTree = "<group>"; };
 		DDF4ABBD231E65E10070390B /* svm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svm.cpp; sourceTree = "<group>"; };
@@ -456,6 +463,7 @@
 		DDF4ABEB231E65E10070390B /* ShortTermFourierTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortTermFourierTransform.h; sourceTree = "<group>"; };
 		DDF4ABED231E65E10070390B /* SVMTrain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SVMTrain.cpp; sourceTree = "<group>"; };
 		DDF4ABEE231E65E10070390B /* SVMTrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVMTrain.h; sourceTree = "<group>"; };
+		DDFA627223A07EA000915066 /* deepbox_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deepbox_text.png; sourceTree = "<group>"; };
 		DFD6BA0410CF2B3670530E91 /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
 		E13C231BDFBA63BDDB11AAC6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E1DE62C4EC4DCB954130AF35 /* libDeepbox.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDeepbox.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -676,6 +684,8 @@
 		DD0C500C23531EAB00D30775 /* imgs */ = {
 			isa = PBXGroup;
 			children = (
+				DDD3C27523A38ED700B1F58A /* stop_button.png */,
+				DDFA627223A07EA000915066 /* deepbox_text.png */,
 				DD712692239E5AF00012FAF9 /* record_button.png */,
 				DD71268E239E590D0012FAF9 /* deepbox_lips_inverse.png */,
 				DD97F292239CFE430031BAA1 /* deepbox_lips.png */,
@@ -1249,10 +1259,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDFA627523A07EA000915066 /* deepbox_text.png in Resources */,
 				DDAD3EF1231096D30006611A /* osdTestOne.wav in Resources */,
 				DDAD3EE8231096D30006611A /* my_fdeep_model.json in Resources */,
 				DDAD3EEB231096D30006611A /* bassdrum.wav in Resources */,
 				DD97F29E239CFE440031BAA1 /* kick_drum_vec.png in Resources */,
+				DDD3C27823A38ED700B1F58A /* stop_button.png in Resources */,
 				DD0C501523531EAB00D30775 /* kick_drum_icon.png in Resources */,
 				DDAD3EE5231096D30006611A /* beatbox.mid in Resources */,
 				DD97F298239CFE440031BAA1 /* deepbox_lips.png in Resources */,
@@ -1272,10 +1284,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDFA627423A07EA000915066 /* deepbox_text.png in Resources */,
 				DDAD3EF0231096D30006611A /* osdTestOne.wav in Resources */,
 				DDAD3EE7231096D30006611A /* my_fdeep_model.json in Resources */,
 				DDAD3EEA231096D30006611A /* bassdrum.wav in Resources */,
 				DD97F29D239CFE440031BAA1 /* kick_drum_vec.png in Resources */,
+				DDD3C27723A38ED700B1F58A /* stop_button.png in Resources */,
 				DD0C501423531EAB00D30775 /* kick_drum_icon.png in Resources */,
 				DDAD3EE4231096D30006611A /* beatbox.mid in Resources */,
 				DD97F297239CFE440031BAA1 /* deepbox_lips.png in Resources */,
@@ -1295,10 +1309,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDFA627323A07EA000915066 /* deepbox_text.png in Resources */,
 				DDAD3EEF231096D30006611A /* osdTestOne.wav in Resources */,
 				DDAD3EE6231096D30006611A /* my_fdeep_model.json in Resources */,
 				DDAD3EE9231096D30006611A /* bassdrum.wav in Resources */,
 				DD97F29C239CFE440031BAA1 /* kick_drum_vec.png in Resources */,
+				DDD3C27623A38ED700B1F58A /* stop_button.png in Resources */,
 				DD0C501323531EAB00D30775 /* kick_drum_icon.png in Resources */,
 				DDAD3EE3231096D30006611A /* beatbox.mid in Resources */,
 				DD97F296239CFE440031BAA1 /* deepbox_lips.png in Resources */,
