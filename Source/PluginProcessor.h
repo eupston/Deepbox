@@ -69,7 +69,7 @@ public:
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
     void recordMidi (bool isRecording);
-    //Initialise the synth object
+    void setOnsetSlider (Slider onsetSlider);
     void initialiseSynth();
     vector<MidiMessage> triggerKickDrum(MidiBuffer& midiMessages, double msPerTick) const;
     vector<MidiMessage> triggerSnareDrum(MidiBuffer& midiMessages, double msPerTick) const;
@@ -77,8 +77,8 @@ public:
     bool hitkick = false;
     bool hitsnare = false;
     bool hithihat = false;
-    AudioProcessorValueTreeState treeState;
     LiveScrollingAudioDisplay liveAudioScroller;
+    Slider onset_threshold_slider;
 
 private:
     const int kickNoteNumber = 36;
@@ -101,6 +101,7 @@ private:
     float floor_onset_threshold = -25;
     bool onset_below_floor_threshold = true;
     fdeep::model mymodel{fdeep::load_model(File::getSpecialLocation(File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/my_fdeep_model.json").getFullPathName().toStdString())};
+    
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DeepboxAudioProcessor)

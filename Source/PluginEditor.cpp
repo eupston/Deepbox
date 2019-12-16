@@ -36,12 +36,6 @@ DeepboxAudioProcessorEditor::DeepboxAudioProcessorEditor (DeepboxAudioProcessor&
     mysnareButton.setImages(false, true, true, snareImg, 1.0f, Colours::white, snareImg, 0.5f, Colours::mediumvioletred, snareImg, 0.5f, Colours::violet);
     myhihatButton.setImages(false, true, true, hihatImg, 1.0f, Colours::white, hihatImg, 0.5f, Colours::mediumvioletred, hihatImg, 0.5f, Colours::violet);
     
-    addAndMakeVisible(mykickButton);
-    addAndMakeVisible(mysnareButton);
-    addAndMakeVisible(myhihatButton);
-    addAndMakeVisible(midiDrag);
-    addAndMakeVisible(deepbox_text);
-    addAndMakeVisible(recordButton);
 
     mykickButton.onClick = [this] { processor.hitkick = true;};
     mysnareButton.onClick = [this] { processor.hitsnare = true;};
@@ -50,15 +44,22 @@ DeepboxAudioProcessorEditor::DeepboxAudioProcessorEditor (DeepboxAudioProcessor&
     recordButton.setClickingTogglesState(true);
     recordButton.onClick = [this] { processor.recordMidi(recordButton.getToggleState());};
     
-    sliderAttach = new AudioProcessorValueTreeState::SliderAttachment (processor.treeState, "ONSET_THRESHOLD_ID", onset_threshold_slider);
-    onset_threshold_slider.setSliderStyle(Slider::Slider::LinearBarVertical );
-    onset_threshold_slider.setTextBoxStyle(Slider::TextEntryBoxPosition::NoTextBox, true, 0, 0);
-    onset_threshold_slider.setColour(Slider::trackColourId, Colours::grey.withAlpha(0.25f));
-    onset_threshold_slider.setRange(-48.0f, 0.0f, 0.0f);
-    onset_threshold_slider.setValue(-15.0f);
+    processor.onset_threshold_slider.setSliderStyle(Slider::Slider::LinearBarVertical );
+    processor.onset_threshold_slider.setTextBoxStyle(Slider::TextEntryBoxPosition::TextBoxBelow, true, 0, 0);
+    processor.onset_threshold_slider.setColour(Slider::trackColourId, Colours::grey.withAlpha(0.25f));
+    processor.onset_threshold_slider.setRange(-48.0f, 0.0f, 1);
+    processor.onset_threshold_slider.setValue(-15.0f);
+    processor.onset_threshold_slider.setTextValueSuffix(" db");
+
+    addAndMakeVisible(mykickButton);
+    addAndMakeVisible(mysnareButton);
+    addAndMakeVisible(myhihatButton);
+    addAndMakeVisible(midiDrag);
+    addAndMakeVisible(deepbox_text);
+    addAndMakeVisible(recordButton);
     addAndMakeVisible(processor.liveAudioScroller);
-    addAndMakeVisible(&onset_threshold_slider);
-    
+    addAndMakeVisible(&processor.onset_threshold_slider);
+
 }
 
 DeepboxAudioProcessorEditor::~DeepboxAudioProcessorEditor()
@@ -97,7 +98,7 @@ void DeepboxAudioProcessorEditor::resized()
     auto area = getLocalBounds();
     processor.liveAudioScroller.setBounds (area.removeFromBottom(60));
     auto live_waveform_bounds = processor.liveAudioScroller.getBounds();
-    onset_threshold_slider.setBounds(live_waveform_bounds);
+    processor.onset_threshold_slider.setBounds(live_waveform_bounds);
     
     midiDrag.setBounds(area.getCentreX() - lips_width/2, lips_y_spacer, lips_width, lips_height);
     recordButton.setBounds(area.getCentreX() - record_width/2, (lips_height/2) + lips_y_spacer + record_y_shift, record_width, record_height);

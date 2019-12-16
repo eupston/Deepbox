@@ -21,15 +21,14 @@ DeepboxAudioProcessor::DeepboxAudioProcessor()
                       #endif
                        .withOutput ("Output", AudioChannelSet::stereo(), true)
                      #endif
-                       ), treeState(*this, nullptr)
+                       )
 
 #endif
 {
     initialiseSynth();
     essentia::init();
+
     NormalisableRange<float> onset_threshold_range(-48.0f, 0.0f);
-    treeState.createAndAddParameter("ONSET_THRESHOLD_ID", "ONSET_THRESHOLD", "ONSET_THRESHOLD", onset_threshold_range, 0, nullptr, nullptr);
-    treeState.state = ValueTree("initialize");
 
 }
 
@@ -144,13 +143,10 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
     ScopedNoDenormals noDenormals;
     my_onset_detector.initialize(samples_Per_Block, sample_Rate);
     vector<float> audio_features;
-    auto totalNumInputChannels  = getTotalNumInputChannels();
-    auto totalNumOutputChannels = getTotalNumOutputChannels();
-
-    float rmsLevel = buffer.getRMSLevel(0, 0, buffer.getNumSamples());
+    
     float mag = buffer.getMagnitude(0, 0, buffer.getNumSamples());
     float db = Decibels::gainToDecibels(mag);
-    float current_onset_threshold = *treeState.getRawParameterValue("ONSET_THRESHOLD_ID");
+    float current_onset_threshold = onset_threshold_slider.getValue();
     auto currentValuesInBuffer = buffer.getArrayOfReadPointers();
     bool onset_detected = my_onset_detector.detectOnset(currentValuesInBuffer);
     if(!onset_below_floor_threshold && db < floor_onset_threshold){
@@ -171,7 +167,7 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
         int prediction_index = std::distance(result_vec.begin(), std::max_element(result_vec.begin(), result_vec.end()));
         std::vector<std::string> drum_classes{"hihat","kick","snare"};
         std::string drum_prediction = drum_classes[prediction_index];
-        std::cout << drum_prediction << std::endl;
+        std::cout << "drum_prediction: " << drum_prediction << std::endl;
 
         if(drum_prediction == "kick"){
             hitkick = true;
@@ -323,7 +319,7 @@ void DeepboxAudioProcessor::recordMidi(bool isRecording)
         MidiMessage tempoEvent = MidiMessage::tempoMetaEvent(microsecondsPerQuarter);
         tempoEvent.setTimeStamp(0);
         mms.addEvent(tempoEvent);
-        liveAudioScroller.setColours(Colours::black, Colours::red);
+        liveAudioScroller.setColours(Colours::black, Colour(242,8,123));
 
     }
     
@@ -342,6 +338,8 @@ void DeepboxAudioProcessor::recordMidi(bool isRecording)
     }
 
 }
+
+
 
 //==============================================================================
 // This creates new instances of the plugin..
