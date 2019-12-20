@@ -16,10 +16,7 @@ class DragMidiFile  :   public ImageButton,
 {
 public:
     
-    DragMidiFile(){
-
-    };
-//    void paint (Graphics& g) override;
+    DragMidiFile(){};
     void mouseDrag(const MouseEvent& e) override;
     
 private:

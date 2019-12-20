@@ -74,13 +74,18 @@ public:
     vector<MidiMessage> triggerKickDrum(MidiBuffer& midiMessages, double msPerTick) const;
     vector<MidiMessage> triggerSnareDrum(MidiBuffer& midiMessages, double msPerTick) const;
     vector<MidiMessage> triggerHihatDrum(MidiBuffer& midiMessages, double msPerTick) const;
+    //==============================================================================
     bool hitkick = false;
     bool hitsnare = false;
     bool hithihat = false;
     LiveScrollingAudioDisplay liveAudioScroller;
     Slider onset_threshold_slider;
+    ImageButton mykickButton{"kick"};
+    ImageButton mysnareButton{"snare"};
+    ImageButton myhihatButton{"hihat"};
 
 private:
+    
     const int kickNoteNumber = 36;
     const int snareNoteNumber = 38;
     const int hihatNoteNumber = 40;
@@ -101,7 +106,6 @@ private:
     float floor_onset_threshold = -25;
     bool onset_below_floor_threshold = true;
     fdeep::model mymodel{fdeep::load_model(File::getSpecialLocation(File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/my_fdeep_model.json").getFullPathName().toStdString())};
-    
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DeepboxAudioProcessor)

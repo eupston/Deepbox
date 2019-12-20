@@ -29,9 +29,6 @@ public:
     
 
 private:
-    ImageButton mykickButton{"kick"};
-    ImageButton mysnareButton{"snare"};
-    ImageButton myhihatButton{"hihat"};
     ImageButton recordButton{"record"};
     ImageButton deepbox_text{"deepbox"};
     DragMidiFile midiDrag;

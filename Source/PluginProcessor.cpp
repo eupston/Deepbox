@@ -29,6 +29,9 @@ DeepboxAudioProcessor::DeepboxAudioProcessor()
     essentia::init();
 
     NormalisableRange<float> onset_threshold_range(-48.0f, 0.0f);
+    mykickButton.onClick = [this] { hitkick = true;};
+    mysnareButton.onClick = [this] { hitsnare = true;};
+    myhihatButton.onClick = [this] { hithihat = true;};
 
 }
 
@@ -105,7 +108,6 @@ void DeepboxAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBloc
     sample_Rate = sampleRate;
     samples_Per_Block = samplesPerBlock;
     
-    
 }
 
 void DeepboxAudioProcessor::releaseResources()
@@ -170,15 +172,15 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
         std::cout << "drum_prediction: " << drum_prediction << std::endl;
 
         if(drum_prediction == "kick"){
-            hitkick = true;
+            mykickButton.triggerClick();
         }
 
         if(drum_prediction == "snare"){
-            hitsnare = true;
+            mysnareButton.triggerClick();
         }
 
         if(drum_prediction == "hihat"){
-            hithihat = true;
+            myhihatButton.triggerClick();
         }
 
     }
