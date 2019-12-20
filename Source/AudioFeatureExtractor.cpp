@@ -35,7 +35,6 @@ vector<Real> AudioFeatureExtractor::load_audio_buffer(AudioBuffer<float>& buffer
     int size = buffer.getNumSamples();
     vector<Real> audio_buffer(start, start + size); // this will copy the data as a vector
     audiobuffer = audio_buffer;
-    //audioBuffer.erase(audioBuffer.begin()+sampleSlice, audioBuffer.end()); //
     return audiobuffer;
 };
 

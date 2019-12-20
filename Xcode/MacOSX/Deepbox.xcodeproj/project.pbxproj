@@ -118,6 +118,10 @@
 		DD1EFE6B230D571200A6124D /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE60230D571200A6124D /* libavfilter.a */; };
 		DD1EFE6C230D571200A6124D /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE61230D571200A6124D /* libavdevice.a */; };
 		DD1EFE6D230D571200A6124D /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE62230D571200A6124D /* libavcodec.a */; };
+		DD224FA62393172F0075B34D /* BinaryData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD224FA42393172F0075B34D /* BinaryData.cpp */; };
+		DD224FA72393172F0075B34D /* BinaryData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD224FA42393172F0075B34D /* BinaryData.cpp */; };
+		DD224FA82393172F0075B34D /* BinaryData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD224FA42393172F0075B34D /* BinaryData.cpp */; };
+		DD224FA92393172F0075B34D /* BinaryData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD224FA42393172F0075B34D /* BinaryData.cpp */; };
 		DD2DAFB9230EAF0D0049958C /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE62230D571200A6124D /* libavcodec.a */; };
 		DD2DAFBA230EAF0D0049958C /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE61230D571200A6124D /* libavdevice.a */; };
 		DD2DAFBB230EAF0D0049958C /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE60230D571200A6124D /* libavfilter.a */; };
@@ -144,6 +148,24 @@
 		DD2DAFD1230EB0A20049958C /* libyaml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE5E230D571200A6124D /* libyaml.a */; };
 		DD55403353A352AF9A6F24CD /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520802D022A6D4838F78FC9D /* Carbon.framework */; };
 		DD6F201F2311492E009F0197 /* libfftw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2DAFC2230EAF0D0049958C /* libfftw3.a */; };
+		DD71268F239E590D0012FAF9 /* deepbox_lips_inverse.png in Resources */ = {isa = PBXBuildFile; fileRef = DD71268E239E590D0012FAF9 /* deepbox_lips_inverse.png */; };
+		DD712690239E590D0012FAF9 /* deepbox_lips_inverse.png in Resources */ = {isa = PBXBuildFile; fileRef = DD71268E239E590D0012FAF9 /* deepbox_lips_inverse.png */; };
+		DD712691239E590D0012FAF9 /* deepbox_lips_inverse.png in Resources */ = {isa = PBXBuildFile; fileRef = DD71268E239E590D0012FAF9 /* deepbox_lips_inverse.png */; };
+		DD712693239E5AF00012FAF9 /* record_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DD712692239E5AF00012FAF9 /* record_button.png */; };
+		DD712694239E5AF00012FAF9 /* record_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DD712692239E5AF00012FAF9 /* record_button.png */; };
+		DD712695239E5AF00012FAF9 /* record_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DD712692239E5AF00012FAF9 /* record_button.png */; };
+		DD97F296239CFE440031BAA1 /* deepbox_lips.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F292239CFE430031BAA1 /* deepbox_lips.png */; };
+		DD97F297239CFE440031BAA1 /* deepbox_lips.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F292239CFE430031BAA1 /* deepbox_lips.png */; };
+		DD97F298239CFE440031BAA1 /* deepbox_lips.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F292239CFE430031BAA1 /* deepbox_lips.png */; };
+		DD97F299239CFE440031BAA1 /* hihat_vec.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F293239CFE440031BAA1 /* hihat_vec.png */; };
+		DD97F29A239CFE440031BAA1 /* hihat_vec.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F293239CFE440031BAA1 /* hihat_vec.png */; };
+		DD97F29B239CFE440031BAA1 /* hihat_vec.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F293239CFE440031BAA1 /* hihat_vec.png */; };
+		DD97F29C239CFE440031BAA1 /* kick_drum_vec.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F294239CFE440031BAA1 /* kick_drum_vec.png */; };
+		DD97F29D239CFE440031BAA1 /* kick_drum_vec.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F294239CFE440031BAA1 /* kick_drum_vec.png */; };
+		DD97F29E239CFE440031BAA1 /* kick_drum_vec.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F294239CFE440031BAA1 /* kick_drum_vec.png */; };
+		DD97F29F239CFE440031BAA1 /* snare_drum_vec.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F295239CFE440031BAA1 /* snare_drum_vec.png */; };
+		DD97F2A0239CFE440031BAA1 /* snare_drum_vec.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F295239CFE440031BAA1 /* snare_drum_vec.png */; };
+		DD97F2A1239CFE440031BAA1 /* snare_drum_vec.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F295239CFE440031BAA1 /* snare_drum_vec.png */; };
 		DDAD3EE3231096D30006611A /* beatbox.mid in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDB231096D30006611A /* beatbox.mid */; };
 		DDAD3EE4231096D30006611A /* beatbox.mid in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDB231096D30006611A /* beatbox.mid */; };
 		DDAD3EE5231096D30006611A /* beatbox.mid in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDB231096D30006611A /* beatbox.mid */; };
@@ -162,6 +184,9 @@
 		DDAD3EF2231096D30006611A /* snaredrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE2231096D30006611A /* snaredrum.wav */; };
 		DDAD3EF3231096D30006611A /* snaredrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE2231096D30006611A /* snaredrum.wav */; };
 		DDAD3EF4231096D30006611A /* snaredrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE2231096D30006611A /* snaredrum.wav */; };
+		DDD3C27623A38ED700B1F58A /* stop_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD3C27523A38ED700B1F58A /* stop_button.png */; };
+		DDD3C27723A38ED700B1F58A /* stop_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD3C27523A38ED700B1F58A /* stop_button.png */; };
+		DDD3C27823A38ED700B1F58A /* stop_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD3C27523A38ED700B1F58A /* stop_button.png */; };
 		DDF4ABEF231E65E10070390B /* AudioFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABBA231E65E10070390B /* AudioFFT.cpp */; };
 		DDF4ABF0231E65E10070390B /* AudioFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABBA231E65E10070390B /* AudioFFT.cpp */; };
 		DDF4ABF1231E65E10070390B /* AudioFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABBA231E65E10070390B /* AudioFFT.cpp */; };
@@ -186,6 +211,9 @@
 		DDF4AC3C231E65E10070390B /* SVMTrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABED231E65E10070390B /* SVMTrain.cpp */; };
 		DDF4AC3D231E65E10070390B /* SVMTrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABED231E65E10070390B /* SVMTrain.cpp */; };
 		DDF4AC3E231E65E10070390B /* SVMTrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDF4ABED231E65E10070390B /* SVMTrain.cpp */; };
+		DDFA627323A07EA000915066 /* deepbox_text.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFA627223A07EA000915066 /* deepbox_text.png */; };
+		DDFA627423A07EA000915066 /* deepbox_text.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFA627223A07EA000915066 /* deepbox_text.png */; };
+		DDFA627523A07EA000915066 /* deepbox_text.png in Resources */ = {isa = PBXBuildFile; fileRef = DDFA627223A07EA000915066 /* deepbox_text.png */; };
 		F4614570994C09EA0432E941 /* include_juce_audio_basics.mm in Sources */ = {isa = PBXBuildFile; fileRef = 068BD07308373448CCDA2D8C /* include_juce_audio_basics.mm */; };
 /* End PBXBuildFile section */
 
@@ -395,6 +423,8 @@
 		DD1EFFFE230D604C00A6124D /* tnt_cmat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tnt_cmat.h; sourceTree = "<group>"; };
 		DD1EFFFF230D604C00A6124D /* tnt_fortran_array1d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tnt_fortran_array1d.h; sourceTree = "<group>"; };
 		DD21D08E8005275E73BA5F0E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		DD224FA42393172F0075B34D /* BinaryData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BinaryData.cpp; path = ../../JuceLibraryCode/BinaryData.cpp; sourceTree = "<group>"; };
+		DD224FA52393172F0075B34D /* BinaryData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BinaryData.h; path = ../../JuceLibraryCode/BinaryData.h; sourceTree = "<group>"; };
 		DD2DAF98230EAD050049958C /* libyaml.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libyaml.a; path = ../../../../../../../../../../usr/local/lib/essentia_libs/libyaml.a; sourceTree = "<group>"; };
 		DD2DAF99230EAD050049958C /* libavfilter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavfilter.a; path = ../../../../../../../../../../usr/local/lib/essentia_libs/libavfilter.a; sourceTree = "<group>"; };
 		DD2DAF9A230EAD060049958C /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavutil.a; path = ../../../../../../../../../../usr/local/lib/essentia_libs/libavutil.a; sourceTree = "<group>"; };
@@ -407,13 +437,20 @@
 		DD2DAFA1230EAD060049958C /* libtag.1.17.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtag.1.17.0.dylib; path = ../../../../../../../../../../usr/local/lib/essentia_libs/libtag.1.17.0.dylib; sourceTree = "<group>"; };
 		DD2DAFA2230EAD060049958C /* libvorbis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbis.a; path = ../../../../../../../../../../usr/local/lib/essentia_libs/libvorbis.a; sourceTree = "<group>"; };
 		DD2DAFC2230EAF0D0049958C /* libfftw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfftw3.a; path = ../../../../../../../../../../usr/local/Cellar/fftw/3.3.8_1/lib/libfftw3.a; sourceTree = "<group>"; };
+		DD71268E239E590D0012FAF9 /* deepbox_lips_inverse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deepbox_lips_inverse.png; sourceTree = "<group>"; };
+		DD712692239E5AF00012FAF9 /* record_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record_button.png; sourceTree = "<group>"; };
 		DD8AE9DD234F1EBF00BEA7C7 /* AudioLiveScrollingDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioLiveScrollingDisplay.h; sourceTree = "<group>"; };
+		DD97F292239CFE430031BAA1 /* deepbox_lips.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deepbox_lips.png; sourceTree = "<group>"; };
+		DD97F293239CFE440031BAA1 /* hihat_vec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hihat_vec.png; sourceTree = "<group>"; };
+		DD97F294239CFE440031BAA1 /* kick_drum_vec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kick_drum_vec.png; sourceTree = "<group>"; };
+		DD97F295239CFE440031BAA1 /* snare_drum_vec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snare_drum_vec.png; sourceTree = "<group>"; };
 		DDAD3EDB231096D30006611A /* beatbox.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = beatbox.mid; sourceTree = "<group>"; };
 		DDAD3EDD231096D30006611A /* my_fdeep_model.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = my_fdeep_model.json; sourceTree = "<group>"; };
 		DDAD3EDF231096D30006611A /* bassdrum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bassdrum.wav; sourceTree = "<group>"; };
 		DDAD3EE0231096D30006611A /* hihat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hihat.wav; sourceTree = "<group>"; };
 		DDAD3EE1231096D30006611A /* osdTestOne.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = osdTestOne.wav; sourceTree = "<group>"; };
 		DDAD3EE2231096D30006611A /* snaredrum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snaredrum.wav; sourceTree = "<group>"; };
+		DDD3C27523A38ED700B1F58A /* stop_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop_button.png; sourceTree = "<group>"; };
 		DDF4ABBA231E65E10070390B /* AudioFFT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioFFT.cpp; sourceTree = "<group>"; };
 		DDF4ABBB231E65E10070390B /* AudioFFT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFFT.h; sourceTree = "<group>"; };
 		DDF4ABBD231E65E10070390B /* svm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = svm.cpp; sourceTree = "<group>"; };
@@ -426,6 +463,7 @@
 		DDF4ABEB231E65E10070390B /* ShortTermFourierTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShortTermFourierTransform.h; sourceTree = "<group>"; };
 		DDF4ABED231E65E10070390B /* SVMTrain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SVMTrain.cpp; sourceTree = "<group>"; };
 		DDF4ABEE231E65E10070390B /* SVMTrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVMTrain.h; sourceTree = "<group>"; };
+		DDFA627223A07EA000915066 /* deepbox_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deepbox_text.png; sourceTree = "<group>"; };
 		DFD6BA0410CF2B3670530E91 /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
 		E13C231BDFBA63BDDB11AAC6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E1DE62C4EC4DCB954130AF35 /* libDeepbox.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDeepbox.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -551,6 +589,8 @@
 			isa = PBXGroup;
 			children = (
 				81C5494504242D4D89571822 /* AppConfig.h */,
+				DD224FA42393172F0075B34D /* BinaryData.cpp */,
+				DD224FA52393172F0075B34D /* BinaryData.h */,
 				068BD07308373448CCDA2D8C /* include_juce_audio_basics.mm */,
 				ABE42404F5C41C600C8F1C70 /* include_juce_audio_devices.mm */,
 				AC9284D63F3D92971A0B6093 /* include_juce_audio_formats.mm */,
@@ -644,6 +684,14 @@
 		DD0C500C23531EAB00D30775 /* imgs */ = {
 			isa = PBXGroup;
 			children = (
+				DDD3C27523A38ED700B1F58A /* stop_button.png */,
+				DDFA627223A07EA000915066 /* deepbox_text.png */,
+				DD712692239E5AF00012FAF9 /* record_button.png */,
+				DD71268E239E590D0012FAF9 /* deepbox_lips_inverse.png */,
+				DD97F292239CFE430031BAA1 /* deepbox_lips.png */,
+				DD97F293239CFE440031BAA1 /* hihat_vec.png */,
+				DD97F294239CFE440031BAA1 /* kick_drum_vec.png */,
+				DD97F295239CFE440031BAA1 /* snare_drum_vec.png */,
 				DD0C500D23531EAB00D30775 /* hihat_icon.png */,
 				DD0C500E23531EAB00D30775 /* kick_drum_icon.png */,
 				DD0C500F23531EAB00D30775 /* snare_icon.png */,
@@ -1211,16 +1259,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDFA627523A07EA000915066 /* deepbox_text.png in Resources */,
 				DDAD3EF1231096D30006611A /* osdTestOne.wav in Resources */,
 				DDAD3EE8231096D30006611A /* my_fdeep_model.json in Resources */,
 				DDAD3EEB231096D30006611A /* bassdrum.wav in Resources */,
+				DD97F29E239CFE440031BAA1 /* kick_drum_vec.png in Resources */,
+				DDD3C27823A38ED700B1F58A /* stop_button.png in Resources */,
 				DD0C501523531EAB00D30775 /* kick_drum_icon.png in Resources */,
 				DDAD3EE5231096D30006611A /* beatbox.mid in Resources */,
+				DD97F298239CFE440031BAA1 /* deepbox_lips.png in Resources */,
 				DDAD3EEE231096D30006611A /* hihat.wav in Resources */,
 				DD0C501823531EAB00D30775 /* snare_icon.png in Resources */,
 				DD1EFE47230D554000A6124D /* RecentFilesMenuTemplate.nib in Resources */,
+				DD97F2A1239CFE440031BAA1 /* snare_drum_vec.png in Resources */,
 				DDAD3EF4231096D30006611A /* snaredrum.wav in Resources */,
+				DD712691239E590D0012FAF9 /* deepbox_lips_inverse.png in Resources */,
 				DD0C501223531EAB00D30775 /* hihat_icon.png in Resources */,
+				DD712695239E5AF00012FAF9 /* record_button.png in Resources */,
+				DD97F29B239CFE440031BAA1 /* hihat_vec.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1228,16 +1284,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDFA627423A07EA000915066 /* deepbox_text.png in Resources */,
 				DDAD3EF0231096D30006611A /* osdTestOne.wav in Resources */,
 				DDAD3EE7231096D30006611A /* my_fdeep_model.json in Resources */,
 				DDAD3EEA231096D30006611A /* bassdrum.wav in Resources */,
+				DD97F29D239CFE440031BAA1 /* kick_drum_vec.png in Resources */,
+				DDD3C27723A38ED700B1F58A /* stop_button.png in Resources */,
 				DD0C501423531EAB00D30775 /* kick_drum_icon.png in Resources */,
 				DDAD3EE4231096D30006611A /* beatbox.mid in Resources */,
+				DD97F297239CFE440031BAA1 /* deepbox_lips.png in Resources */,
 				DDAD3EED231096D30006611A /* hihat.wav in Resources */,
 				DD0C501723531EAB00D30775 /* snare_icon.png in Resources */,
 				DD1EFE3A230D554000A6124D /* RecentFilesMenuTemplate.nib in Resources */,
+				DD97F2A0239CFE440031BAA1 /* snare_drum_vec.png in Resources */,
 				DDAD3EF3231096D30006611A /* snaredrum.wav in Resources */,
+				DD712690239E590D0012FAF9 /* deepbox_lips_inverse.png in Resources */,
 				DD0C501123531EAB00D30775 /* hihat_icon.png in Resources */,
+				DD712694239E5AF00012FAF9 /* record_button.png in Resources */,
+				DD97F29A239CFE440031BAA1 /* hihat_vec.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1245,16 +1309,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDFA627323A07EA000915066 /* deepbox_text.png in Resources */,
 				DDAD3EEF231096D30006611A /* osdTestOne.wav in Resources */,
 				DDAD3EE6231096D30006611A /* my_fdeep_model.json in Resources */,
 				DDAD3EE9231096D30006611A /* bassdrum.wav in Resources */,
+				DD97F29C239CFE440031BAA1 /* kick_drum_vec.png in Resources */,
+				DDD3C27623A38ED700B1F58A /* stop_button.png in Resources */,
 				DD0C501323531EAB00D30775 /* kick_drum_icon.png in Resources */,
 				DDAD3EE3231096D30006611A /* beatbox.mid in Resources */,
+				DD97F296239CFE440031BAA1 /* deepbox_lips.png in Resources */,
 				DDAD3EEC231096D30006611A /* hihat.wav in Resources */,
 				DD0C501623531EAB00D30775 /* snare_icon.png in Resources */,
 				73C52EA131FAC0DCE4F94E95 /* RecentFilesMenuTemplate.nib in Resources */,
+				DD97F29F239CFE440031BAA1 /* snare_drum_vec.png in Resources */,
 				DDAD3EF2231096D30006611A /* snaredrum.wav in Resources */,
+				DD71268F239E590D0012FAF9 /* deepbox_lips_inverse.png in Resources */,
 				DD0C501023531EAB00D30775 /* hihat_icon.png in Resources */,
+				DD712693239E5AF00012FAF9 /* record_button.png in Resources */,
+				DD97F299239CFE440031BAA1 /* hihat_vec.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1284,6 +1356,7 @@
 				DDF4ABF2231E65E10070390B /* AudioFFT.cpp in Sources */,
 				DD1E00CD230D604D00A6124D /* DragMidiFile.cpp in Sources */,
 				97FDA2AED99E2FDAF46CA484 /* include_juce_audio_processors.mm in Sources */,
+				DD224FA92393172F0075B34D /* BinaryData.cpp in Sources */,
 				2A33ECDF689D61096CBB276F /* include_juce_audio_utils.mm in Sources */,
 				DD1E00D1230D604D00A6124D /* PluginEditor.cpp in Sources */,
 				DD1E00D5230D604D00A6124D /* PluginProcessor.cpp in Sources */,
@@ -1316,6 +1389,7 @@
 				DDF4AC38231E65E10070390B /* ShortTermFourierTransform.cpp in Sources */,
 				6DA35F07045BCBD236FB4A21 /* include_juce_audio_plugin_client_AU_2.mm in Sources */,
 				DD1E00D3230D604D00A6124D /* PluginProcessor.cpp in Sources */,
+				DD224FA72393172F0075B34D /* BinaryData.cpp in Sources */,
 				DDF4AC3C231E65E10070390B /* SVMTrain.cpp in Sources */,
 				DDF4AC10231E65E10070390B /* OnsetClassification.cpp in Sources */,
 				DDF4AC00231E65E10070390B /* AudioFeatureExtraction.cpp in Sources */,
@@ -1337,6 +1411,7 @@
 				DD1E00C6230D604D00A6124D /* AudioFeatureExtractor.cpp in Sources */,
 				DDF4AC0F231E65E10070390B /* OnsetClassification.cpp in Sources */,
 				DDF4AC3B231E65E10070390B /* SVMTrain.cpp in Sources */,
+				DD224FA62393172F0075B34D /* BinaryData.cpp in Sources */,
 				DDF4ABEF231E65E10070390B /* AudioFFT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1355,6 +1430,7 @@
 				DD1E00C8230D604D00A6124D /* AudioFeatureExtractor.cpp in Sources */,
 				DDF4AC11231E65E10070390B /* OnsetClassification.cpp in Sources */,
 				DDF4AC3D231E65E10070390B /* SVMTrain.cpp in Sources */,
+				DD224FA82393172F0075B34D /* BinaryData.cpp in Sources */,
 				DDF4ABF1231E65E10070390B /* AudioFFT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -29,14 +29,10 @@ public:
     
 
 private:
-    ImageButton mykickButton{"kick"};
-    ImageButton mysnareButton{"snare"};
-    ImageButton myhihatButton{"hihat"};
-    TextButton exportMidiButton{"Record Midi"};
+    ImageButton recordButton{"record"};
+    ImageButton deepbox_text{"deepbox"};
     DragMidiFile midiDrag;
     DeepboxAudioProcessor& processor;
-    Slider onset_threshold_slider;
-    ScopedPointer <AudioProcessorValueTreeState::SliderAttachment> sliderAttach;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DeepboxAudioProcessorEditor)
 };

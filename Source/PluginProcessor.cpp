@@ -21,15 +21,17 @@ DeepboxAudioProcessor::DeepboxAudioProcessor()
                       #endif
                        .withOutput ("Output", AudioChannelSet::stereo(), true)
                      #endif
-                       ), treeState(*this, nullptr)
+                       )
 
 #endif
 {
     initialiseSynth();
     essentia::init();
+
     NormalisableRange<float> onset_threshold_range(-48.0f, 0.0f);
-    treeState.createAndAddParameter("ONSET_THRESHOLD_ID", "ONSET_THRESHOLD", "ONSET_THRESHOLD", onset_threshold_range, 0, nullptr, nullptr);
-    treeState.state = ValueTree("initialize");
+    mykickButton.onClick = [this] { hitkick = true;};
+    mysnareButton.onClick = [this] { hitsnare = true;};
+    myhihatButton.onClick = [this] { hithihat = true;};
 
 }
 
@@ -106,7 +108,6 @@ void DeepboxAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBloc
     sample_Rate = sampleRate;
     samples_Per_Block = samplesPerBlock;
     
-    
 }
 
 void DeepboxAudioProcessor::releaseResources()
@@ -144,13 +145,10 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
     ScopedNoDenormals noDenormals;
     my_onset_detector.initialize(samples_Per_Block, sample_Rate);
     vector<float> audio_features;
-    auto totalNumInputChannels  = getTotalNumInputChannels();
-    auto totalNumOutputChannels = getTotalNumOutputChannels();
-
-    float rmsLevel = buffer.getRMSLevel(0, 0, buffer.getNumSamples());
+    
     float mag = buffer.getMagnitude(0, 0, buffer.getNumSamples());
     float db = Decibels::gainToDecibels(mag);
-    float current_onset_threshold = *treeState.getRawParameterValue("ONSET_THRESHOLD_ID");
+    float current_onset_threshold = onset_threshold_slider.getValue();
     auto currentValuesInBuffer = buffer.getArrayOfReadPointers();
     bool onset_detected = my_onset_detector.detectOnset(currentValuesInBuffer);
     if(!onset_below_floor_threshold && db < floor_onset_threshold){
@@ -171,18 +169,18 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
         int prediction_index = std::distance(result_vec.begin(), std::max_element(result_vec.begin(), result_vec.end()));
         std::vector<std::string> drum_classes{"hihat","kick","snare"};
         std::string drum_prediction = drum_classes[prediction_index];
-        std::cout << drum_prediction << std::endl;
+        std::cout << "drum_prediction: " << drum_prediction << std::endl;
 
         if(drum_prediction == "kick"){
-            hitkick = true;
+            mykickButton.triggerClick();
         }
 
         if(drum_prediction == "snare"){
-            hitsnare = true;
+            mysnareButton.triggerClick();
         }
 
         if(drum_prediction == "hihat"){
-            hithihat = true;
+            myhihatButton.triggerClick();
         }
 
     }
@@ -223,10 +221,7 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
 
 void DeepboxAudioProcessor::initialiseSynth()
 {
-    /** NOTE: - Quick and dirty sample drum synth for prototype
-     *  In future versions will ideally allow user to select sample to use and
-     *  also manage sample rate changes effect on loaded samples.
-     */
+    
     WavAudioFormat wavFormat;
     BigInteger kickNoteRange;
     BigInteger snareNoteRange;
@@ -237,11 +232,10 @@ void DeepboxAudioProcessor::initialiseSynth()
     
     AudioFormatManager formatManager;
     formatManager.registerBasicFormats();
-    std::unique_ptr<AudioFormatReader> readerKickDrum(formatManager.createReaderFor(File("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myjuce/Deepbox/Source/resources/wavs/bassdrum.wav")));
-    std::unique_ptr<AudioFormatReader> readerSnareDrum(formatManager.createReaderFor(File("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myjuce/Deepbox/Source/resources/wavs/snaredrum.wav")));
-    std::unique_ptr<AudioFormatReader> readerHiHat(formatManager.createReaderFor(File("/Volumes/Macintosh HD/Users/macuser/Desktop/MyCode/myjuce/Deepbox/Source/resources/wavs/hihat.wav")));
+    std::unique_ptr<AudioFormatReader> readerKickDrum(formatManager.createReaderFor(File::getSpecialLocation( File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/bassdrum.wav")));
+    std::unique_ptr<AudioFormatReader> readerSnareDrum(formatManager.createReaderFor(File::getSpecialLocation( File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/snaredrum.wav")));
+    std::unique_ptr<AudioFormatReader> readerHiHat(formatManager.createReaderFor(File::getSpecialLocation( File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/hihat.wav")));
 
-    
     kickNoteRange.setBit(kickNoteNumber);
     snareNoteRange.setBit(snareNoteNumber);
     hihatNoteRange.setBit(hihatNoteNumber);
@@ -320,7 +314,6 @@ void DeepboxAudioProcessor::setStateInformation (const void* data, int sizeInByt
 
 void DeepboxAudioProcessor::recordMidi(bool isRecording)
 {
-    std::cout << "record state " << isRecording << std::endl;
     if (isRecording){
         mms.clear();
         startTime = Time::getMillisecondCounterHiRes();
@@ -328,6 +321,7 @@ void DeepboxAudioProcessor::recordMidi(bool isRecording)
         MidiMessage tempoEvent = MidiMessage::tempoMetaEvent(microsecondsPerQuarter);
         tempoEvent.setTimeStamp(0);
         mms.addEvent(tempoEvent);
+        liveAudioScroller.setColours(Colours::black, Colour(242,8,123));
 
     }
     
@@ -341,9 +335,13 @@ void DeepboxAudioProcessor::recordMidi(bool isRecording)
         midiFile.writeTo(outputStream);
         outputStream.flush();
         mms.clear();
+        liveAudioScroller.setColours(Colours::black, Colours::white);
+
     }
 
 }
+
+
 
 //==============================================================================
 // This creates new instances of the plugin..
