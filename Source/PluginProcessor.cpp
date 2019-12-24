@@ -322,7 +322,7 @@ void DeepboxAudioProcessor::recordMidi(bool isRecording)
         tempoEvent.setTimeStamp(0);
         mms.addEvent(tempoEvent);
         liveAudioScroller.setColours(Colours::black, Colour(242,8,123));
-
+        deepbox_text.setImages(false, true, true, deepbox_text_img, 1.0f, Colours::white, deepbox_text_img, 0.5f, Colours::white, deepbox_text_img, 0.5f, Colours::white);
     }
     
     else{
@@ -336,6 +336,7 @@ void DeepboxAudioProcessor::recordMidi(bool isRecording)
         outputStream.flush();
         mms.clear();
         liveAudioScroller.setColours(Colours::black, Colours::white);
+        deepbox_text.setImages(false, true, true, draglips_text_img, 1.0f, Colours::white, draglips_text_img, 0.5f, Colours::white, draglips_text_img, 0.5f, Colours::white);
 
     }
 

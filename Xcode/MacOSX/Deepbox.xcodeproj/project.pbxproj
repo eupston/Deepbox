@@ -178,12 +178,12 @@
 		DDAD3EEC231096D30006611A /* hihat.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE0231096D30006611A /* hihat.wav */; };
 		DDAD3EED231096D30006611A /* hihat.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE0231096D30006611A /* hihat.wav */; };
 		DDAD3EEE231096D30006611A /* hihat.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE0231096D30006611A /* hihat.wav */; };
-		DDAD3EEF231096D30006611A /* osdTestOne.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE1231096D30006611A /* osdTestOne.wav */; };
-		DDAD3EF0231096D30006611A /* osdTestOne.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE1231096D30006611A /* osdTestOne.wav */; };
-		DDAD3EF1231096D30006611A /* osdTestOne.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE1231096D30006611A /* osdTestOne.wav */; };
 		DDAD3EF2231096D30006611A /* snaredrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE2231096D30006611A /* snaredrum.wav */; };
 		DDAD3EF3231096D30006611A /* snaredrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE2231096D30006611A /* snaredrum.wav */; };
 		DDAD3EF4231096D30006611A /* snaredrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EE2231096D30006611A /* snaredrum.wav */; };
+		DDC88CC823B1A7E50069BECE /* draglips_text.png in Resources */ = {isa = PBXBuildFile; fileRef = DDC88CC723B1A7E50069BECE /* draglips_text.png */; };
+		DDC88CC923B1A7E50069BECE /* draglips_text.png in Resources */ = {isa = PBXBuildFile; fileRef = DDC88CC723B1A7E50069BECE /* draglips_text.png */; };
+		DDC88CCA23B1A7E50069BECE /* draglips_text.png in Resources */ = {isa = PBXBuildFile; fileRef = DDC88CC723B1A7E50069BECE /* draglips_text.png */; };
 		DDD3C27623A38ED700B1F58A /* stop_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD3C27523A38ED700B1F58A /* stop_button.png */; };
 		DDD3C27723A38ED700B1F58A /* stop_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD3C27523A38ED700B1F58A /* stop_button.png */; };
 		DDD3C27823A38ED700B1F58A /* stop_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD3C27523A38ED700B1F58A /* stop_button.png */; };
@@ -450,6 +450,7 @@
 		DDAD3EE0231096D30006611A /* hihat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hihat.wav; sourceTree = "<group>"; };
 		DDAD3EE1231096D30006611A /* osdTestOne.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = osdTestOne.wav; sourceTree = "<group>"; };
 		DDAD3EE2231096D30006611A /* snaredrum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snaredrum.wav; sourceTree = "<group>"; };
+		DDC88CC723B1A7E50069BECE /* draglips_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = draglips_text.png; sourceTree = "<group>"; };
 		DDD3C27523A38ED700B1F58A /* stop_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop_button.png; sourceTree = "<group>"; };
 		DDF4ABBA231E65E10070390B /* AudioFFT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioFFT.cpp; sourceTree = "<group>"; };
 		DDF4ABBB231E65E10070390B /* AudioFFT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFFT.h; sourceTree = "<group>"; };
@@ -684,6 +685,7 @@
 		DD0C500C23531EAB00D30775 /* imgs */ = {
 			isa = PBXGroup;
 			children = (
+				DDC88CC723B1A7E50069BECE /* draglips_text.png */,
 				DDD3C27523A38ED700B1F58A /* stop_button.png */,
 				DDFA627223A07EA000915066 /* deepbox_text.png */,
 				DD712692239E5AF00012FAF9 /* record_button.png */,
@@ -1260,7 +1262,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDFA627523A07EA000915066 /* deepbox_text.png in Resources */,
-				DDAD3EF1231096D30006611A /* osdTestOne.wav in Resources */,
 				DDAD3EE8231096D30006611A /* my_fdeep_model.json in Resources */,
 				DDAD3EEB231096D30006611A /* bassdrum.wav in Resources */,
 				DD97F29E239CFE440031BAA1 /* kick_drum_vec.png in Resources */,
@@ -1270,6 +1271,7 @@
 				DD97F298239CFE440031BAA1 /* deepbox_lips.png in Resources */,
 				DDAD3EEE231096D30006611A /* hihat.wav in Resources */,
 				DD0C501823531EAB00D30775 /* snare_icon.png in Resources */,
+				DDC88CCA23B1A7E50069BECE /* draglips_text.png in Resources */,
 				DD1EFE47230D554000A6124D /* RecentFilesMenuTemplate.nib in Resources */,
 				DD97F2A1239CFE440031BAA1 /* snare_drum_vec.png in Resources */,
 				DDAD3EF4231096D30006611A /* snaredrum.wav in Resources */,
@@ -1285,7 +1287,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDFA627423A07EA000915066 /* deepbox_text.png in Resources */,
-				DDAD3EF0231096D30006611A /* osdTestOne.wav in Resources */,
 				DDAD3EE7231096D30006611A /* my_fdeep_model.json in Resources */,
 				DDAD3EEA231096D30006611A /* bassdrum.wav in Resources */,
 				DD97F29D239CFE440031BAA1 /* kick_drum_vec.png in Resources */,
@@ -1295,6 +1296,7 @@
 				DD97F297239CFE440031BAA1 /* deepbox_lips.png in Resources */,
 				DDAD3EED231096D30006611A /* hihat.wav in Resources */,
 				DD0C501723531EAB00D30775 /* snare_icon.png in Resources */,
+				DDC88CC923B1A7E50069BECE /* draglips_text.png in Resources */,
 				DD1EFE3A230D554000A6124D /* RecentFilesMenuTemplate.nib in Resources */,
 				DD97F2A0239CFE440031BAA1 /* snare_drum_vec.png in Resources */,
 				DDAD3EF3231096D30006611A /* snaredrum.wav in Resources */,
@@ -1310,7 +1312,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDFA627323A07EA000915066 /* deepbox_text.png in Resources */,
-				DDAD3EEF231096D30006611A /* osdTestOne.wav in Resources */,
 				DDAD3EE6231096D30006611A /* my_fdeep_model.json in Resources */,
 				DDAD3EE9231096D30006611A /* bassdrum.wav in Resources */,
 				DD97F29C239CFE440031BAA1 /* kick_drum_vec.png in Resources */,
@@ -1320,6 +1321,7 @@
 				DD97F296239CFE440031BAA1 /* deepbox_lips.png in Resources */,
 				DDAD3EEC231096D30006611A /* hihat.wav in Resources */,
 				DD0C501623531EAB00D30775 /* snare_icon.png in Resources */,
+				DDC88CC823B1A7E50069BECE /* draglips_text.png in Resources */,
 				73C52EA131FAC0DCE4F94E95 /* RecentFilesMenuTemplate.nib in Resources */,
 				DD97F29F239CFE440031BAA1 /* snare_drum_vec.png in Resources */,
 				DDAD3EF2231096D30006611A /* snaredrum.wav in Resources */,

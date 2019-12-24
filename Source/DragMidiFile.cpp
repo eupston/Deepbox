@@ -14,4 +14,5 @@ void DragMidiFile::mouseDrag(const MouseEvent& e)
     auto midi_path = temp_midi_file.getFullPathName();
     sArray.add(midi_path);
     DragAndDropContainer::performExternalDragDropOfFiles(sArray, true);
+    
 }
