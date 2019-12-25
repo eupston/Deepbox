@@ -18,7 +18,9 @@ public:
     
     DragMidiFile(){};    
     void mouseDrag(const MouseEvent& e) override;
-
+    
+    ImageButton* imgBtnChangeOnDrag;
+    Image* imgChangeOnDrag;
 
 private:
     

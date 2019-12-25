@@ -33,11 +33,7 @@ public:
     ~AudioFeatureExtractor();
 
 private:
-    int frame_size;
-    int hop_size;
-    int max_sample_length;
-    int sample_rate;
-    
+
     Pool pool;
     Pool aggrPool;
     

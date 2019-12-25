@@ -24,13 +24,16 @@ DeepboxAudioProcessorEditor::DeepboxAudioProcessorEditor (DeepboxAudioProcessor&
     auto record_button_img = ImageCache::getFromFile(File::getSpecialLocation(File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/record_button.png").getFullPathName());
     auto stop_button_img = ImageCache::getFromFile(File::getSpecialLocation(File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/stop_button.png").getFullPathName());
     
-    midiDrag.setImages(false, true, true, deepbox_lips_img, 1.0f, Colours::white, deepbox_lips_img, 0.5f, Colours::white, deepbox_lips_img, 0.5f, Colours::blueviolet);
+    midiDrag.setImages(false, true, true, deepbox_lips_img, 1.0f, Colours::white, deepbox_lips_img, 0.5f, Colours::white, deepbox_lips_img, 0.5f, Colour(242,8,123));
     recordButton.setImages(false, true, true, record_button_img, 1.0f, Colour(242,8,123), record_button_img, 0.5f, Colours::mediumvioletred, stop_button_img, 0.5f, Colour(242,8,123));
     processor.deepbox_text.setImages(false, true, true, processor.deepbox_text_img, 1.0f, Colours::white, processor.deepbox_text_img, 0.5f, Colours::white, processor.deepbox_text_img, 0.5f, Colours::white);
     processor.mykickButton.setImages(false, true, true, kickImg, 1.0f, Colours::white, kickImg, 0.5f, Colours::mediumvioletred, kickImg, 0.5f, Colours::violet);
     processor.mysnareButton.setImages(false, true, true, snareImg, 1.0f, Colours::white, snareImg, 0.5f, Colours::mediumvioletred, snareImg, 0.5f, Colours::violet);
     processor.myhihatButton.setImages(false, true, true, hihatImg, 1.0f, Colours::white, hihatImg, 0.5f, Colours::mediumvioletred, hihatImg, 0.5f, Colours::violet);
-        
+
+    midiDrag.imgBtnChangeOnDrag = &processor.deepbox_text;
+    midiDrag.imgChangeOnDrag = &processor.deepbox_text_img;
+    
     recordButton.setClickingTogglesState(true);
     recordButton.onClick = [this] { processor.recordMidi(recordButton.getToggleState());};
     
