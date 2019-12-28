@@ -154,6 +154,9 @@
 		DD712693239E5AF00012FAF9 /* record_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DD712692239E5AF00012FAF9 /* record_button.png */; };
 		DD712694239E5AF00012FAF9 /* record_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DD712692239E5AF00012FAF9 /* record_button.png */; };
 		DD712695239E5AF00012FAF9 /* record_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DD712692239E5AF00012FAF9 /* record_button.png */; };
+		DD818FC523B766D600ECAB86 /* my_deepbox_model.json in Resources */ = {isa = PBXBuildFile; fileRef = DD818FC423B766D600ECAB86 /* my_deepbox_model.json */; };
+		DD818FC623B766D600ECAB86 /* my_deepbox_model.json in Resources */ = {isa = PBXBuildFile; fileRef = DD818FC423B766D600ECAB86 /* my_deepbox_model.json */; };
+		DD818FC723B766D600ECAB86 /* my_deepbox_model.json in Resources */ = {isa = PBXBuildFile; fileRef = DD818FC423B766D600ECAB86 /* my_deepbox_model.json */; };
 		DD97F296239CFE440031BAA1 /* deepbox_lips.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F292239CFE430031BAA1 /* deepbox_lips.png */; };
 		DD97F297239CFE440031BAA1 /* deepbox_lips.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F292239CFE430031BAA1 /* deepbox_lips.png */; };
 		DD97F298239CFE440031BAA1 /* deepbox_lips.png in Resources */ = {isa = PBXBuildFile; fileRef = DD97F292239CFE430031BAA1 /* deepbox_lips.png */; };
@@ -439,6 +442,7 @@
 		DD2DAFC2230EAF0D0049958C /* libfftw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfftw3.a; path = ../../../../../../../../../../usr/local/Cellar/fftw/3.3.8_1/lib/libfftw3.a; sourceTree = "<group>"; };
 		DD71268E239E590D0012FAF9 /* deepbox_lips_inverse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deepbox_lips_inverse.png; sourceTree = "<group>"; };
 		DD712692239E5AF00012FAF9 /* record_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record_button.png; sourceTree = "<group>"; };
+		DD818FC423B766D600ECAB86 /* my_deepbox_model.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = my_deepbox_model.json; path = ../../../ModelCreation/models/my_deepbox_model.json; sourceTree = "<group>"; };
 		DD8AE9DD234F1EBF00BEA7C7 /* AudioLiveScrollingDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioLiveScrollingDisplay.h; sourceTree = "<group>"; };
 		DD97F292239CFE430031BAA1 /* deepbox_lips.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deepbox_lips.png; sourceTree = "<group>"; };
 		DD97F293239CFE440031BAA1 /* hihat_vec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hihat_vec.png; sourceTree = "<group>"; };
@@ -910,6 +914,7 @@
 		DDAD3EDC231096D30006611A /* models */ = {
 			isa = PBXGroup;
 			children = (
+				DD818FC423B766D600ECAB86 /* my_deepbox_model.json */,
 				DDAD3EDD231096D30006611A /* my_fdeep_model.json */,
 			);
 			path = models;
@@ -1279,6 +1284,7 @@
 				DD0C501223531EAB00D30775 /* hihat_icon.png in Resources */,
 				DD712695239E5AF00012FAF9 /* record_button.png in Resources */,
 				DD97F29B239CFE440031BAA1 /* hihat_vec.png in Resources */,
+				DD818FC723B766D600ECAB86 /* my_deepbox_model.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1304,6 +1310,7 @@
 				DD0C501123531EAB00D30775 /* hihat_icon.png in Resources */,
 				DD712694239E5AF00012FAF9 /* record_button.png in Resources */,
 				DD97F29A239CFE440031BAA1 /* hihat_vec.png in Resources */,
+				DD818FC623B766D600ECAB86 /* my_deepbox_model.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1329,6 +1336,7 @@
 				DD0C501023531EAB00D30775 /* hihat_icon.png in Resources */,
 				DD712693239E5AF00012FAF9 /* record_button.png in Resources */,
 				DD97F299239CFE440031BAA1 /* hihat_vec.png in Resources */,
+				DD818FC523B766D600ECAB86 /* my_deepbox_model.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

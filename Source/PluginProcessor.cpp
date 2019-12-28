@@ -157,7 +157,7 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
     
     if(onset_detected && db > current_onset_threshold && onset_below_floor_threshold){
         onset_below_floor_threshold = false;
-        AudioFeatureExtractor my_audio_feature_exractor = AudioFeatureExtractor(512, 64, 1024, 44100);
+        AudioFeatureExtractor my_audio_feature_exractor = AudioFeatureExtractor(512, 64, 44100);
         my_audio_feature_exractor.load_audio_buffer(buffer);
         my_audio_feature_exractor.compute_algorithms();
         audio_features = my_audio_feature_exractor.compute_mean_features();

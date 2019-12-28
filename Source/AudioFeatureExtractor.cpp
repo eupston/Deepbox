@@ -7,7 +7,7 @@
 
 #include "AudioFeatureExtractor.hpp"
 
-AudioFeatureExtractor::AudioFeatureExtractor(int frame_size, int hop_size, int max_sample_length, int sample_rate)
+AudioFeatureExtractor::AudioFeatureExtractor(int frame_size, int hop_size, int sample_rate)
 {
     essentia::init();
     AlgorithmFactory& factory = standard::AlgorithmFactory::instance();
