@@ -108,7 +108,7 @@ private:
     int samples_Per_Block;
     float floor_onset_threshold = -25;
     bool onset_below_floor_threshold = true;
-    fdeep::model mymodel{fdeep::load_model(File::getSpecialLocation(File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/my_fdeep_model.json").getFullPathName().toStdString())};
+    fdeep::model mymodel{fdeep::load_model(File::getSpecialLocation(File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/my_deepbox_model_v2.json").getFullPathName().toStdString())};
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DeepboxAudioProcessor)
