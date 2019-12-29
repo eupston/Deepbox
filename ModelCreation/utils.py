@@ -123,14 +123,14 @@ def extract_feature(file_name):
 
 
 def essentia_extract_feature(path_to_audio_file, pad_zeros=False, max_sample_size=0):
-    """Generates feature input (mfccs, melband_log, spectral contrast)."""
+    """Generates feature input (mfccs, energyband, melband_log, spectral contrast)."""
     w = Windowing(type='hann')
     spectrum = Spectrum()
     mfcc = MFCC()
     logNorm = UnaryOperator(type='log')
     framesize = 512
     specContrast = SpectralContrast(frameSize=int(framesize+1))
-    energybandhigh = EnergyBand(startCutoffFrequency=1000, stopCutoffFrequency=7000)
+    energybandhigh = EnergyBand(startCutoffFrequency=1000, stopCutoffFrequency=8000)
     energybandlow = EnergyBand(startCutoffFrequency=100, stopCutoffFrequency=700)
     loader = essentia.standard.EqloudLoader(filename=path_to_audio_file,replayGain=-2)
     audio = loader()
@@ -145,7 +145,6 @@ def essentia_extract_feature(path_to_audio_file, pad_zeros=False, max_sample_siz
     melbands_log = []
     spec_contrast = []
     energy_band_high = []
-    energy_band_mid = []
     energy_band_low = []
     for frame in FrameGenerator(audio, frameSize=framesize, hopSize=64, startFromZero=True):
         mfcc_bands, mfcc_coeffs = mfcc(spectrum(w(frame)))

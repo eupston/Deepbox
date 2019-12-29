@@ -2,12 +2,14 @@ import keras
 from models import *
 from utils import *
 from keras.models import load_model
+import fdeepConvertModel
 
 #------------ Global variables ---------------
 
 dataset_path = "/Volumes/Macintosh HD/Users/macuser/Desktop/Datasets/myBeatBoxDataset/Train"
 test_dataset_path = "/Volumes/Macintosh HD/Users/macuser/Desktop/Datasets/myBeatBoxDataset/Test"
 model_path = 'models/my_deepbox_model_v2.h5'
+fdeep_model_path = 'models/my_deepbox_model_v2.json'
 
 #------------ Train ---------------
 def train_model(dataset_path):
@@ -27,11 +29,10 @@ def load_keras_model(model_path):
     return model
 
 # ---------- Single Prediction -----------------
-def single_prediction():
+def single_prediction(model):
     test_data = []
-    x_data = essentia_extract_feature("/Volumes/Macintosh HD/Users/macuser/Desktop/Datasets/myBeatBoxDataset/mytestset/snare/snare3.wav", pad_zeros=True, max_sample_size=512)
+    x_data = essentia_extract_feature("/Volumes/Macintosh HD/Users/macuser/Desktop/Datasets/myBeatBoxDataset/Test/deepbox_debug.wav", pad_zeros=True, max_sample_size=1024)
     test_data.append(x_data)
-    x_data = np.array(test_data, dtype=np.float32)
     test_data = np.expand_dims(test_data, axis=2)
     for item in test_data[0]:
         print(str(item[0]) + ",")
@@ -50,7 +51,13 @@ def evaluate_test_set(model, test_dataset_path):
 
 
 if __name__ == "__main__":
-    model = train_model(dataset_path)
-    save_keras_model(model, model_path)
+    # model = train_model(dataset_path)
+    # save_keras_model(model, model_path)
+    # model = load_keras_model(model_path)
+    # evaluate_test_set(model, test_dataset_path)
+    # #
     model = load_keras_model(model_path)
-    evaluate_test_set(model, test_dataset_path)
+    single_prediction(model)
+
+    #convert to fdeep json model
+    # fdeepConvertModel.convert(model_path, fdeep_model_path)
