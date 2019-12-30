@@ -146,7 +146,13 @@
 		DD2DAFCF230EB0A20049958C /* libtag.1.17.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE5C230D571200A6124D /* libtag.1.17.0.dylib */; };
 		DD2DAFD0230EB0A20049958C /* libvorbis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE59230D571200A6124D /* libvorbis.a */; };
 		DD2DAFD1230EB0A20049958C /* libyaml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE5E230D571200A6124D /* libyaml.a */; };
+		DD47191D23BA027C00CD61BC /* my_deepbox_model_v4.json in Resources */ = {isa = PBXBuildFile; fileRef = DD47191C23BA027B00CD61BC /* my_deepbox_model_v4.json */; };
+		DD47191E23BA027C00CD61BC /* my_deepbox_model_v4.json in Resources */ = {isa = PBXBuildFile; fileRef = DD47191C23BA027B00CD61BC /* my_deepbox_model_v4.json */; };
+		DD47191F23BA027C00CD61BC /* my_deepbox_model_v4.json in Resources */ = {isa = PBXBuildFile; fileRef = DD47191C23BA027B00CD61BC /* my_deepbox_model_v4.json */; };
 		DD55403353A352AF9A6F24CD /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520802D022A6D4838F78FC9D /* Carbon.framework */; };
+		DD6E17E523B9C6C700C49B32 /* my_deepbox_model_v3.json in Resources */ = {isa = PBXBuildFile; fileRef = DD6E17E423B9C6C600C49B32 /* my_deepbox_model_v3.json */; };
+		DD6E17E623B9C6C700C49B32 /* my_deepbox_model_v3.json in Resources */ = {isa = PBXBuildFile; fileRef = DD6E17E423B9C6C600C49B32 /* my_deepbox_model_v3.json */; };
+		DD6E17E723B9C6C700C49B32 /* my_deepbox_model_v3.json in Resources */ = {isa = PBXBuildFile; fileRef = DD6E17E423B9C6C600C49B32 /* my_deepbox_model_v3.json */; };
 		DD6F201F2311492E009F0197 /* libfftw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2DAFC2230EAF0D0049958C /* libfftw3.a */; };
 		DD71268F239E590D0012FAF9 /* deepbox_lips_inverse.png in Resources */ = {isa = PBXBuildFile; fileRef = DD71268E239E590D0012FAF9 /* deepbox_lips_inverse.png */; };
 		DD712690239E590D0012FAF9 /* deepbox_lips_inverse.png in Resources */ = {isa = PBXBuildFile; fileRef = DD71268E239E590D0012FAF9 /* deepbox_lips_inverse.png */; };
@@ -443,6 +449,8 @@
 		DD2DAFA1230EAD060049958C /* libtag.1.17.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtag.1.17.0.dylib; path = ../../../../../../../../../../usr/local/lib/essentia_libs/libtag.1.17.0.dylib; sourceTree = "<group>"; };
 		DD2DAFA2230EAD060049958C /* libvorbis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvorbis.a; path = ../../../../../../../../../../usr/local/lib/essentia_libs/libvorbis.a; sourceTree = "<group>"; };
 		DD2DAFC2230EAF0D0049958C /* libfftw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfftw3.a; path = ../../../../../../../../../../usr/local/Cellar/fftw/3.3.8_1/lib/libfftw3.a; sourceTree = "<group>"; };
+		DD47191C23BA027B00CD61BC /* my_deepbox_model_v4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = my_deepbox_model_v4.json; sourceTree = "<group>"; };
+		DD6E17E423B9C6C600C49B32 /* my_deepbox_model_v3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = my_deepbox_model_v3.json; sourceTree = "<group>"; };
 		DD71268E239E590D0012FAF9 /* deepbox_lips_inverse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deepbox_lips_inverse.png; sourceTree = "<group>"; };
 		DD712692239E5AF00012FAF9 /* record_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record_button.png; sourceTree = "<group>"; };
 		DD818FC423B766D600ECAB86 /* my_deepbox_model.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = my_deepbox_model.json; path = ../../../ModelCreation/models/my_deepbox_model.json; sourceTree = "<group>"; };
@@ -455,7 +463,6 @@
 		DD818FD323B7793200ECAB86 /* models.cpython-36.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "models.cpython-36.pyc"; sourceTree = "<group>"; };
 		DD818FD423B7793200ECAB86 /* utils.cpython-36.pyc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "utils.cpython-36.pyc"; sourceTree = "<group>"; };
 		DD818FD523B7793200ECAB86 /* CNNAudioClassifer.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = CNNAudioClassifer.py; sourceTree = "<group>"; };
-		DD818FD623B7793200ECAB86 /* ConvertModel.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ConvertModel.py; sourceTree = "<group>"; };
 		DD818FD823B7793200ECAB86 /* my_deepbox_model.h5 */ = {isa = PBXFileReference; lastKnownFileType = file; path = my_deepbox_model.h5; sourceTree = "<group>"; };
 		DD818FD923B7793200ECAB86 /* my_deepbox_model.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = my_deepbox_model.json; sourceTree = "<group>"; };
 		DD818FDA23B7793200ECAB86 /* my_deepbox_model_v2.h5 */ = {isa = PBXFileReference; lastKnownFileType = file; path = my_deepbox_model_v2.h5; sourceTree = "<group>"; };
@@ -14902,7 +14909,6 @@
 		DDAD3EDD231096D30006611A /* my_fdeep_model.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = my_fdeep_model.json; sourceTree = "<group>"; };
 		DDAD3EDF231096D30006611A /* bassdrum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bassdrum.wav; sourceTree = "<group>"; };
 		DDAD3EE0231096D30006611A /* hihat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hihat.wav; sourceTree = "<group>"; };
-		DDAD3EE1231096D30006611A /* osdTestOne.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = osdTestOne.wav; sourceTree = "<group>"; };
 		DDAD3EE2231096D30006611A /* snaredrum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snaredrum.wav; sourceTree = "<group>"; };
 		DDC88CC723B1A7E50069BECE /* draglips_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = draglips_text.png; sourceTree = "<group>"; };
 		DDD3C27523A38ED700B1F58A /* stop_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop_button.png; sourceTree = "<group>"; };
@@ -15350,7 +15356,6 @@
 				DD818FD223B7793200ECAB86 /* __pycache__ */,
 				DD818FD523B7793200ECAB86 /* CNNAudioClassifer.py */,
 				DD818FD723B7793200ECAB86 /* models */,
-				DD818FD623B7793200ECAB86 /* ConvertModel.py */,
 				DD818FDC23B7793200ECAB86 /* models.py */,
 				DD818FDD23B7793200ECAB86 /* README.md */,
 				DD818FDE23B7793200ECAB86 /* requirements.txt */,
@@ -48475,6 +48480,8 @@
 		DDAD3EDC231096D30006611A /* models */ = {
 			isa = PBXGroup;
 			children = (
+				DD47191C23BA027B00CD61BC /* my_deepbox_model_v4.json */,
+				DD6E17E423B9C6C600C49B32 /* my_deepbox_model_v3.json */,
 				DD81D15C23B77BD100ECAB86 /* my_deepbox_model_v2.json */,
 				DD818FC423B766D600ECAB86 /* my_deepbox_model.json */,
 				DDAD3EDD231096D30006611A /* my_fdeep_model.json */,
@@ -48487,7 +48494,6 @@
 			children = (
 				DDAD3EDF231096D30006611A /* bassdrum.wav */,
 				DDAD3EE0231096D30006611A /* hihat.wav */,
-				DDAD3EE1231096D30006611A /* osdTestOne.wav */,
 				DDAD3EE2231096D30006611A /* snaredrum.wav */,
 			);
 			path = wavs;
@@ -48836,8 +48842,10 @@
 				DD0C501523531EAB00D30775 /* kick_drum_icon.png in Resources */,
 				DDAD3EE5231096D30006611A /* beatbox.mid in Resources */,
 				DD81D15F23B77BD100ECAB86 /* my_deepbox_model_v2.json in Resources */,
+				DD6E17E723B9C6C700C49B32 /* my_deepbox_model_v3.json in Resources */,
 				DD97F298239CFE440031BAA1 /* deepbox_lips.png in Resources */,
 				DDAD3EEE231096D30006611A /* hihat.wav in Resources */,
+				DD47191F23BA027C00CD61BC /* my_deepbox_model_v4.json in Resources */,
 				DD0C501823531EAB00D30775 /* snare_icon.png in Resources */,
 				DDC88CCA23B1A7E50069BECE /* draglips_text.png in Resources */,
 				DD1EFE47230D554000A6124D /* RecentFilesMenuTemplate.nib in Resources */,
@@ -48863,8 +48871,10 @@
 				DD0C501423531EAB00D30775 /* kick_drum_icon.png in Resources */,
 				DDAD3EE4231096D30006611A /* beatbox.mid in Resources */,
 				DD81D15E23B77BD100ECAB86 /* my_deepbox_model_v2.json in Resources */,
+				DD6E17E623B9C6C700C49B32 /* my_deepbox_model_v3.json in Resources */,
 				DD97F297239CFE440031BAA1 /* deepbox_lips.png in Resources */,
 				DDAD3EED231096D30006611A /* hihat.wav in Resources */,
+				DD47191E23BA027C00CD61BC /* my_deepbox_model_v4.json in Resources */,
 				DD0C501723531EAB00D30775 /* snare_icon.png in Resources */,
 				DDC88CC923B1A7E50069BECE /* draglips_text.png in Resources */,
 				DD1EFE3A230D554000A6124D /* RecentFilesMenuTemplate.nib in Resources */,
@@ -48890,8 +48900,10 @@
 				DD0C501323531EAB00D30775 /* kick_drum_icon.png in Resources */,
 				DDAD3EE3231096D30006611A /* beatbox.mid in Resources */,
 				DD81D15D23B77BD100ECAB86 /* my_deepbox_model_v2.json in Resources */,
+				DD6E17E523B9C6C700C49B32 /* my_deepbox_model_v3.json in Resources */,
 				DD97F296239CFE440031BAA1 /* deepbox_lips.png in Resources */,
 				DDAD3EEC231096D30006611A /* hihat.wav in Resources */,
+				DD47191D23BA027C00CD61BC /* my_deepbox_model_v4.json in Resources */,
 				DD0C501623531EAB00D30775 /* snare_icon.png in Resources */,
 				DDC88CC823B1A7E50069BECE /* draglips_text.png in Resources */,
 				73C52EA131FAC0DCE4F94E95 /* RecentFilesMenuTemplate.nib in Resources */,

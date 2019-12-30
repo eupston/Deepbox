@@ -62,6 +62,7 @@ def create_audio_train_test_dataset_audio_features(path_to_audio_files, test_siz
         current_audio_folder = path_to_audio_files + "/" + audio_category
         for wav_file in recursively_find_files(current_audio_folder, '*.wav'):
             audio_features = essentia_extract_feature(wav_file, pad_zeros=True, max_sample_size=largest_sample_size)
+            print("Processing wav file:" + wav_file, " Audio Feature length: " + str(len(audio_features)))
             X.append(audio_features)
             y.append(index_of_classname(audio_category, audio_folder_names))
     X = np.array(X, dtype=np.float32)
@@ -132,7 +133,7 @@ def essentia_extract_feature(path_to_audio_file, pad_zeros=False, max_sample_siz
     specContrast = SpectralContrast(frameSize=int(framesize+1))
     energybandhigh = EnergyBand(startCutoffFrequency=1000, stopCutoffFrequency=8000)
     energybandlow = EnergyBand(startCutoffFrequency=100, stopCutoffFrequency=700)
-    loader = essentia.standard.EqloudLoader(filename=path_to_audio_file,replayGain=-2)
+    loader = essentia.standard.EqloudLoader(filename=path_to_audio_file)
     audio = loader()
     if pad_zeros:
         if len(audio) < max_sample_size:

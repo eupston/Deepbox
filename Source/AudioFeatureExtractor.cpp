@@ -20,7 +20,8 @@ AudioFeatureExtractor::AudioFeatureExtractor(int frame_size, int hop_size, int s
     specContrast  = factory.create("SpectralContrast", "frameSize", frame_size + 1);
     energyband_high  = factory.create("EnergyBand", "startCutoffFrequency", 1000, "stopCutoffFrequency", 8000);
     energyband_low  = factory.create("EnergyBand", "startCutoffFrequency", 100, "stopCutoffFrequency", 700);
-    
+    eqloud     = factory.create("EqualLoudness");
+
     const char* stats[] = { "mean", "var", "min", "max" };
     aggr = AlgorithmFactory::create("PoolAggregator",
                                     "defaultStats", arrayToVector<string>(stats));
@@ -29,42 +30,36 @@ AudioFeatureExtractor::AudioFeatureExtractor(int frame_size, int hop_size, int s
 };
 
 
-vector<Real> AudioFeatureExtractor::load_audio_buffer(vector<float> buffer)
+vector<Real> AudioFeatureExtractor::load_audio_buffer(AudioBuffer<float> buffer)
 {
-    vector<Real> audio_buffer;
     int max_sample_size = 1024;
-//    float* start = buffer.getWritePointer(0); // get the pointer to the first sample of the first channel
-//    int size = buffer.getNumSamples();
-    int size = buffer.size();
+    float* start = buffer.getWritePointer(0); // get the pointer to the first sample of the first channel
+    int size = buffer.getNumSamples();
     if (size < max_sample_size){
         // get an array of padded zeros
         int padded_zeros_size =  max_sample_size - size;
         vector<Real> padded_zero{static_cast<float>(padded_zeros_size)};
-        
+
         //create audio_buffer vector<Real>
-//        vector<Real> audio_buffer(start, start + max_sample_size); // this will copy the data as a vector
-        for (int i=0; i<buffer.size(); i++){
-            audio_buffer.push_back(buffer[i]);
-        }
-        
+        vector<Real> audio_buffer(start, start + max_sample_size); // this will copy the data as a vector
         // append array of padded zeros to audio_buffer
-        audio_buffer.insert(audio_buffer.end(), padded_zero.begin(), padded_zero.end());
+        audio_buffer.insert(audio_buffer.end(), padded_zero.begin(), padded_zero.end()-1);
         audiobuffer = audio_buffer;
     }
     else{
-//        vector<Real> audio_buffer(start, start + max_sample_size); // this will copy the data as a vector
-        for (int i=0; i<buffer.size(); i++){
-            audio_buffer.push_back(buffer[i]);
-        }
-        
+        vector<Real> audio_buffer(start, start + max_sample_size); // this will copy the data as a vector
         audiobuffer = audio_buffer;
     }
-        
+    std::cout << "audiobuffer.size()" + std::to_string(audiobuffer.size()) << std::endl;
+
     return audiobuffer;
 };
 
 
 void AudioFeatureExtractor::connect_buffer_to_algorithms(){
+    eqloud->input("signal").set(audiobuffer);
+    eqloud->output("signal").set(audiobuffer);
+
     fc->input("signal").set(audiobuffer); // initialize framecutter with signal
     
     fc->output("frame").set(frame);// set framecutter output with the frame
@@ -99,6 +94,7 @@ void AudioFeatureExtractor::connect_buffer_to_algorithms(){
 
 void AudioFeatureExtractor::compute_algorithms()
 {
+    eqloud->compute();
     while (true) {
         // compute a frame
         fc->compute();
@@ -154,9 +150,6 @@ vector<float> AudioFeatureExtractor::compute_mean_features()
     audio_features.push_back(energyhigh_mean);
     audio_features.push_back(energylow_mean);
     
-//    for(auto feature : audio_features){
-//        std::cout << feature << std::endl;
-//    }
     return audio_features;
     
 };
@@ -172,6 +165,7 @@ AudioFeatureExtractor::~AudioFeatureExtractor()
     delete specContrast;
     delete energyband_low;
     delete energyband_high;
+    delete eqloud;
     essentia::shutdown();
     
 

@@ -25,7 +25,7 @@ public:
     
     AudioFeatureExtractor(int frame_size, int hop_size, int sample_rate=44100);
     
-    vector<Real> load_audio_buffer(vector<float> buffer);
+    vector<Real> load_audio_buffer(AudioBuffer<float> buffer);
     void connect_buffer_to_algorithms();
     void compute_algorithms();
     vector<float> compute_mean_features();
@@ -46,6 +46,7 @@ private:
     Algorithm* energyband_high;
     Algorithm* energyband_low;
     Algorithm* aggr;
+    Algorithm* eqloud;
     
     vector<Real> audiobuffer;
     vector<Real> spectrum, mfccCoeffs, mfccBands, mfccBandsLog;
