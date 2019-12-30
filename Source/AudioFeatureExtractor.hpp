@@ -23,9 +23,9 @@ class AudioFeatureExtractor{
     
 public:
     
-    AudioFeatureExtractor(int frame_size, int hop_size, int max_sample_length, int sample_rate=44100);
+    AudioFeatureExtractor(int frame_size, int hop_size, int sample_rate=44100);
     
-    vector<Real> load_audio_buffer(AudioBuffer<float>& buffer);
+    vector<Real> load_audio_buffer(AudioBuffer<float> buffer);
     void connect_buffer_to_algorithms();
     void compute_algorithms();
     vector<float> compute_mean_features();
@@ -33,11 +33,7 @@ public:
     ~AudioFeatureExtractor();
 
 private:
-    int frame_size;
-    int hop_size;
-    int max_sample_length;
-    int sample_rate;
-    
+
     Pool pool;
     Pool aggrPool;
     
@@ -47,15 +43,16 @@ private:
     Algorithm* spec;
     Algorithm* mfcc;
     Algorithm* specContrast;
-    Algorithm* energyband;
+    Algorithm* energyband_high;
     Algorithm* energyband_low;
     Algorithm* aggr;
+    Algorithm* eqloud;
     
     vector<Real> audiobuffer;
     vector<Real> spectrum, mfccCoeffs, mfccBands, mfccBandsLog;
     vector<Real> spectralContrast, spectralValley;
     vector<Real> frame, windowedFrame;
-    Real energy_freq_band_low, energy_freq_band;
+    Real energy_freq_band_low, energy_freq_band_high;
 
 };
 

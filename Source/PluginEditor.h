@@ -30,7 +30,6 @@ public:
 
 private:
     ImageButton recordButton{"record"};
-    ImageButton deepbox_text{"deepbox"};
     DragMidiFile midiDrag;
     DeepboxAudioProcessor& processor;
     

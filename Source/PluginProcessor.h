@@ -83,6 +83,9 @@ public:
     ImageButton mykickButton{"kick"};
     ImageButton mysnareButton{"snare"};
     ImageButton myhihatButton{"hihat"};
+    ImageButton deepbox_text{"deepbox"};
+    Image deepbox_text_img = ImageCache::getFromFile(File::getSpecialLocation(File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/deepbox_text.png").getFullPathName());
+    Image draglips_text_img = ImageCache::getFromFile(File::getSpecialLocation(File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/draglips_text.png").getFullPathName());
 
 private:
     
@@ -105,8 +108,9 @@ private:
     int samples_Per_Block;
     float floor_onset_threshold = -25;
     bool onset_below_floor_threshold = true;
-    fdeep::model mymodel{fdeep::load_model(File::getSpecialLocation(File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/my_fdeep_model.json").getFullPathName().toStdString())};
-
+    const std::vector<std::string> drum_classes{"hihat","kick","snare"};
+    fdeep::model mymodel{fdeep::load_model(File::getSpecialLocation(File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/my_deepbox_model_v4.json").getFullPathName().toStdString())};
+    int current_wav_number = 0;
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DeepboxAudioProcessor)
 };

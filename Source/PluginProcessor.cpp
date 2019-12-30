@@ -145,7 +145,6 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
     ScopedNoDenormals noDenormals;
     my_onset_detector.initialize(samples_Per_Block, sample_Rate);
     vector<float> audio_features;
-    
     float mag = buffer.getMagnitude(0, 0, buffer.getNumSamples());
     float db = Decibels::gainToDecibels(mag);
     float current_onset_threshold = onset_threshold_slider.getValue();
@@ -157,7 +156,7 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
     
     if(onset_detected && db > current_onset_threshold && onset_below_floor_threshold){
         onset_below_floor_threshold = false;
-        AudioFeatureExtractor my_audio_feature_exractor = AudioFeatureExtractor(512, 64, 1024, 44100);
+        AudioFeatureExtractor my_audio_feature_exractor = AudioFeatureExtractor(512, 64, sample_Rate);
         my_audio_feature_exractor.load_audio_buffer(buffer);
         my_audio_feature_exractor.compute_algorithms();
         audio_features = my_audio_feature_exractor.compute_mean_features();
@@ -167,8 +166,8 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
         const auto result = mymodel.predict({fdeep::tensor5(input_shape, audio_features_ptr)});
         std::vector<float> result_vec = *result.front().as_vector();
         int prediction_index = std::distance(result_vec.begin(), std::max_element(result_vec.begin(), result_vec.end()));
-        std::vector<std::string> drum_classes{"hihat","kick","snare"};
         std::string drum_prediction = drum_classes[prediction_index];
+        std::cout << "prediction result: " + fdeep::show_tensor5s(result) << std::endl;
         std::cout << "drum_prediction: " << drum_prediction << std::endl;
 
         if(drum_prediction == "kick"){
@@ -183,6 +182,23 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
             myhihatButton.triggerClick();
         }
 
+            //---- debugging ----
+
+            File file = File::getSpecialLocation( File::SpecialLocationType::userDesktopDirectory).getChildFile( "debug_deepbox.wav" );
+
+            WavAudioFormat format;
+            std::unique_ptr<AudioFormatWriter> writer;
+            writer.reset (format.createWriterFor (new FileOutputStream (file),
+                                                  sample_Rate,
+                                                  1,
+                                                  24,
+                                                  {},
+                                                  0));
+            if (writer != nullptr)
+                writer->writeFromAudioSampleBuffer (buffer, 0, buffer.getNumSamples());
+            current_wav_number++;
+//        ----------------------
+        
     }
     // update tempo and ms per ticks
     playHead = this->getPlayHead();
@@ -322,7 +338,7 @@ void DeepboxAudioProcessor::recordMidi(bool isRecording)
         tempoEvent.setTimeStamp(0);
         mms.addEvent(tempoEvent);
         liveAudioScroller.setColours(Colours::black, Colour(242,8,123));
-
+        deepbox_text.setImages(false, true, true, deepbox_text_img, 1.0f, Colours::white, deepbox_text_img, 0.5f, Colours::white, deepbox_text_img, 0.5f, Colours::white);
     }
     
     else{
@@ -336,6 +352,7 @@ void DeepboxAudioProcessor::recordMidi(bool isRecording)
         outputStream.flush();
         mms.clear();
         liveAudioScroller.setColours(Colours::black, Colours::white);
+        deepbox_text.setImages(false, true, true, draglips_text_img, 1.0f, Colours::white, draglips_text_img, 0.5f, Colours::white, draglips_text_img, 0.5f, Colours::white);
 
     }
 

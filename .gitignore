@@ -3,3 +3,6 @@ Xcode/MacOSX/Deepbox.xcodeproj/project.xcworkspace/xcuserdata/eupston.xcuserdata
 Xcode/MacOSX/.DS_Store
 .DS_Store
 Xcode/MacOSX/build/Debug
+.idea/
+__pycache__
+ModelCreation/venv
