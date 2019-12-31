@@ -30,28 +30,13 @@ AudioFeatureExtractor::AudioFeatureExtractor(int frame_size, int hop_size, int s
 };
 
 
-vector<Real> AudioFeatureExtractor::load_audio_buffer(AudioBuffer<float> buffer)
+vector<Real> AudioFeatureExtractor::load_audio_buffer(std::vector<float> buffer)
 {
-    int max_sample_size = 1024;
-    float* start = buffer.getWritePointer(0); // get the pointer to the first sample of the first channel
-    int size = buffer.getNumSamples();
-    if (size < max_sample_size){
-        // get an array of padded zeros
-        int padded_zeros_size =  max_sample_size - size;
-        vector<Real> padded_zero{static_cast<float>(padded_zeros_size)};
-
-        //create audio_buffer vector<Real>
-        vector<Real> audio_buffer(start, start + max_sample_size); // this will copy the data as a vector
-        // append array of padded zeros to audio_buffer
-        audio_buffer.insert(audio_buffer.end(), padded_zero.begin(), padded_zero.end()-1);
-        audiobuffer = audio_buffer;
+    vector<Real> audio_buffer;
+    for(auto sample : buffer){
+        audio_buffer.push_back(sample);
     }
-    else{
-        vector<Real> audio_buffer(start, start + max_sample_size); // this will copy the data as a vector
-        audiobuffer = audio_buffer;
-    }
-    std::cout << "audiobuffer.size()" + std::to_string(audiobuffer.size()) << std::endl;
-
+    audiobuffer = audio_buffer;
     return audiobuffer;
 };
 
@@ -149,6 +134,7 @@ vector<float> AudioFeatureExtractor::compute_mean_features()
     }
     audio_features.push_back(energyhigh_mean);
     audio_features.push_back(energylow_mean);
+    
     
     return audio_features;
     

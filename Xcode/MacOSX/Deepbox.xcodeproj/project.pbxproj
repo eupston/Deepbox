@@ -181,9 +181,6 @@
 		DDAD3EE3231096D30006611A /* beatbox.mid in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDB231096D30006611A /* beatbox.mid */; };
 		DDAD3EE4231096D30006611A /* beatbox.mid in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDB231096D30006611A /* beatbox.mid */; };
 		DDAD3EE5231096D30006611A /* beatbox.mid in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDB231096D30006611A /* beatbox.mid */; };
-		DDAD3EE6231096D30006611A /* my_fdeep_model.json in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDD231096D30006611A /* my_fdeep_model.json */; };
-		DDAD3EE7231096D30006611A /* my_fdeep_model.json in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDD231096D30006611A /* my_fdeep_model.json */; };
-		DDAD3EE8231096D30006611A /* my_fdeep_model.json in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDD231096D30006611A /* my_fdeep_model.json */; };
 		DDAD3EE9231096D30006611A /* bassdrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDF231096D30006611A /* bassdrum.wav */; };
 		DDAD3EEA231096D30006611A /* bassdrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDF231096D30006611A /* bassdrum.wav */; };
 		DDAD3EEB231096D30006611A /* bassdrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DDAD3EDF231096D30006611A /* bassdrum.wav */; };
@@ -48835,7 +48832,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDFA627523A07EA000915066 /* deepbox_text.png in Resources */,
-				DDAD3EE8231096D30006611A /* my_fdeep_model.json in Resources */,
 				DDAD3EEB231096D30006611A /* bassdrum.wav in Resources */,
 				DD97F29E239CFE440031BAA1 /* kick_drum_vec.png in Resources */,
 				DDD3C27823A38ED700B1F58A /* stop_button.png in Resources */,
@@ -48864,7 +48860,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDFA627423A07EA000915066 /* deepbox_text.png in Resources */,
-				DDAD3EE7231096D30006611A /* my_fdeep_model.json in Resources */,
 				DDAD3EEA231096D30006611A /* bassdrum.wav in Resources */,
 				DD97F29D239CFE440031BAA1 /* kick_drum_vec.png in Resources */,
 				DDD3C27723A38ED700B1F58A /* stop_button.png in Resources */,
@@ -48893,7 +48888,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDFA627323A07EA000915066 /* deepbox_text.png in Resources */,
-				DDAD3EE6231096D30006611A /* my_fdeep_model.json in Resources */,
 				DDAD3EE9231096D30006611A /* bassdrum.wav in Resources */,
 				DD97F29C239CFE440031BAA1 /* kick_drum_vec.png in Resources */,
 				DDD3C27623A38ED700B1F58A /* stop_button.png in Resources */,

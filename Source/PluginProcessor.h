@@ -71,9 +71,11 @@ public:
     void recordMidi (bool isRecording);
     void setOnsetSlider (Slider onsetSlider);
     void initialiseSynth();
+    std::vector<float> addPaddedZeros(AudioBuffer<float> buffer, int maxSampleSize=1024);
     vector<MidiMessage> triggerKickDrum(MidiBuffer& midiMessages, double msPerTick) const;
     vector<MidiMessage> triggerSnareDrum(MidiBuffer& midiMessages, double msPerTick) const;
     vector<MidiMessage> triggerHihatDrum(MidiBuffer& midiMessages, double msPerTick) const;
+    void debugBufferWavFile(std::vector<float>);
     //==============================================================================
     bool hitkick = false;
     bool hitsnare = false;
@@ -108,6 +110,7 @@ private:
     int samples_Per_Block;
     float floor_onset_threshold = -25;
     bool onset_below_floor_threshold = true;
+    int maxSampleSize = 1024;
     const std::vector<std::string> drum_classes{"hihat","kick","snare"};
     fdeep::model mymodel{fdeep::load_model(File::getSpecialLocation(File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/my_deepbox_model_v4.json").getFullPathName().toStdString())};
     int current_wav_number = 0;
