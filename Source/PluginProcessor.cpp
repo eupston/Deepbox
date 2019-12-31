@@ -156,8 +156,9 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
     
     if(onset_detected && db > current_onset_threshold && onset_below_floor_threshold){
         onset_below_floor_threshold = false;
+        std::vector<float> audioBuffer = addPaddedZeros(buffer, maxSampleSize);
         AudioFeatureExtractor my_audio_feature_exractor = AudioFeatureExtractor(512, 64, sample_Rate);
-        my_audio_feature_exractor.load_audio_buffer(buffer);
+        my_audio_feature_exractor.load_audio_buffer(audioBuffer);
         my_audio_feature_exractor.compute_algorithms();
         audio_features = my_audio_feature_exractor.compute_mean_features();
         int audio_feature_size = audio_features.size();
@@ -181,23 +182,6 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
         if(drum_prediction == "hihat"){
             myhihatButton.triggerClick();
         }
-
-            //---- debugging ----
-
-            File file = File::getSpecialLocation( File::SpecialLocationType::userDesktopDirectory).getChildFile( "debug_deepbox.wav" );
-
-            WavAudioFormat format;
-            std::unique_ptr<AudioFormatWriter> writer;
-            writer.reset (format.createWriterFor (new FileOutputStream (file),
-                                                  sample_Rate,
-                                                  1,
-                                                  24,
-                                                  {},
-                                                  0));
-            if (writer != nullptr)
-                writer->writeFromAudioSampleBuffer (buffer, 0, buffer.getNumSamples());
-            current_wav_number++;
-//        ----------------------
         
     }
     // update tempo and ms per ticks
@@ -261,6 +245,29 @@ void DeepboxAudioProcessor::initialiseSynth()
     drumSynth.addSound(new SamplerSound("HiHat Sound", *readerHiHat, hihatNoteRange, hihatNoteNumber, 0.0, 0.0, 5.0));
     drumSynth.addVoice(new SamplerVoice());
 }
+
+std::vector<float> DeepboxAudioProcessor::addPaddedZeros(AudioBuffer<float> buffer, int maxSampleSize){
+    
+    float* start = buffer.getWritePointer(0); // get the pointer to the first sample of the first channel
+    int size = buffer.getNumSamples();
+    if (size < maxSampleSize){
+        // get an array of padded zeros
+        int padded_zeros_size =  maxSampleSize - size;
+        std::vector<float> audio_buffer_vec(start, start + size); // this will copy the data as a vector
+        // append array of padded zeros to audio_buffer
+        for(int i=0; i < padded_zeros_size; i++){
+            audio_buffer_vec.push_back(0.0f);
+        }
+        return audio_buffer_vec;
+
+    }
+    else{
+        std::vector<float> audio_buffer_vec(start, start + maxSampleSize);
+        return audio_buffer_vec;
+    }
+
+}
+
 
 vector<MidiMessage> DeepboxAudioProcessor::triggerKickDrum(MidiBuffer& midiMessages, double msPerTick) const
 {
@@ -357,6 +364,31 @@ void DeepboxAudioProcessor::recordMidi(bool isRecording)
     }
 
 }
+
+void DeepboxAudioProcessor::debugBufferWavFile(std::vector<float> audioBuffer){
+    AudioBuffer<float> tempbuffer(1, maxSampleSize);
+    float* start = tempbuffer.getWritePointer(0);
+    int size = tempbuffer.getNumSamples();
+    
+    for(int sample = 0; sample < size; ++sample ){
+        start[sample] = audioBuffer[sample];
+    }
+    
+    File file = File::getSpecialLocation( File::SpecialLocationType::userDesktopDirectory).getChildFile( "debug_deepbox.wav" );
+    
+    WavAudioFormat format;
+    std::unique_ptr<AudioFormatWriter> writer;
+    writer.reset (format.createWriterFor (new FileOutputStream (file),
+                                          sample_Rate,
+                                          1,
+                                          24,
+                                          {},
+                                          0));
+    if (writer != nullptr)
+        writer->writeFromAudioSampleBuffer (tempbuffer, 0, tempbuffer.getNumSamples());
+    
+}
+
 
 
 
