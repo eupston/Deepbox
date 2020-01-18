@@ -114,6 +114,7 @@ private:
     const std::vector<std::string> drum_classes{"hihat","kick","snare"};
     fdeep::model mymodel{fdeep::load_model(File::getSpecialLocation(File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/my_deepbox_model_v4.json").getFullPathName().toStdString())};
     int current_wav_number = 0;
+    std::vector<int> approved_buffer_sizes{32, 64, 128, 256, 512, 1024, 2048, 4096};
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DeepboxAudioProcessor)
 };

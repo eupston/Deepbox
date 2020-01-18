@@ -44,7 +44,8 @@
       allowLocationSimulation = "YES">
       <PathRunnable
          runnableDebuggingMode = "0"
-         FilePath = "/Applications/Ableton Live 10 Suite.app">
+         BundleIdentifier = "com.apple.logic10"
+         FilePath = "/Volumes/Macintosh HD/Applications/Logic Pro X.app">
       </PathRunnable>
       <MacroExpansion>
          <BuildableReference
@@ -55,6 +56,11 @@
             ReferencedContainer = "container:Deepbox.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <CommandLineArguments>
+         <CommandLineArgument
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

@@ -143,76 +143,74 @@ bool DeepboxAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) 
 void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer& midiMessages)
 {
     ScopedNoDenormals noDenormals;
-    my_onset_detector.initialize(samples_Per_Block, sample_Rate);
-    vector<float> audio_features;
-    float mag = buffer.getMagnitude(0, 0, buffer.getNumSamples());
-    float db = Decibels::gainToDecibels(mag);
-    float current_onset_threshold = onset_threshold_slider.getValue();
-    auto currentValuesInBuffer = buffer.getArrayOfReadPointers();
-    bool onset_detected = my_onset_detector.detectOnset(currentValuesInBuffer);
-    if(!onset_below_floor_threshold && db < floor_onset_threshold){
-        onset_below_floor_threshold = true;
-    }
-    
-    if(onset_detected && db > current_onset_threshold && onset_below_floor_threshold){
-        onset_below_floor_threshold = false;
-        std::vector<float> audioBuffer = addPaddedZeros(buffer, maxSampleSize);
-        AudioFeatureExtractor my_audio_feature_exractor = AudioFeatureExtractor(512, 64, sample_Rate);
-        my_audio_feature_exractor.load_audio_buffer(audioBuffer);
-        my_audio_feature_exractor.compute_algorithms();
-        audio_features = my_audio_feature_exractor.compute_mean_features();
-        int audio_feature_size = audio_features.size();
-        const fdeep::shared_float_vec audio_features_ptr(fplus::make_shared_ref<fdeep::float_vec>(audio_features));
-        fdeep::shape5 input_shape = fdeep::shape5(1, 1, 1, audio_feature_size, 1);
-        const auto result = mymodel.predict({fdeep::tensor5(input_shape, audio_features_ptr)});
-        std::vector<float> result_vec = *result.front().as_vector();
-        int prediction_index = std::distance(result_vec.begin(), std::max_element(result_vec.begin(), result_vec.end()));
-        std::string drum_prediction = drum_classes[prediction_index];
-        std::cout << "prediction result: " + fdeep::show_tensor5s(result) << std::endl;
-        std::cout << "drum_prediction: " << drum_prediction << std::endl;
+    if(std::find(approved_buffer_sizes.begin(), approved_buffer_sizes.end(), samples_Per_Block) != approved_buffer_sizes.end()){
+        my_onset_detector.initialize(samples_Per_Block, sample_Rate);
+        vector<float> audio_features;
+        float mag = buffer.getMagnitude(0, 0, buffer.getNumSamples());
+        float db = Decibels::gainToDecibels(mag);
+        float current_onset_threshold = onset_threshold_slider.getValue();
+        auto currentValuesInBuffer = buffer.getArrayOfReadPointers();
+        bool onset_detected = my_onset_detector.detectOnset(currentValuesInBuffer);
+        if(!onset_below_floor_threshold && db < floor_onset_threshold){
+            onset_below_floor_threshold = true;
+        }
+        if(onset_detected && db > current_onset_threshold && onset_below_floor_threshold){
+            onset_below_floor_threshold = false;
+            std::vector<float> audioBuffer = addPaddedZeros(buffer, maxSampleSize);
+            AudioFeatureExtractor my_audio_feature_exractor = AudioFeatureExtractor(512, 64, sample_Rate);
+            my_audio_feature_exractor.load_audio_buffer(audioBuffer);
+            my_audio_feature_exractor.compute_algorithms();
+            audio_features = my_audio_feature_exractor.compute_mean_features();
+            int audio_feature_size = audio_features.size();
+            const fdeep::shared_float_vec audio_features_ptr(fplus::make_shared_ref<fdeep::float_vec>(audio_features));
+            fdeep::shape5 input_shape = fdeep::shape5(1, 1, 1, audio_feature_size, 1);
+            const auto result = mymodel.predict({fdeep::tensor5(input_shape, audio_features_ptr)});
+            std::vector<float> result_vec = *result.front().as_vector();
+            int prediction_index = std::distance(result_vec.begin(), std::max_element(result_vec.begin(), result_vec.end()));
+            std::string drum_prediction = drum_classes[prediction_index];
+            
+            if(drum_prediction == "kick"){
+                mykickButton.triggerClick();
+            }
 
-        if(drum_prediction == "kick"){
-            mykickButton.triggerClick();
+            if(drum_prediction == "snare"){
+                mysnareButton.triggerClick();
+            }
+
+            if(drum_prediction == "hihat"){
+                myhihatButton.triggerClick();
+            }
+            
+        }
+        // update tempo and ms per ticks
+        playHead = this->getPlayHead();
+        playHead->getCurrentPosition(currentPositionInfo);
+        tempo = currentPositionInfo.bpm;
+        msPerTick = (60000.f / tempo) / 960.f; //960 ticks per quarternote
+
+        if(hitkick){
+            auto midi_on_off = triggerKickDrum(midiMessages, msPerTick);
+            mms.addEvent(midi_on_off[0]);
+            mms.addEvent(midi_on_off[1]);
+            hitkick = false;
         }
 
-        if(drum_prediction == "snare"){
-            mysnareButton.triggerClick();
+        if(hitsnare){
+            auto midi_on_off = triggerSnareDrum(midiMessages, msPerTick);
+            mms.addEvent(midi_on_off[0]);
+            mms.addEvent(midi_on_off[1]);
+            hitsnare = false;
         }
 
-        if(drum_prediction == "hihat"){
-            myhihatButton.triggerClick();
+        if(hithihat){
+            auto midi_on_off = triggerHihatDrum(midiMessages, msPerTick);
+            mms.addEvent(midi_on_off[0]);
+            mms.addEvent(midi_on_off[1]);
+            hithihat = false;
         }
-        
-    }
-    // update tempo and ms per ticks
-    playHead = this->getPlayHead();
-    playHead->getCurrentPosition(currentPositionInfo);
-    tempo = currentPositionInfo.bpm;
-    msPerTick = (60000.f / tempo) / 960.f; //960 ticks per quarternote
-
-    if(hitkick){
-        auto midi_on_off = triggerKickDrum(midiMessages, msPerTick);
-        mms.addEvent(midi_on_off[0]);
-        mms.addEvent(midi_on_off[1]);
-        hitkick = false;
-    }
-
-    if(hitsnare){
-        auto midi_on_off = triggerSnareDrum(midiMessages, msPerTick);
-        mms.addEvent(midi_on_off[0]);
-        mms.addEvent(midi_on_off[1]);
-        hitsnare = false;
-    }
-
-    if(hithihat){
-        auto midi_on_off = triggerHihatDrum(midiMessages, msPerTick);
-        mms.addEvent(midi_on_off[0]);
-        mms.addEvent(midi_on_off[1]);
-        hithihat = false;
     }
     
     liveAudioScroller.pushBuffer(buffer);
-    
     buffer.clear();
     drumSynth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
     midiMessages.clear();
