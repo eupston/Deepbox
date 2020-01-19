@@ -6,3 +6,4 @@ Xcode/MacOSX/build/Debug
 .idea/
 __pycache__
 ModelCreation/venv
+Xcode/MacOSX/build/Debug/libDeepbox.a

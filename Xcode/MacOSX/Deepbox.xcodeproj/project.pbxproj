@@ -48738,6 +48738,8 @@
 						};
 					};
 					BC417CF7B7A50749B1B6684E = {
+						DevelopmentTeam = 3QZW5266JZ;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
@@ -49095,10 +49097,10 @@
 					/usr/local/lib,
 				);
 				LLVM_LTO = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-lDeepbox";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.Deepbox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eugeneupston.Deepbox;
 				PRODUCT_NAME = Deepbox;
 				USE_HEADERMAP = NO;
 			};
@@ -49140,8 +49142,8 @@
 					"$(inherited)",
 				);
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.Deepbox;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eugeneupston.Deepbox;
 				PRODUCT_NAME = Deepbox;
 				SKIP_INSTALL = YES;
 				USE_HEADERMAP = NO;
@@ -49154,10 +49156,13 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_LINK_OBJC_RUNTIME = NO;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
 				DEAD_CODE_STRIPPING = YES;
 				DEPLOYMENT_LOCATION = YES;
+				DEVELOPMENT_TEAM = 3QZW5266JZ;
 				DSTROOT = /;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
@@ -49206,14 +49211,15 @@
 				);
 				LIBRARY_STYLE = Bundle;
 				LLVM_LTO = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = (
 					"-bundle",
 					"-lDeepbox",
 				);
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.Deepbox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eugeneupston.Deepbox;
 				PRODUCT_NAME = Deepbox;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				USE_HEADERMAP = NO;
 				WRAPPER_EXTENSION = component;
 			};
@@ -49336,12 +49342,12 @@
 					/usr/local/Cellar/fftw/3.3.8_1/lib,
 				);
 				LIBRARY_STYLE = Bundle;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = (
 					"-bundle",
 					"-lDeepbox",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.Deepbox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eugeneupston.Deepbox;
 				PRODUCT_NAME = Deepbox;
 				USE_HEADERMAP = NO;
 				WRAPPER_EXTENSION = vst3;
@@ -49354,10 +49360,13 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_LINK_OBJC_RUNTIME = NO;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(PROJECT_DIR)/build/$(CONFIGURATION)";
 				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_LOCATION = YES;
+				DEVELOPMENT_TEAM = 3QZW5266JZ;
 				DSTROOT = /;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -49404,14 +49413,15 @@
 					/usr/local/Cellar/fftw/3.3.8_1/lib,
 				);
 				LIBRARY_STYLE = Bundle;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = (
 					"-bundle",
 					"-lDeepbox",
 				);
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.Deepbox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eugeneupston.Deepbox;
 				PRODUCT_NAME = Deepbox;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				USE_HEADERMAP = NO;
 				WRAPPER_EXTENSION = component;
 			};
@@ -49455,8 +49465,8 @@
 				);
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LLVM_LTO = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.Deepbox;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eugeneupston.Deepbox;
 				PRODUCT_NAME = Deepbox;
 				SKIP_INSTALL = YES;
 				USE_HEADERMAP = NO;
@@ -49468,7 +49478,7 @@
 			buildSettings = {
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 			};
 			name = Release;
 		};
@@ -49536,7 +49546,7 @@
 			buildSettings = {
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 			};
 			name = Debug;
 		};
@@ -49598,12 +49608,12 @@
 				);
 				LIBRARY_STYLE = Bundle;
 				LLVM_LTO = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = (
 					"-bundle",
 					"-lDeepbox",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.Deepbox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eugeneupston.Deepbox;
 				PRODUCT_NAME = Deepbox;
 				USE_HEADERMAP = NO;
 				WRAPPER_EXTENSION = vst3;
@@ -49661,10 +49671,10 @@
 					/usr/local/Cellar/libyaml/0.2.2/lib,
 					/usr/local/lib,
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-lDeepbox";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.Deepbox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eugeneupston.Deepbox;
 				PRODUCT_NAME = Deepbox;
 				USE_HEADERMAP = NO;
 			};
