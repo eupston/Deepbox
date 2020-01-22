@@ -434,6 +434,7 @@
 		DD21D08E8005275E73BA5F0E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		DD224FA42393172F0075B34D /* BinaryData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BinaryData.cpp; path = ../../JuceLibraryCode/BinaryData.cpp; sourceTree = "<group>"; };
 		DD224FA52393172F0075B34D /* BinaryData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BinaryData.h; path = ../../JuceLibraryCode/BinaryData.h; sourceTree = "<group>"; };
+		DD25525023D8461F003F8ACF /* Deepbox_img_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Deepbox_img_1.png; sourceTree = "<group>"; };
 		DD2DAF98230EAD050049958C /* libyaml.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libyaml.a; path = ../../../../../../../../../../usr/local/lib/essentia_libs/libyaml.a; sourceTree = "<group>"; };
 		DD2DAF99230EAD050049958C /* libavfilter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavfilter.a; path = ../../../../../../../../../../usr/local/lib/essentia_libs/libavfilter.a; sourceTree = "<group>"; };
 		DD2DAF9A230EAD060049958C /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavutil.a; path = ../../../../../../../../../../usr/local/lib/essentia_libs/libavutil.a; sourceTree = "<group>"; };
@@ -15143,6 +15144,7 @@
 		DD0C500C23531EAB00D30775 /* imgs */ = {
 			isa = PBXGroup;
 			children = (
+				DD25525023D8461F003F8ACF /* Deepbox_img_1.png */,
 				DDC88CC723B1A7E50069BECE /* draglips_text.png */,
 				DDD3C27523A38ED700B1F58A /* stop_button.png */,
 				DDFA627223A07EA000915066 /* deepbox_text.png */,
