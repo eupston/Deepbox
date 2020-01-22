@@ -2,7 +2,7 @@
 A Deep Learning Plugin that Classifies Beatboxes and converts to midi in Real Time.
 
 #### Welcome to the Deepbox repository!
-You can view a demo of Deepbox [here](https://www.youtube.com/watch?v=qxeina_3zQA).
+You can view a demo of Deepbox [here](https://www.youtube.com/watch?v=F6jA0xNGhSM&t=193s).
 
 
 ![](Source/resources/imgs/Deepbox_img_1.png)
