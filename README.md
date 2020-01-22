@@ -10,7 +10,7 @@ You can view a demo of Deepbox [here](https://www.youtube.com/watch?v=F6jA0xNGhS
 
 ## Supported Platforms Builds:
 AU/VST3
-- [macOS](https://drive.google.com/open?id=1qx-z0f922AZaw1bsp64UUH0yLKi9J9M6)
+- [**macOS:**](https://drive.google.com/open?id=1qx-z0f922AZaw1bsp64UUH0yLKi9J9M6) OSX 10.10 and above
 
 
 ## Model Training:
@@ -33,5 +33,6 @@ The model used for this plugin was trained with audio sample sizes of 512 sample
 
 - [Frugally Deep](https://github.com/Dobiasd/frugally-deep): Used for inferencing Keras models in C++ 
 - [Essentia](https://github.com/MTG/essentia): Used to extract audio features for training and inference.
+- [Juce](https://github.com/WeAreROLI/JUCE): Used as the core audio plugin framework
 
 
