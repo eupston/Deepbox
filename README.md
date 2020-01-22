@@ -1,5 +1,5 @@
 # Deepbox
-A Deep Learning Plugin that Classifies Beatboxes and converts to midi in Real Time.
+A Deep Learning Audio Plugin that Classifies Beatboxes and converts to midi in Real Time.
 
 #### Welcome to the Deepbox repository!
 Deepbox is an audio plugin that uses a convulutional neural network to classify and predict beatboxes in realtime. You can then create a midi file from the plugin with the corresponding beats. It works at any tempo and conforms to the DAW as it's master tempo.
