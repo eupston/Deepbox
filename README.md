@@ -14,4 +14,24 @@ AU/VST3
 
 
 ## Model Training:
-The model was trained at on audio files with sample sizes of 512.
+All code for creating the the CNN model are in ```ModelCreation```
+
+1. To Build Your Own Keras Model:
+
+You can run this python file and change the test and training data global variables.
+
+```python CNNAudioClassifer.py```
+
+2. The Convert Keras Model into an fdeep json model:
+
+```python ConvertModel.py <input .h5 filename here> <output .json filename here>```
+
+
+The model used for this plugin was trained with audio sample sizes of 512 samples.
+
+## Dependencies:
+
+- [Frugally Deep](https://github.com/Dobiasd/frugally-deep): Used for inferencing Keras models in C++ 
+- [Essentia](https://github.com/MTG/essentia): Used to extract audio features for training and inference.
+
+
