@@ -2,7 +2,7 @@
 A Deep Learning Audio Plugin that Classifies Beatboxes and converts to midi in Real Time.
 
 #### Welcome to the Deepbox repository!
-Deepbox is an audio plugin that uses a convulutional neural network to classify and predict beatboxes in realtime. You can then create a midi file from the plugin with the corresponding beats. It works at any tempo and conforms to the DAW as it's master tempo.
+Deepbox is an audio plugin that uses a convulutional neural network to classify and predict beatboxes in realtime. You can then create a midi file from the plugin with the corresponding beats. It works at any tempo and uses the DAW as it's master tempo.
 You can view a demo of Deepbox [here](https://www.youtube.com/watch?v=F6jA0xNGhSM&t=193s).
 
 
@@ -14,11 +14,11 @@ AU/VST3
 
 
 ## Model Training:
-All code for creating the the CNN model are in ```ModelCreation```
+All the code for creating a CNN model is in ```ModelCreation```
 
 1. To Build Your Own Keras Model:
 
-You can run this python file and change the test and training data global variables.
+You can run this python file and change the global test and training data variables.
 
 ```python CNNAudioClassifer.py```
 
@@ -27,7 +27,7 @@ You can run this python file and change the test and training data global variab
 ```python ConvertModel.py <input .h5 filename here> <output .json filename here>```
 
 
-The model used for this plugin was trained with audio sample sizes of 512 samples.
+The model used for this plugin was trained with audio sample sizes of 512 samples. 
 
 ## Dependencies:
 
