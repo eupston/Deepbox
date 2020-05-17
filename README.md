@@ -22,7 +22,7 @@ You can run this python file and change the global test and training data variab
 
 ```python CNNAudioClassifer.py```
 
-2. The Convert Keras Model into an fdeep json model:
+2. Convert Keras Model into an fdeep json model:
 
 ```python ConvertModel.py <input .h5 filename here> <output .json filename here>```
 
