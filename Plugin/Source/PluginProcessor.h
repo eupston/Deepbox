@@ -87,8 +87,8 @@ public:
     ImageButton mysnareButton{"snare"};
     ImageButton myhihatButton{"hihat"};
     ImageButton deepbox_text{"deepbox"};
-    Image deepbox_text_img = ImageCache::getFromFile(File::getSpecialLocation(File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/deepbox_text.png").getFullPathName());
-    Image draglips_text_img = ImageCache::getFromFile(File::getSpecialLocation(File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/draglips_text.png").getFullPathName());
+    Image deepbox_text_img = ImageCache::getFromFile(File::getSpecialLocation(File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/imgs/deepbox_text.png").getFullPathName());
+    Image draglips_text_img = ImageCache::getFromFile(File::getSpecialLocation(File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/imgs/draglips_text.png").getFullPathName());
 
 private:
     
