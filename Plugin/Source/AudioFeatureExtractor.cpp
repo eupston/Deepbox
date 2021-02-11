@@ -96,12 +96,12 @@ void AudioFeatureExtractor::compute_algorithms()
         energyband_high->compute();
         energyband_low->compute();
         logNorm->compute();
-        
-        pool.add("mfcc", mfccCoeffs);
-        pool.add("spec", spectralContrast);
-        pool.add("melbandlog", mfccBandsLog);
-        pool.add("energyhigh", energy_freq_band_high);
-        pool.add("energylow", energy_freq_band_low);
+
+        mfccPool.push_back(mfccCoeffs);
+        specPool.push_back(spectralContrast);
+        melbandlogPool.push_back(mfccBandsLog);
+        energyhighPool.push_back(energy_freq_band_high);
+        energylowPool.push_back(energy_freq_band_high);
     }
 };
 
@@ -116,13 +116,25 @@ vector<float> AudioFeatureExtractor::compute_mean_features()
     vector<Real> melbandlog_mean;
     Real energyhigh_mean;
     Real energylow_mean;
-    
-    mfcc_mean = aggrPool.value<vector<Real>>("mfcc.mean");
-    spec_mean = aggrPool.value<vector<Real>>("spec.mean");
-    melbandlog_mean = aggrPool.value<vector<Real>>("melbandlog.mean");
-    energyhigh_mean = aggrPool.value<Real>("energyhigh.mean");
-    energylow_mean = aggrPool.value<Real>("energylow.mean");
-    
+
+    auto mean = [](vector<Real> const& v) {
+        return std::accumulate(v.begin(), v.end(), 0LL) / v.size();
+    };
+    auto meanMatrix = [](vector<vector<Real>> const& vm) {
+        vector<Real> vMean;
+        for (int i = 0; i < vm.size(); i++){
+            auto v = vm[i];
+            vMean.push_back(std::accumulate(v.begin(), v.end(), 0LL) / v.size());
+        };
+        return vMean;
+    };
+
+    mfcc_mean = meanMatrix(mfccPool);
+    spec_mean = meanMatrix(specPool);
+    melbandlog_mean = meanMatrix(melbandlogPool);
+    energyhigh_mean = mean(energyhighPool);
+    energylow_mean = mean(energylowPool);
+
     for(auto mfcc : mfcc_mean){
         audio_features.push_back(mfcc);
     }
@@ -134,8 +146,7 @@ vector<float> AudioFeatureExtractor::compute_mean_features()
     }
     audio_features.push_back(energyhigh_mean);
     audio_features.push_back(energylow_mean);
-    
-    
+
     return audio_features;
     
 };

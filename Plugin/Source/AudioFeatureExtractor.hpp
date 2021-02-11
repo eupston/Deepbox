@@ -46,11 +46,18 @@ private:
     Algorithm* energyband_low;
     Algorithm* aggr;
     Algorithm* eqloud;
-    
+
     vector<Real> audiobuffer;
-    vector<Real> spectrum, mfccCoeffs, mfccBands, mfccBandsLog;
+    vector<Real> frame, windowedFrame, spectrum;
+    vector<Real> mfccCoeffs, mfccBands, mfccBandsLog;
     vector<Real> spectralContrast, spectralValley;
-    vector<Real> frame, windowedFrame;
+
+    vector<vector<Real>> mfccPool;
+    vector<vector<Real>> specPool;
+    vector<vector<Real>> melbandlogPool;
+    vector<Real> energyhighPool;
+    vector<Real> energylowPool;
+
     Real energy_freq_band_low, energy_freq_band_high;
 
 };
