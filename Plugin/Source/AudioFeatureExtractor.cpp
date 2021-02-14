@@ -120,18 +120,23 @@ vector<float> AudioFeatureExtractor::compute_mean_features()
     auto mean = [](vector<Real> const& v) {
         return std::accumulate(v.begin(), v.end(), 0LL) / v.size();
     };
-    auto meanMatrix = [](vector<vector<Real>> const& vm) {
+    auto meanHStack = [](vector<vector<Real>> const& vm) {
         vector<Real> vMean;
-        for (int i = 0; i < vm.size(); i++){
-            auto v = vm[i];
-            vMean.push_back(std::accumulate(v.begin(), v.end(), 0LL) / v.size());
-        };
+        int vSize = vm[0].size();
+        for (int i = 0; i < vSize; i++) {
+            float totalHStackMean = 0.0;
+            for (int j = 0; j < vm.size(); j++){
+                auto v = vm[j];
+                totalHStackMean += v[i];
+            };
+            vMean.push_back(totalHStackMean / vSize);
+        }
         return vMean;
     };
 
-    mfcc_mean = meanMatrix(mfccPool);
-    spec_mean = meanMatrix(specPool);
-    melbandlog_mean = meanMatrix(melbandlogPool);
+    mfcc_mean = meanHStack(mfccPool);
+    spec_mean = meanHStack(specPool);
+    melbandlog_mean = meanHStack(melbandlogPool);
     energyhigh_mean = mean(energyhighPool);
     energylow_mean = mean(energylowPool);
 
