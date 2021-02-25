@@ -39,13 +39,17 @@ CPMAddPackage(
         GITHUB_REPOSITORY Dobiasd/frugally-deep
         GIT_TAG origin/master)
 
+CPMAddPackage(
+        NAME ESSENTIA
+        GITHUB_REPOSITORY eupston/essentia
+        GIT_TAG origin/master)
+
 find_package(frugally-deep CONFIG REQUIRED)
 
 #By default, we are building
 option(BUILD_JUCE_PROTOTYPE_EXAMPES "Build JUCE prototype examples" ON)
 
 if (${BUILD_JUCE_PROTOTYPE_EXAMPES})
-    add_subdirectory(Dependencies/essentia)
     #adding any custom modules you might have:
     add_subdirectory(Modules)
     #adding project folders:

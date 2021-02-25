@@ -40,12 +40,11 @@ target_link_libraries(${BaseTargetName} PRIVATE
         juce::juce_recommended_warning_flags
         frugally-deep::fdeep
         OnsetClassification
-        Essentia
+        essentia
 )
 
 get_target_property(active_formats ${BaseTargetName} JUCE_FORMATS)
 foreach(kind IN LISTS active_formats)
-    message(${kind})
     juce_add_bundle_resources_directory(${BaseTargetName}_${kind} ../Resources/wavs)
     juce_add_bundle_resources_directory(${BaseTargetName}_${kind} ../Resources/imgs)
     juce_add_bundle_resources_directory(${BaseTargetName}_${kind} ../Resources/models)
