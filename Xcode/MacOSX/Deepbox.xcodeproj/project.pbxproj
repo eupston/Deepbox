@@ -24,7 +24,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		0463EDBD91E139C62A8EDD94 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8321FD8D1B0E2FAC31B8BC7A /* AudioUnit.framework */; };
+		0463EDBD91E139C62A8EDD94 /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8321FD8D1B0E2FAC31B8BC7A /* AudioUnit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0A0FC400B664BCC6E0A52843 /* include_juce_core.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2E2CF90721D9FDA89C1E4670 /* include_juce_core.mm */; };
 		0B2DDB32A7F6F45B3D433449 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DC7247EEA5F736B2D49DC9F /* AudioToolbox.framework */; };
 		1555830510B8223C74428649 /* include_juce_audio_plugin_client_AU_1.mm in Sources */ = {isa = PBXBuildFile; fileRef = 64D0F12ED519805AEA7B866B /* include_juce_audio_plugin_client_AU_1.mm */; };
@@ -82,18 +82,18 @@
 		DD1E00D4230D604D00A6124D /* PluginProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD1E0010230D604D00A6124D /* PluginProcessor.cpp */; };
 		DD1E00D5230D604D00A6124D /* PluginProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD1E0010230D604D00A6124D /* PluginProcessor.cpp */; };
 		DD1EFE3A230D554000A6124D /* RecentFilesMenuTemplate.nib in Resources */ = {isa = PBXBuildFile; fileRef = DC893C0C85EFFA67112F4E58 /* RecentFilesMenuTemplate.nib */; };
-		DD1EFE3B230D554000A6124D /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FFC27EC613BC11B6458650 /* Accelerate.framework */; };
-		DD1EFE3C230D554000A6124D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DC7247EEA5F736B2D49DC9F /* AudioToolbox.framework */; };
-		DD1EFE3D230D554000A6124D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520802D022A6D4838F78FC9D /* Carbon.framework */; };
-		DD1EFE3E230D554000A6124D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBB0298533D8F3348B0AA395 /* Cocoa.framework */; };
-		DD1EFE3F230D554000A6124D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6600A337E06E36A541E3CE7A /* CoreAudio.framework */; };
-		DD1EFE40230D554000A6124D /* CoreAudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFD6BA0410CF2B3670530E91 /* CoreAudioKit.framework */; };
-		DD1EFE41230D554000A6124D /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51CE2246717C02733B89A8B /* CoreMIDI.framework */; };
-		DD1EFE42230D554000A6124D /* DiscRecording.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188BD33D2FE493FCEAB75473 /* DiscRecording.framework */; };
-		DD1EFE43230D554000A6124D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 207E5853CDC1AC49FFF4991C /* IOKit.framework */; };
-		DD1EFE44230D554000A6124D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BA54495E303DD1670D1B6D4 /* OpenGL.framework */; };
-		DD1EFE45230D554000A6124D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13C231BDFBA63BDDB11AAC6 /* QuartzCore.framework */; };
-		DD1EFE46230D554000A6124D /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD21D08E8005275E73BA5F0E /* WebKit.framework */; };
+		DD1EFE3B230D554000A6124D /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FFC27EC613BC11B6458650 /* Accelerate.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		DD1EFE3C230D554000A6124D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DC7247EEA5F736B2D49DC9F /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		DD1EFE3D230D554000A6124D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520802D022A6D4838F78FC9D /* Carbon.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		DD1EFE3E230D554000A6124D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBB0298533D8F3348B0AA395 /* Cocoa.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		DD1EFE3F230D554000A6124D /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6600A337E06E36A541E3CE7A /* CoreAudio.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		DD1EFE40230D554000A6124D /* CoreAudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFD6BA0410CF2B3670530E91 /* CoreAudioKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		DD1EFE41230D554000A6124D /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51CE2246717C02733B89A8B /* CoreMIDI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		DD1EFE42230D554000A6124D /* DiscRecording.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188BD33D2FE493FCEAB75473 /* DiscRecording.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		DD1EFE43230D554000A6124D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 207E5853CDC1AC49FFF4991C /* IOKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		DD1EFE44230D554000A6124D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BA54495E303DD1670D1B6D4 /* OpenGL.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		DD1EFE45230D554000A6124D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E13C231BDFBA63BDDB11AAC6 /* QuartzCore.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		DD1EFE46230D554000A6124D /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD21D08E8005275E73BA5F0E /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DD1EFE47230D554000A6124D /* RecentFilesMenuTemplate.nib in Resources */ = {isa = PBXBuildFile; fileRef = DC893C0C85EFFA67112F4E58 /* RecentFilesMenuTemplate.nib */; };
 		DD1EFE48230D554000A6124D /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FFC27EC613BC11B6458650 /* Accelerate.framework */; };
 		DD1EFE49230D554000A6124D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DC7247EEA5F736B2D49DC9F /* AudioToolbox.framework */; };
@@ -122,18 +122,7 @@
 		DD224FA72393172F0075B34D /* BinaryData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD224FA42393172F0075B34D /* BinaryData.cpp */; };
 		DD224FA82393172F0075B34D /* BinaryData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD224FA42393172F0075B34D /* BinaryData.cpp */; };
 		DD224FA92393172F0075B34D /* BinaryData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD224FA42393172F0075B34D /* BinaryData.cpp */; };
-		DD2DAFB9230EAF0D0049958C /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE62230D571200A6124D /* libavcodec.a */; };
-		DD2DAFBA230EAF0D0049958C /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE61230D571200A6124D /* libavdevice.a */; };
-		DD2DAFBB230EAF0D0049958C /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE60230D571200A6124D /* libavfilter.a */; };
-		DD2DAFBC230EAF0D0049958C /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE5B230D571200A6124D /* libavformat.a */; };
-		DD2DAFBD230EAF0D0049958C /* libavresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE5A230D571200A6124D /* libavresample.a */; };
-		DD2DAFBE230EAF0D0049958C /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE5F230D571200A6124D /* libavutil.a */; };
 		DD2DAFBF230EAF0D0049958C /* libessentia.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE58230D571200A6124D /* libessentia.a */; };
-		DD2DAFC0230EAF0D0049958C /* libsamplerate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE5D230D571200A6124D /* libsamplerate.a */; };
-		DD2DAFC1230EAF0D0049958C /* libvorbis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE59230D571200A6124D /* libvorbis.a */; };
-		DD2DAFC3230EAF0D0049958C /* libfftw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD2DAFC2230EAF0D0049958C /* libfftw3.a */; };
-		DD2DAFC4230EAF290049958C /* libyaml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE5E230D571200A6124D /* libyaml.a */; };
-		DD2DAFC5230EAF910049958C /* libtag.1.17.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE5C230D571200A6124D /* libtag.1.17.0.dylib */; };
 		DD2DAFC6230EB07C0049958C /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE62230D571200A6124D /* libavcodec.a */; };
 		DD2DAFC7230EB07C0049958C /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE61230D571200A6124D /* libavdevice.a */; };
 		DD2DAFC8230EB07C0049958C /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1EFE60230D571200A6124D /* libavfilter.a */; };
@@ -14971,18 +14960,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD2DAFC5230EAF910049958C /* libtag.1.17.0.dylib in Frameworks */,
-				DD2DAFC4230EAF290049958C /* libyaml.a in Frameworks */,
-				DD2DAFC3230EAF0D0049958C /* libfftw3.a in Frameworks */,
-				DD2DAFB9230EAF0D0049958C /* libavcodec.a in Frameworks */,
-				DD2DAFBA230EAF0D0049958C /* libavdevice.a in Frameworks */,
-				DD2DAFBB230EAF0D0049958C /* libavfilter.a in Frameworks */,
-				DD2DAFBC230EAF0D0049958C /* libavformat.a in Frameworks */,
-				DD2DAFBD230EAF0D0049958C /* libavresample.a in Frameworks */,
-				DD2DAFBE230EAF0D0049958C /* libavutil.a in Frameworks */,
 				DD2DAFBF230EAF0D0049958C /* libessentia.a in Frameworks */,
-				DD2DAFC0230EAF0D0049958C /* libsamplerate.a in Frameworks */,
-				DD2DAFC1230EAF0D0049958C /* libvorbis.a in Frameworks */,
 				DD1EFE3B230D554000A6124D /* Accelerate.framework in Frameworks */,
 				DD1EFE3C230D554000A6124D /* AudioToolbox.framework in Frameworks */,
 				0463EDBD91E139C62A8EDD94 /* AudioUnit.framework in Frameworks */,
@@ -49201,6 +49179,7 @@
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREPROCESS = NO;
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/Components/";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib,
@@ -49213,7 +49192,7 @@
 				);
 				LIBRARY_STYLE = Bundle;
 				LLVM_LTO = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = (
 					"-bundle",
 					"-lDeepbox",
@@ -49404,6 +49383,7 @@
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INFOPLIST_PREPROCESS = NO;
 				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/Components/";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib,
@@ -49415,7 +49395,7 @@
 					/usr/local/Cellar/fftw/3.3.8_1/lib,
 				);
 				LIBRARY_STYLE = Bundle;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = (
 					"-bundle",
 					"-lDeepbox",
