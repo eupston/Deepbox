@@ -36,18 +36,7 @@ CPMAddPackage(
 
 CPMAddPackage(
         NAME FDEEP
-        GITHUB_REPOSITORY Dobiasd/frugally-deep
-        GIT_TAG origin/master)
-
-#FDEEP dependency
-CPMAddPackage(
-        NAME FUNCTIONALPLUS
-        GITHUB_REPOSITORY Dobiasd/FunctionalPlus
-        GIT_TAG origin/master)
-#FDEEP dependency
-CPMAddPackage(
-        NAME JSON
-        GITHUB_REPOSITORY nlohmann/json
+        GITHUB_REPOSITORY eupston/frugally-deep
         GIT_TAG origin/master)
 
 CPMAddPackage(
