@@ -6,7 +6,8 @@ set(CMAKE_CXX_STANDARD 17)
 
 #including CPM.cmake, a package manager:
 #https://github.com/TheLartians/CPM.cmake
-include(CMake/CPM.cmake)
+include(cmake/CPM.cmake)
+include(FetchContent)
 
 #Compile commands, useful for some IDEs like VS-Code
 set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
@@ -34,17 +35,31 @@ CPMAddPackage(
         GITHUB_REPOSITORY juce-framework/JUCE
         GIT_TAG origin/master)
 
-CPMAddPackage(
-        NAME FDEEP
-        GITHUB_REPOSITORY eupston/frugally-deep
-        GIT_TAG origin/master)
+FetchContent_Declare(
+        nlohmann_json
+        GIT_REPOSITORY https://github.com/nlohmann/json.git
+        GIT_TAG        v3.8.0
+)
+FetchContent_Declare(
+        FunctionalPlus
+        GIT_REPOSITORY https://github.com/Dobiasd/FunctionalPlus.git
+        GIT_TAG        v0.2.7-p0
+)
+FetchContent_Declare(
+        frugally-deep
+        GIT_REPOSITORY https://github.com/Dobiasd/frugally-deep.git
+        GIT_TAG        v0.14.3-p0
+)
+
+FetchContent_MakeAvailable(nlohmann_json FunctionalPlus frugally-deep)
+
+find_package(frugally-deep CONFIG REQUIRED)
+
 
 CPMAddPackage(
         NAME ESSENTIA
         GITHUB_REPOSITORY eupston/essentia
         GIT_TAG origin/master)
-
-find_package(frugally-deep CONFIG REQUIRED)
 
 #By default, we are building
 option(BUILD_JUCE_PROTOTYPE_EXAMPES "Build JUCE prototype examples" ON)
