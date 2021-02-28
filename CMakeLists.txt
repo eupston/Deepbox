@@ -34,26 +34,26 @@ CPMAddPackage(
         NAME JUCE
         GITHUB_REPOSITORY juce-framework/JUCE
         GIT_TAG origin/master)
+#
+#FetchContent_Declare(
+#        nlohmann_json
+#        GIT_REPOSITORY https://github.com/nlohmann/json.git
+#        GIT_TAG        v3.8.0
+#)
+#FetchContent_Declare(
+#        FunctionalPlus
+#        GIT_REPOSITORY https://github.com/Dobiasd/FunctionalPlus.git
+#        GIT_TAG        v0.2.7-p0
+#)
+#FetchContent_Declare(
+#        frugally-deep
+#        GIT_REPOSITORY https://github.com/Dobiasd/frugally-deep.git
+#        GIT_TAG        v0.14.3-p0
+#)
+#
+#FetchContent_MakeAvailable(nlohmann_json FunctionalPlus frugally-deep)
 
-FetchContent_Declare(
-        nlohmann_json
-        GIT_REPOSITORY https://github.com/nlohmann/json.git
-        GIT_TAG        v3.8.0
-)
-FetchContent_Declare(
-        FunctionalPlus
-        GIT_REPOSITORY https://github.com/Dobiasd/FunctionalPlus.git
-        GIT_TAG        v0.2.7-p0
-)
-FetchContent_Declare(
-        frugally-deep
-        GIT_REPOSITORY https://github.com/Dobiasd/frugally-deep.git
-        GIT_TAG        v0.14.3-p0
-)
-
-FetchContent_MakeAvailable(nlohmann_json FunctionalPlus frugally-deep)
-
-find_package(frugally-deep CONFIG REQUIRED)
+#find_package(frugally-deep CONFIG REQUIRED)
 
 
 CPMAddPackage(
