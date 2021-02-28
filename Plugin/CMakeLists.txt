@@ -39,8 +39,6 @@ target_link_libraries(${BaseTargetName} PRIVATE
         juce::juce_recommended_lto_flags
         juce::juce_recommended_warning_flags
         frugally-deep::fdeep
-        fplus
-        nlohmann_json
         OnsetClassification
         essentia
 )
