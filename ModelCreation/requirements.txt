@@ -1,6 +1,8 @@
 keras==2.1.6
-tensorflow==1.8.0
+tensorflow==2.4.0
 librosa==0.5.1
 soundfile==0.10.2
 sklearn
 essentia
+numpy
+h5py==2.10.0

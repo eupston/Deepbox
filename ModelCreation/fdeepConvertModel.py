@@ -1,18 +1,17 @@
 #!/usr/bin/env python3
 """Convert a Keras model to frugally-deep format.
 """
-
+#TODO make frugally-deep submodule and use convertModel.py from there
 import base64
 import datetime
 import hashlib
 import json
 import sys
 
-import keras
 import numpy as np
-from keras import backend as K
-from keras.layers import Input
-from keras.models import Model, load_model
+from tensorflow.keras import backend as K
+from tensorflow.keras.layers import Input, Embedding
+from tensorflow.keras.models import Model, load_model
 
 __author__ = "Tobias Hermann"
 __copyright__ = "Copyright 2017, Tobias Hermann"
@@ -36,7 +35,6 @@ def transform_recurrent_kernel(kernel):
 def transform_kernels(kernels, n_gates, transform_func):
     """
     Transforms CuDNN kernel matrices (either LSTM or GRU) into the regular Keras format.
-
     Parameters
     ----------
     kernels : numpy.ndarray
@@ -45,7 +43,6 @@ def transform_kernels(kernels, n_gates, transform_func):
         Number of recurrent unit gates, 3 for GRU, 4 for LSTM.
     transform_func: function(numpy.ndarray)
         Function to apply to each input or recurrent kernel.
-
     Returns
     -------
     numpy.ndarray
@@ -65,53 +62,29 @@ def write_text_file(path, text):
         print(text, file=text_file)
 
 
-def arr_as_arr5(arr):
-    """Convert an n-tensor to a 5-tensor"""
-    depth = len(arr.shape)
-    if depth == 1:
-        return arr.reshape(1, 1, 1, 1, arr.shape[0])
-    if depth == 2:
-        return arr.reshape(1, 1, 1, arr.shape[0], arr.shape[1])
-    if depth == 3:
-        return arr.reshape(1, 1, arr.shape[0], arr.shape[1], arr.shape[2])
-    if depth == 4:
-        return arr.reshape(1, arr.shape[0], arr.shape[1], arr.shape[2], arr.shape[3])
-    if depth == 5:
-        return arr
-    if depth == 6 and arr.shape[0] in [None, 1]:  # todo: Is this still needed?
-        return arr.reshape(arr.shape[1:])
-    raise ValueError('invalid number of dimensions')
+def int_or_none(value):
+    """Leave None values as is, convert everything else to int"""
+    if value is None:
+        return value
+    return int(value)
 
 
-def get_layer_input_shape_shape5(layer):
+def keras_shape_to_fdeep_tensor_shape(raw_shape):
     """Convert a keras shape to an fdeep shape"""
-    shape = layer.input_shape[1:]
-    depth = len(shape)
-    if depth == 1:
-        return (1, 1, 1, 1, shape[0])
-    if depth == 2:
-        return (1, 1, 1, shape[0], shape[1])
-    if depth == 3:
-        return (1, 1, shape[0], shape[1], shape[2])
-    if depth == 4:
-        return (1, shape[0], shape[1], shape[2], shape[3])
-    if depth == 5:
-        return shape
-    raise ValueError('invalid number of dimensions')
+    return singleton_list_to_value(raw_shape)[1:]
 
 
-def show_tensor5(tens):
+def get_layer_input_shape_tensor_shape(layer):
+    """Convert layer input shape to an fdeep shape"""
+    return keras_shape_to_fdeep_tensor_shape(layer.input_shape)
+
+
+def show_tensor(tens):
     """Serialize 3-tensor to a dict"""
-    values = tens.flatten()
     return {
-        'shape': tens.shape,
-        'values': encode_floats(values)
+        'shape': tens.shape[1:],
+        'values': encode_floats(tens.flatten())
     }
-
-
-def show_test_data_as_tensor5(arr):
-    """Serialize model test data"""
-    return show_tensor5(arr_as_arr5(arr))
 
 
 def get_model_input_layers(model):
@@ -144,26 +117,26 @@ def are_embedding_layer_positions_ok_for_testing(model):
     are positioned directly behind the input nodes
     """
 
-    def count_embedding_layers(model):
+    def embedding_layer_names(model):
         layers = model.layers
-        result = 0
+        result = set()
         for layer in layers:
-            if isinstance(layer, keras.layers.Embedding):
-                result += 1
+            if isinstance(layer, Embedding):
+                result.add(layer.name)
         layer_type = type(layer).__name__
-        if layer_type in ['Model', 'Sequential']:
-            result += count_embedding_layers(layer)
+        if layer_type in ['Model', 'Sequential', 'Functional']:
+            result.union(embedding_layer_names(layer))
         return result
 
-    def count_embedding_layers_at_input_nodes(model):
-        result = 0
+    def embedding_layer_names_at_input_nodes(model):
+        result = set()
         for input_layer in get_model_input_layers(model):
             if input_layer._outbound_nodes and isinstance(
-                    input_layer._outbound_nodes[0].outbound_layer, keras.layers.Embedding):
-                result += 1
-        return result
+                    input_layer._outbound_nodes[0].outbound_layer, Embedding):
+                result.add(input_layer._outbound_nodes[0].outbound_layer.name)
+        return set(result)
 
-    return count_embedding_layers(model) == count_embedding_layers_at_input_nodes(model)
+    return embedding_layer_names(model) == embedding_layer_names_at_input_nodes(model)
 
 
 def gen_test_data(model):
@@ -181,7 +154,7 @@ def gen_test_data(model):
     def generate_input_data(input_layer):
         """Random data fitting the input shape of a layer."""
         if input_layer._outbound_nodes and isinstance(
-                input_layer._outbound_nodes[0].outbound_layer, keras.layers.Embedding):
+                input_layer._outbound_nodes[0].outbound_layer, Embedding):
             random_fn = lambda size: np.random.randint(
                 0, input_layer._outbound_nodes[0].outbound_layer.input_dim, size)
         else:
@@ -191,7 +164,7 @@ def gen_test_data(model):
         except AttributeError:
             shape = input_layer.input_shape
         return random_fn(
-            size=replace_none_with(32, set_shape_idx_0_to_1_if_none(shape))).astype(np.float32)
+            size=replace_none_with(32, set_shape_idx_0_to_1_if_none(singleton_list_to_value(shape)))).astype(np.float32)
 
     assert are_embedding_layer_positions_ok_for_testing(
         model), "Test data can only be generated if embedding layers are positioned directly after input nodes."
@@ -200,9 +173,15 @@ def gen_test_data(model):
 
     warm_up_runs = 3
     test_runs = 5
-    data_out = None
-    for _ in range(warm_up_runs):
-        measure_predict(model, data_in)
+    for i in range(warm_up_runs):
+        if i == 0:
+            # store the results of first call for the test
+            # this is because states of recurrent layers is 0.
+            # cannot call model.reset_states() in some cases in keras without an error.
+            # an error occurs when recurrent layer is stateful and the initial state is passed as input
+            data_out_test, duration = measure_predict(model, data_in)
+        else:
+            measure_predict(model, data_in)
     duration_sum = 0
     print('Starting performance measurements.')
     for _ in range(test_runs):
@@ -211,8 +190,8 @@ def gen_test_data(model):
     duration_avg = duration_sum / test_runs
     print('Forward pass took {} s on average.'.format(duration_avg))
     return {
-        'inputs': list(map(show_test_data_as_tensor5, data_in)),
-        'outputs': list(map(show_test_data_as_tensor5, data_out))
+        'inputs': list(map(show_tensor, as_list(data_in))),
+        'outputs': list(map(show_tensor, as_list(data_out_test)))
     }
 
 
@@ -252,9 +231,9 @@ def show_conv_1d_layer(layer):
     assert len(weights) == 1 or len(weights) == 2
     assert len(weights[0].shape) == 3
     weights_flat = prepare_filter_weights_conv_1d(weights[0])
-    assert layer.padding in ['valid', 'same']
+    assert layer.padding in ['valid', 'same', 'causal']
     assert len(layer.input_shape) == 3
-    assert layer.input_shape[0] is None
+    assert layer.input_shape[0] in {None, 1}
     result = {
         'weights': encode_floats(weights_flat)
     }
@@ -272,7 +251,7 @@ def show_conv_2d_layer(layer):
     weights_flat = prepare_filter_weights_conv_2d(weights[0])
     assert layer.padding in ['valid', 'same']
     assert len(layer.input_shape) == 4
-    assert layer.input_shape[0] is None
+    assert layer.input_shape[0] in {None, 1}
     result = {
         'weights': encode_floats(weights_flat)
     }
@@ -296,7 +275,7 @@ def show_separable_conv_2d_layer(layer):
 
     assert layer.padding in ['valid', 'same']
     assert len(layer.input_shape) == 4
-    assert layer.input_shape[0] is None
+    assert layer.input_shape[0] in {None, 1}
     result = {
         'slice_weights': encode_floats(slice_weights),
         'stack_weights': encode_floats(stack_weights),
@@ -319,7 +298,7 @@ def show_depthwise_conv_2d_layer(layer):
 
     assert layer.padding in ['valid', 'same']
     assert len(layer.input_shape) == 4
-    assert layer.input_shape[0] is None
+    assert layer.input_shape[0] in {None, 1}
     result = {
         'slice_weights': encode_floats(slice_weights),
     }
@@ -331,16 +310,6 @@ def show_depthwise_conv_2d_layer(layer):
 
 def show_batch_normalization_layer(layer):
     """Serialize batch normalization layer to dict"""
-    print("Layers " + str(layer))
-    print("Layers axis: " + str(layer.axis))
-    layer_axis = None
-    if isinstance(layer.axis, int):
-        layer_axis = layer.axis
-    else:
-        assert len(layer.axis) == 1
-        layer_axis = layer.axis[0]
-    print(layer_axis + 1, layer.input_shape,len(layer.input_shape) )
-    assert layer_axis == -1 or layer_axis + 1 == len(layer.input_shape)
     moving_mean = K.get_value(layer.moving_mean)
     moving_variance = K.get_value(layer.moving_variance)
     result = {}
@@ -381,6 +350,13 @@ def show_prelu_layer(layer):
     return result
 
 
+def show_relu_layer(layer):
+    """Serialize relu layer to dict"""
+    assert layer.negative_slope == 0
+    assert layer.threshold == 0
+    return {}
+
+
 def show_embedding_layer(layer):
     """Serialize Embedding layer to dict"""
     weights = layer.get_weights()
@@ -393,7 +369,11 @@ def show_embedding_layer(layer):
 
 def show_lstm_layer(layer):
     """Serialize LSTM layer to dict"""
+    assert not layer.go_backwards
+    assert not layer.unroll
     weights = layer.get_weights()
+    if isinstance(layer.input, list):
+        assert len(layer.input) in [1, 3]
     assert len(weights) == 2 or len(weights) == 3
     result = {'weights': encode_floats(weights[0]),
               'recurrent_weights': encode_floats(weights[1])}
@@ -406,6 +386,9 @@ def show_lstm_layer(layer):
 
 def show_gru_layer(layer):
     """Serialize GRU layer to dict"""
+    assert not layer.go_backwards
+    assert not layer.unroll
+    assert not layer.return_state
     weights = layer.get_weights()
     assert len(weights) == 2 or len(weights) == 3
     result = {'weights': encode_floats(weights[0]),
@@ -425,6 +408,8 @@ def transform_cudnn_weights(input_weights, recurrent_weights, n_gates):
 def show_cudnn_lstm_layer(layer):
     """Serialize a GPU-trained LSTM layer to dict"""
     weights = layer.get_weights()
+    if isinstance(layer.input, list):
+        assert len(layer.input) in [1, 3]
     assert len(weights) == 3  # CuDNN LSTM always has a bias
 
     n_gates = 4
@@ -499,6 +484,23 @@ def show_bidirectional_layer(layer):
     return result
 
 
+def show_input_layer(layer):
+    """Serialize input layer to dict"""
+    assert not layer.sparse
+    return {}
+
+
+def show_softmax_layer(layer):
+    """Serialize softmax layer to dict"""
+    assert layer.axis == -1
+
+
+def show_reshape_layer(layer):
+    """Serialize reshape layer to dict"""
+    for dim_size in layer.target_shape:
+        assert dim_size != -1, 'Reshape inference not supported'
+
+
 def get_layer_functions_dict():
     return {
         'Conv1D': show_conv_1d_layer,
@@ -508,6 +510,7 @@ def get_layer_functions_dict():
         'BatchNormalization': show_batch_normalization_layer,
         'Dense': show_dense_layer,
         'PReLU': show_prelu_layer,
+        'ReLU': show_relu_layer,
         'Embedding': show_embedding_layer,
         'LSTM': show_lstm_layer,
         'GRU': show_gru_layer,
@@ -515,14 +518,9 @@ def get_layer_functions_dict():
         'CuDNNGRU': show_cudnn_gru_layer,
         'Bidirectional': show_bidirectional_layer,
         'TimeDistributed': show_time_distributed_layer,
-        'UpSampling2D': check_upsampling_2d_layer
+        'Input': show_input_layer,
+        'Softmax': show_softmax_layer
     }
-
-
-def check_upsampling_2d_layer(layer):
-    assert layer.get_config()['interpolation'] == 'nearest', \
-        'Only interpolation nearest is currently supported by frugally-deep.'
-    return None
 
 
 def show_time_distributed_layer(layer):
@@ -594,7 +592,7 @@ def is_ascii(some_string):
         return True
 
 
-def get_all_weights(model):
+def get_all_weights(model, prefix):
     """Serialize all weights of the models layers"""
     show_layer_functions = get_layer_functions_dict()
     result = {}
@@ -602,8 +600,12 @@ def get_all_weights(model):
     assert K.image_data_format() == 'channels_last'
     for layer in layers:
         layer_type = type(layer).__name__
-        if layer_type in ['Model', 'Sequential']:
-            result = merge_two_disjunct_dicts(result, get_all_weights(layer))
+        name = prefix + layer.name
+        assert is_ascii(name)
+        if name in result:
+            raise ValueError('duplicate layer name ' + name)
+        if layer_type in ['Model', 'Sequential', 'Functional']:
+            result = merge_two_disjunct_dicts(result, get_all_weights(layer, name + '_'))
         else:
             if hasattr(layer, 'data_format'):
                 if layer_type in ['AveragePooling1D', 'MaxPooling1D', 'AveragePooling2D', 'MaxPooling2D',
@@ -614,10 +616,6 @@ def get_all_weights(model):
                     assert layer.data_format == 'channels_last'
 
             show_func = show_layer_functions.get(layer_type, None)
-            name = layer.name
-            assert is_ascii(name)
-            if name in result:
-                raise ValueError('duplicate layer name ' + name)
             shown_layer = None
             if show_func:
                 shown_layer = show_func(layer)
@@ -641,16 +639,6 @@ def get_model_name(model):
     return 'dummy_model_name'
 
 
-def set_model_name(model, name):
-    """Overwrite .name or ._name'"""
-    if hasattr(model, 'name'):
-        model.name = name
-    elif hasattr(model, '_name'):
-        model._name = name
-    else:
-        pass  # Model has no name property.
-
-
 def convert_sequential_to_model(model):
     """Convert a sequential model to the underlying functional format"""
     if type(model).__name__ == 'Sequential':
@@ -661,25 +649,23 @@ def convert_sequential_to_model(model):
             inbound_nodes = model.inbound_nodes
         else:
             raise ValueError('can not get (_)inbound_nodes from model')
-        # Since Keras 2.2.0
-        if model.model == model:
-            input_layer = Input(batch_shape=model.layers[0].input_shape)
-            prev_layer = input_layer
-            for layer in model.layers:
-                prev_layer = layer(prev_layer)
-            funcmodel = Model([input_layer], [prev_layer])
-            model = funcmodel
-        else:
-            model = model.model
-        set_model_name(model, name)
+        input_layer = Input(batch_shape=model.layers[0].input_shape)
+        prev_layer = input_layer
+        for layer in model.layers:
+            layer._inbound_nodes = []
+            prev_layer = layer(prev_layer)
+        funcmodel = Model([input_layer], [prev_layer], name=name)
+        model = funcmodel
         if hasattr(model, '_inbound_nodes'):
             model._inbound_nodes = inbound_nodes
         elif hasattr(model, 'inbound_nodes'):
             model.inbound_nodes = inbound_nodes
     assert model.layers
     for i in range(len(model.layers)):
-        if type(model.layers[i]).__name__ in ['Model', 'Sequential']:
-            model.layers[i] = convert_sequential_to_model(model.layers[i])
+        layer_type = type(model.layers[i]).__name__
+        if layer_type in ['Model', 'Sequential', 'Functional']:
+            # "model.layers[i] = ..." would not overwrite the layer.
+            model._layers[i] = convert_sequential_to_model(model.layers[i])
     return model
 
 
@@ -724,9 +710,9 @@ def check_operation_offset(depth, eval_f, padding):
     return result == [1, 4]
 
 
-def get_shapes(tensor5s):
+def get_shapes(tensors):
     """Return shapes of a list of tensors"""
-    return [t['shape'] for t in tensor5s]
+    return [t['shape'] for t in tensors]
 
 
 def calculate_hash(model):
@@ -738,6 +724,24 @@ def calculate_hash(model):
             hash_m.update(weights.tobytes())
         hash_m.update(layer.name.encode('ascii'))
     return hash_m.hexdigest()
+
+
+def as_list(value_or_values):
+    """Leave lists untouched, convert non-list types to a singleton list"""
+    if isinstance(value_or_values, list):
+        return value_or_values
+    return [value_or_values]
+
+
+def singleton_list_to_value(value_or_values):
+    """
+    Leaves non-list values untouched.
+    Raises an Exception in case the input list does not have exactly one element.
+    """
+    if isinstance(value_or_values, list):
+        assert len(value_or_values) == 1
+        return value_or_values[0]
+    return value_or_values
 
 
 def model_to_fdeep_json(model, no_tests=False):
@@ -755,33 +759,15 @@ def model_to_fdeep_json(model, no_tests=False):
     json_output = {}
     print('Converting model architecture.')
     json_output['architecture'] = json.loads(model.to_json())
-
-    print('Determining Keras behaviour.')
     json_output['image_data_format'] = K.image_data_format()
-    for depth in range(1, 3, 1):
-        json_output['conv2d_valid_offset_depth_' + str(depth)] = \
-            check_operation_offset(depth, offset_conv2d_eval, 'valid')
-        json_output['conv2d_same_offset_depth_' + str(depth)] = \
-            check_operation_offset(depth, offset_conv2d_eval, 'same')
-        json_output['separable_conv2d_valid_offset_depth_' + str(depth)] = \
-            check_operation_offset(depth, offset_sep_conv2d_eval, 'valid')
-        json_output['separable_conv2d_same_offset_depth_' + str(depth)] = \
-            check_operation_offset(depth, offset_sep_conv2d_eval, 'same')
-    json_output['max_pooling_2d_valid_offset'] = \
-        check_operation_offset(1, conv2d_offset_max_pool_eval, 'valid')
-    json_output['max_pooling_2d_same_offset'] = \
-        check_operation_offset(1, conv2d_offset_max_pool_eval, 'same')
-    json_output['average_pooling_2d_valid_offset'] = \
-        check_operation_offset(1, conv2d_offset_average_pool_eval, 'valid')
-    json_output['average_pooling_2d_same_offset'] = \
-        check_operation_offset(1, conv2d_offset_average_pool_eval, 'same')
-    json_output['input_shapes'] = list(map(get_layer_input_shape_shape5, get_model_input_layers(model)))
+    json_output['input_shapes'] = list(map(get_layer_input_shape_tensor_shape, get_model_input_layers(model)))
+    json_output['output_shapes'] = list(map(keras_shape_to_fdeep_tensor_shape, as_list(model.output_shape)))
 
     if test_data:
         json_output['tests'] = [test_data]
 
     print('Converting model weights.')
-    json_output['trainable_params'] = get_all_weights(model)
+    json_output['trainable_params'] = get_all_weights(model, '')
     print('Done converting model weights.')
 
     print('Calculating model hash.')
@@ -793,10 +779,6 @@ def model_to_fdeep_json(model, no_tests=False):
 
 def convert(in_path, out_path, no_tests=False):
     """Convert any (h5-)stored Keras model to the frugally-deep model format."""
-
-    assert K.backend() == "tensorflow"
-    assert K.floatx() == "float32"
-    assert K.image_data_format() == 'channels_last'
 
     print('loading {}'.format(in_path))
     model = load_model(in_path)

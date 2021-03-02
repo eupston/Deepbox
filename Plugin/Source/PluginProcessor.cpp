@@ -160,10 +160,10 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
             my_audio_feature_exractor.compute_algorithms();
             audio_features = my_audio_feature_exractor.compute_mean_features();
             int audio_feature_size = audio_features.size();
-            const fdeep::shared_float_vec audio_features_ptr(fplus::make_shared_ref<fdeep::float_vec>(audio_features));
-            fdeep::shape5 input_shape = fdeep::shape5(1, 1, 1, audio_feature_size, 1);
-            const auto result = mymodel.predict({fdeep::tensor5(input_shape, audio_features_ptr)});
-            std::vector<float> result_vec = *result.front().as_vector();
+            const fdeep::tensor input(fdeep::tensor_shape(1, 1, 1, audio_feature_size, 1), audio_features);
+            //TODO DEBUG why this is crashing at runtime
+            const auto result = mymodel.predict({input});
+            const auto result_vec = result.front().to_vector();
             int prediction_index = std::distance(result_vec.begin(), std::max_element(result_vec.begin(), result_vec.end()));
             std::string drum_prediction = drum_classes[prediction_index];
             
@@ -182,7 +182,7 @@ void DeepboxAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
         }
         // update tempo and ms per ticks
         playHead = this->getPlayHead();
-        playHead->getCurrentPosition(currentPositionInfo);
+//        playHead->getCurrentPosition(currentPositionInfo);
         tempo = currentPositionInfo.bpm;
         msPerTick = (60000.f / tempo) / 960.f; //960 ticks per quarternote
 

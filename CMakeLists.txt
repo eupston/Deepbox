@@ -44,8 +44,6 @@ CPMAddPackage(
         GITHUB_REPOSITORY eupston/essentia
         GIT_TAG origin/master)
 
-find_package(frugally-deep CONFIG REQUIRED)
-
 #By default, we are building
 option(BUILD_JUCE_PROTOTYPE_EXAMPES "Build JUCE prototype examples" ON)
 

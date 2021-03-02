@@ -113,7 +113,8 @@ private:
     bool onset_below_floor_threshold = true;
     int maxSampleSize = 1024;
     const std::vector<std::string> drum_classes{"hihat","kick","snare"};
-    fdeep::model mymodel{fdeep::load_model(File::getSpecialLocation(File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/models/my_deepbox_model_v4.json").getFullPathName().toStdString())};
+    std::string modelPath = File::getSpecialLocation(File::SpecialLocationType::currentApplicationFile).getChildFile("Contents/Resources/models/beatbox_model.json").getFullPathName().toStdString();
+    fdeep::model mymodel{fdeep::load_model(modelPath)};
     int current_wav_number = 0;
     std::vector<int> approved_buffer_sizes{32, 64, 128, 256, 512, 1024, 2048, 4096};
     //==============================================================================

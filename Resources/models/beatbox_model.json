@@ -1,11 +1,11 @@
 {
   "architecture": {
     "backend": "tensorflow",
-    "class_name": "Model",
+    "class_name": "Functional",
     "config": {
       "input_layers": [
         [
-          "conv1d_1_input",
+          "input_1",
           0,
           0
         ]
@@ -20,11 +20,12 @@
               1
             ],
             "dtype": "float32",
-            "name": "conv1d_1_input",
+            "name": "input_1",
+            "ragged": false,
             "sparse": false
           },
           "inbound_nodes": [],
-          "name": "conv1d_1_input"
+          "name": "input_1"
         },
         {
           "class_name": "Conv1D",
@@ -42,11 +43,13 @@
               "config": {}
             },
             "bias_regularizer": null,
+            "data_format": "channels_last",
             "dilation_rate": [
               1
             ],
             "dtype": "float32",
             "filters": 32,
+            "groups": 1,
             "kernel_constraint": null,
             "kernel_initializer": {
               "class_name": "VarianceScaling",
@@ -72,7 +75,7 @@
           "inbound_nodes": [
             [
               [
-                "conv1d_1_input",
+                "input_1",
                 0,
                 0,
                 {}
@@ -92,10 +95,13 @@
               "config": {}
             },
             "bias_regularizer": null,
+            "data_format": "channels_last",
             "dilation_rate": [
               1
             ],
+            "dtype": "float32",
             "filters": 64,
+            "groups": 1,
             "kernel_constraint": null,
             "kernel_initializer": {
               "class_name": "VarianceScaling",
@@ -133,6 +139,8 @@
         {
           "class_name": "MaxPooling1D",
           "config": {
+            "data_format": "channels_last",
+            "dtype": "float32",
             "name": "max_pooling1d_1",
             "padding": "valid",
             "pool_size": [
@@ -158,6 +166,7 @@
         {
           "class_name": "Dropout",
           "config": {
+            "dtype": "float32",
             "name": "dropout_1",
             "noise_shape": null,
             "rate": 0.25,
@@ -180,6 +189,7 @@
           "class_name": "Flatten",
           "config": {
             "data_format": "channels_last",
+            "dtype": "float32",
             "name": "flatten_1",
             "trainable": true
           },
@@ -206,6 +216,7 @@
               "config": {}
             },
             "bias_regularizer": null,
+            "dtype": "float32",
             "kernel_constraint": null,
             "kernel_initializer": {
               "class_name": "VarianceScaling",
@@ -237,6 +248,7 @@
         {
           "class_name": "Dropout",
           "config": {
+            "dtype": "float32",
             "name": "dropout_2",
             "noise_shape": null,
             "rate": 0.5,
@@ -266,6 +278,7 @@
               "config": {}
             },
             "bias_regularizer": null,
+            "dtype": "float32",
             "kernel_constraint": null,
             "kernel_initializer": {
               "class_name": "VarianceScaling",
@@ -295,7 +308,7 @@
           "name": "dense_2"
         }
       ],
-      "name": "sequential_3",
+      "name": "sequential",
       "output_layers": [
         [
           "dense_2",
@@ -304,58 +317,41 @@
         ]
       ]
     },
-    "keras_version": "2.1.6"
+    "keras_version": "2.4.0"
   },
-  "average_pooling_2d_same_offset": false,
-  "average_pooling_2d_valid_offset": false,
-  "conv2d_same_offset_depth_1": false,
-  "conv2d_same_offset_depth_2": false,
-  "conv2d_valid_offset_depth_1": false,
-  "conv2d_valid_offset_depth_2": false,
-  "hash": "557d2f5820e8a0523eb4b7bd76afa36c99514617c9d1cd16dc29b792087eeef4",
+  "hash": "61160c6492eb76a03b707b2267ed64d869581b0180afb4ad1bd6cf72dff4339c",
   "image_data_format": "channels_last",
   "input_shapes": [
     [
-      1,
-      1,
-      1,
       61,
       1
     ]
   ],
-  "max_pooling_2d_same_offset": false,
-  "max_pooling_2d_valid_offset": false,
-  "separable_conv2d_same_offset_depth_1": false,
-  "separable_conv2d_same_offset_depth_2": false,
-  "separable_conv2d_valid_offset_depth_1": false,
-  "separable_conv2d_valid_offset_depth_2": false,
+  "output_shapes": [
+    [
+      3
+    ]
+  ],
   "tests": [
     {
       "inputs": [
         {
           "shape": [
-            1,
-            1,
-            1,
             61,
             1
           ],
           "values": [
-            "04XDP8dE1T9D454/cHXOP8CKj7+SARc/A6xhvx44Uj8SakA/8tAyvzGsdz/fCV2/P4EXPZxXSD/0Ezg/kEf0vaOer76tp7u/sjITwFyaM78xtjy+in8aPvZQ0T6gmOq9FTX2vul/a75cdaY+oPPwP6Xlfz8n2NU/RlVNP3oZar551JM+0MDPPnNAUb1Qa2u/MnDkv2lfxT2o4zs+YZcSP373Qz7yYuc9TiYMvy7vgL4WZdw/89cLvOV5Wj8tHI0+TEUfPwt4XT8qqci+Wv2AvuCVxz9r1e++3zn0v/DjvL8l8tA+VigBvpy/Cz84gQG/7yoUPw=="
+            "8j4EQPKldD9OYpo+QdP6vrSTj79J9WY/msSVPrNi7766loI+s9ZFvv7X9r7INQfAENB2vzu+wT1LZKQ/L24EPpEMzr8b2yQ/k+xfv6atPr6F82E9sR7Rv9jDeL6h5s++ZqtevyzDwr8Gy7u/mVJ/P5wTJr/4l4k/znu0vhmmv77jsnW+uIF5P4hmNb8ayqG+8DN2P0YIlz/KLey8N9I3PfJVw75siCE/KC4sv79jd78H4Jk/E1qrP4UgHL7r6DG+HUrDP/B+QL/QN4G+AMYLvxpUtL8vjIu920jAvvxQoL6I3sE+EfdFviWji74JUw/ATG6DPw=="
           ]
         }
       ],
       "outputs": [
         {
           "shape": [
-            1,
-            1,
-            1,
-            1,
             3
           ],
           "values": [
-            "Z7I1OflXGzrQzX8/"
+            "Ft3dNVoiWT5Ot0k/"
           ]
         }
       ]

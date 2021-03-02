@@ -38,7 +38,7 @@ target_link_libraries(${BaseTargetName} PRIVATE
         juce::juce_recommended_config_flags
         juce::juce_recommended_lto_flags
         juce::juce_recommended_warning_flags
-#        frugally-deep::fdeep
+        fdeep
         OnsetClassification
         essentia
 )
