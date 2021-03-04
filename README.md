@@ -6,7 +6,7 @@ Deepbox is an audio plugin that uses a convolutional neural network to classify 
 You can view a demo of Deepbox [here](https://www.youtube.com/watch?v=F6jA0xNGhSM&t=193s).
 
 
-![](Source/resources/imgs/Deepbox_img_1.png)
+![](Resources/imgs/Deepbox_img_1.png)
 
 ## Supported Platforms Builds:
 AU/VST3
