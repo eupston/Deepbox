@@ -1,6 +1,14 @@
-project(DeepboxPlugin VERSION 0.0.1)
+    project(DeepboxPlugin VERSION 0.0.1)
 
 set(BaseTargetName DeepboxPlugin)
+
+if(APPLE)
+    set(JUCE_TARGET_FORMATS "AU" "VST3" "Standalone")
+endif()
+
+if(WIN32)
+    set(JUCE_TARGET_FORMATS "VST3" "Standalone")
+endif()
 
 juce_add_plugin("${BaseTargetName}"
         # VERSION ...                               # Set this if the plugin version is different to the project version
@@ -15,7 +23,7 @@ juce_add_plugin("${BaseTargetName}"
         COPY_PLUGIN_AFTER_BUILD TRUE
         PLUGIN_MANUFACTURER_CODE Juce
         PLUGIN_CODE Dem0
-        FORMATS AU VST3 Standalone
+        FORMATS ${JUCE_TARGET_FORMATS}
         PRODUCT_NAME "Deepbox")
 
 juce_generate_juce_header(${BaseTargetName})
