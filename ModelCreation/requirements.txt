@@ -1,5 +1,5 @@
 keras==2.1.6
-tensorflow==2.4.0
+tensorflow==2.5.2
 librosa==0.5.1
 soundfile==0.10.2
 sklearn
